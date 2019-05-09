@@ -58,7 +58,7 @@ class PvdemosModelWorkers extends JModel
     {
         d('in buildQuery');
         $where = ' ';
-        $query = 'SELECT * FROM `#__pvdemos` ';
+        $query = 'SELECT * FROM `#__pvdemos_workers` ';
 
         return $query . $where;
     }
