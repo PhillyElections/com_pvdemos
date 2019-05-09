@@ -7,13 +7,45 @@ SET @db   = DATABASE();
 
 /* ==================== tables ==================== */
 
-CREATE TABLE IF NOT EXISTS `#__pvdemos` (
+CREATE TABLE IF NOT EXISTS `#__pvdemos_events` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `field` varchar(100) NOT NULL DEFAULT '',
+  `scheduler_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `start` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `end` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `location` varchar(100) NOT NULL DEFAULT '',
+  `street_address` varchar(100) NOT NULL DEFAULT '',
+  `zip` smallint(5) NOT NULL DEFAULT '',
+  `contact_name` varchar(100) NOT NULL DEFAULT '',
+  `email` varchar(100) NOT NULL DEFAULT '',
+  `phone` varchar(100) NOT NULL DEFAULT '',
+  `ada_confirmed` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `special_ballot_needed` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `lat` decimal(15,12) NOT NULL,
+  `lng` decimal(15,12) NOT NULL,
   `published` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  `checked_out` int(10) unsigned NOT NULL DEFAULT 0,
-  `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__pvdemos_tasks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `workers_ids` varchar(100) NOT NULL DEFAULT '',
+  `description` varchar(255) NOT NULL DEFAULT '',
+  `published` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__pvdemos_workers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL DEFAULT '',
+  `email` varchar(100) NOT NULL DEFAULT '',
+  `phone` varchar(100) NOT NULL DEFAULT '',
+  `published` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
