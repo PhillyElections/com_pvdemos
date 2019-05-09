@@ -12,9 +12,19 @@ defined('_JEXEC') or die('Restricted access');
 class TableEvent extends JTable
 {
     public $id;
-    public $event_id;
-    public $workers_ids;
-    public $description;
+    public $scheduler_id;
+    public $start;
+    public $end;
+    public $location;
+    public $street_address;
+    public $zip;
+    public $contact_name;
+    public $email;
+    public $phone;
+    public $ada_confirmed;
+    public $special_ballot_needed;
+    public $lat;
+    public $lng;
     public $published;
     public $created;
     public $updated;
