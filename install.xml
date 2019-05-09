@@ -36,6 +36,12 @@
     </languages>
     <administration>
         <menu link="option=com_pvdemos">PvDemos</menu>
+        <submenu>
+          <menu link="option=com_pvdemos">Demos</menu>
+          <menu link="option=com_pvdemos&amp;controller=events">Events</menu>
+          <menu link="option=com_pvdemos&amp;controller=tasks">Tasks</menu>
+          <menu link="option=com_pvdemos&amp;controller=workers">workers</menu>
+        </submenu>
         <files folder="admin">
             <filename>index.html</filename>
             <filename>pvdemos.php</filename>
