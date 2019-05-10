@@ -37,8 +37,7 @@
     <administration>
         <menu link="option=com_pvdemos">PvDemos</menu>
         <submenu>
-          <menu link="option=com_pvdemos">Demos</menu>
-          <menu link="option=com_pvdemos&amp;controller=events">Events</menu>
+          <menu link="option=com_pvdemos">Events</menu>
           <menu link="option=com_pvdemos&amp;controller=tasks">Tasks</menu>
           <menu link="option=com_pvdemos&amp;controller=workers">workers</menu>
         </submenu>
