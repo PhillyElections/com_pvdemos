@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install type="component" version="1.5.0">
-    <name>PvDemos</name>
+    <name>Voting Machine Demos</name>
     <creationDate>2015-06-25</creationDate>
     <author>Matthew Murphy</author>
     <authorEmail>matthew.e.murphy@phila.gov</authorEmail>
@@ -8,7 +8,7 @@
     <copyright>(C) 2015 City of Philadelphia</copyright>
     <license>GPL</license>
     <version>1.0.1</version>
-    <description>PvDemos</description>
+    <description>Voting Machine Demos</description>
     <install>
         <sql>
             <file driver="mysqli" charset="utf8">sql/install.sql</file>

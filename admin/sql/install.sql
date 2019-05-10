@@ -49,3 +49,8 @@ CREATE TABLE IF NOT EXISTS `#__pvdemos_workers` (
   `updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `#__pvdemos_workers` 
+(`name`, `email`, `phone`, `published`, `created`)
+VALUES
+('Matthew Murphy', 'matthew.e.murphy@phila.gov', '2151231234', 1, @tnow)

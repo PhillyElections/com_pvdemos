@@ -4,6 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 $pagination = &$this->pagination;
 $workers      = $this->workers;
 
+(`name`, `email`, `phone`, `published`, `created`)
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" name="adminForm" id="adminForm">
     <div id="editcell">
@@ -19,8 +20,23 @@ $workers      = $this->workers;
                     <th width="1px">
                         P
                     </th>
+                    <th width="20%">
+                        <?=JText::_('NAME');?>
+                    </th>
+                    <th width="20%">
+                        <?=JText::_('EMAIL');?>
+                    </th>
                     <th width="10%">
-                        <?=JText::_('FIELD');?>
+                        <?=JText::_('PHONE');?>
+                    </th>
+                    <th width="10%">
+                        <?=JText::_('UDPATED');?>
+                    </th>
+                    <th width="10%">
+                        <?=JText::_('CREATED');?>
+                    </th>
+                    <th width="auto">
+                        &nbsp;
                     </th>
                 </tr>
             </thead>
@@ -45,7 +61,19 @@ for ($i = 0, $n = count($workers); $i < $n; $i++) {
                         <?=$published;?>
                     </td>
                     <td>
-                        <a href="<?=$link?>"><?=$row->field;?></a>
+                        <a href="<?=$link?>"><?=$row->name;?></a>
+                    </td>
+                    <td>
+                        <?=$row->phone;?>
+                    </td>
+                    <td>
+                        <?=$row->email;?>
+                    </td>
+                    <td>
+                        <?=$row->updated;?>
+                    </td>
+                    <td>
+                        <?=$row->created;?>
                     </td>
                 </tr>
             <?php
@@ -55,7 +83,7 @@ $k = 1 - $k;
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="10"><?php echo $pagination->getListFooter(); ?></td>
+                    <td colspan="9"><?php echo $pagination->getListFooter(); ?></td>
                 </tr>
             </tfoot>
         </table>
