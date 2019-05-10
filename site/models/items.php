@@ -57,7 +57,7 @@ class PvdemosModelItems extends JModel
     public function _buildQuery()
     {
         $where = ';';
-        $query = 'SELECT * FROM `#__pvdemos` ';
+        $query = 'SELECT * FROM `#__pv_demos` ';
 
         return $query . $where;
     }

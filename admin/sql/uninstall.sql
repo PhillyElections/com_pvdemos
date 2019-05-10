@@ -1,5 +1,5 @@
 DROP TABLE 
-`#__pvdemos_events`,
-`#__pvdemos_tasks`,
-`#__pvdemos_staff`
+`#__pv_demos_events`,
+`#__pv_demos_tasks`,
+`#__pv_demos_workers`
 ;

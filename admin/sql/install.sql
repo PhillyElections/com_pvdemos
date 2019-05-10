@@ -7,7 +7,7 @@ SET @db   = DATABASE();
 
 /* ==================== tables ==================== */
 
-CREATE TABLE IF NOT EXISTS `#__pvdemos_events` (
+CREATE TABLE IF NOT EXISTS `#__pv_demos_events` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `scheduler_id` int(11) unsigned NOT NULL DEFAULT '0',
   `start` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `#__pvdemos_events` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `#__pvdemos_tasks` (
+CREATE TABLE IF NOT EXISTS `#__pv_demos_tasks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `event_id` int(11) unsigned NOT NULL DEFAULT '0',
   `workers_ids` varchar(100) NOT NULL DEFAULT '',
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `#__pvdemos_tasks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `#__pvdemos_workers` (
+CREATE TABLE IF NOT EXISTS `#__pv_demos_workers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
   `email` varchar(100) NOT NULL DEFAULT '',
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `#__pvdemos_workers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `#__pvdemos_workers` 
-(`name`, `email`, `phone`, `published`, `created`)
+INSERT INTO `#__pv_demos_workers` 
+(`id`,`name`, `email`, `phone`, `published`, `created`)
 VALUES
-('Matthew Murphy', 'matthew.e.murphy@phila.gov', '2151231234', 1, @tnow)
+('', 'Matthew Murphy', 'matthew.e.murphy@phila.gov', '2151231234', 1, @tnow)

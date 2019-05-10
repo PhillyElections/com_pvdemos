@@ -25,7 +25,7 @@ class TableItem extends JTable
      */
     public function __construct(&$_db)
     {
-        parent::__construct('#__pvdemos', 'id', $_db);
+        parent::__construct('#__pv_demos', 'id', $_db);
     }
 
     /**
