@@ -35,7 +35,7 @@
         <language tag="es-ES">es-ES.com_pvdemos.ini</language>
     </languages>
     <administration>
-        <menu link="option=com_pvdemos">PvDemos</menu>
+        <menu link="option=com_pvdemos">Voting Machine Demos</menu>
         <submenu>
           <menu link="option=com_pvdemos">Events</menu>
           <menu link="option=com_pvdemos&amp;controller=tasks">Tasks</menu>
