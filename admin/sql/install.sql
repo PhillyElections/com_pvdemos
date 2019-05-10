@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `#__pv_demos_events` (
   `end` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `location` varchar(100) NOT NULL DEFAULT '',
   `street_address` varchar(100) NOT NULL DEFAULT '',
-  `zip` smallint(5) NOT NULL DEFAULT '',
+  `zip` varchar(10) NOT NULL DEFAULT '',
   `contact_name` varchar(100) NOT NULL DEFAULT '',
   `email` varchar(100) NOT NULL DEFAULT '',
   `phone` varchar(100) NOT NULL DEFAULT '',
