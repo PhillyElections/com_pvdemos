@@ -3,22 +3,22 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Items Model for PvDemos Component
+ * Events Model for PvDemos Component
  *
  * @package    Philadelphia.Votes
  * @subpackage Components
  * @license    GNU/GPL
  */
-class PvdemosModelItems extends JModel
+class PvdemosModelEvents extends JModel
 {
     /**
-     * Items data array
+     * Events data array
      * @var array
      */
     public $_data;
 
     /**
-     * Items total
+     * Events total
      * @var integer
      */
     public $_total;
@@ -64,8 +64,8 @@ class PvdemosModelItems extends JModel
     }
 
     /**
-     * Retrieve, store, and returns Items data
-     * @return array Items Data
+     * Retrieve, store, and returns Events data
+     * @return array Events Data
      */
     public function getData()
     {
@@ -79,7 +79,7 @@ class PvdemosModelItems extends JModel
     }
 
     /**
-     * Retrieve, store, and return number of Items rows
+     * Retrieve, store, and return number of Events rows
      * @return int number of rows
      */
     public function getTotal()
@@ -94,7 +94,7 @@ class PvdemosModelItems extends JModel
     }
 
     /**
-     * Retrieve, store and return a current JPagination object of Items
+     * Retrieve, store and return a current JPagination object of Events
      * @return array Array of objects containing the data from the database
      */
     public function getPagination()
@@ -109,7 +109,7 @@ class PvdemosModelItems extends JModel
     }
 
     /**
-     * publish items
+     * publish events
      *
      * @return void
      */
@@ -118,14 +118,14 @@ class PvdemosModelItems extends JModel
         $cid = JRequest::getVar('cid');
 
         foreach ($cid as $id) {
-            $row = JTable::getInstance('Items', 'Table');
+            $row = JTable::getInstance('Events', 'Table');
             $row->load($id);
             $row->publish($id, 1);
         }
     }
 
     /**
-     * unpublish items
+     * unpublish events
      *
      * @return void
      */
@@ -134,7 +134,7 @@ class PvdemosModelItems extends JModel
         $cid = JRequest::getVar('cid');
 
         foreach ($cid as $id) {
-            $row = JTable::getInstance('Items', 'Table');
+            $row = JTable::getInstance('Events', 'Table');
             $row->load($id);
             $row->publish($id, 0);
         }
