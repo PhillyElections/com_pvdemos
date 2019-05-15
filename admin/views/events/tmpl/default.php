@@ -2,7 +2,9 @@
 defined('_JEXEC') or die('Restricted access');
 
 $pagination = &$this->pagination;
-$events      = $this->events;
+$events     = &$this->events;
+$workers    = &$this->workers;
+d($workers);
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" name="adminForm" id="adminForm">
     <div id="editcell">

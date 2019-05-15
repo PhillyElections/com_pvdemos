@@ -22,8 +22,13 @@ class PvdemosViewEvents extends JView
         JToolBarHelper::editListX();
         JToolBarHelper::addNewX();
 
-        d($this);
-        $events     = &$this->get('Data');
+
+        // bring in classes
+        $model = $this->getModel('Workers');
+        $workers = $model->getData();
+        $this->assignRef('workers', $workers);
+
+        $events  = &$this->get('Data');
         $pagination = &$this->get('Pagination');
 
         $this->assignRef('events', $events);

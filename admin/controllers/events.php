@@ -17,6 +17,11 @@ class PvdemosControllerEvents extends PvdemosController
      */
     public function display()
     {
+        // if 'raw' isn't explicit, set to 'html'
+        $view = $this->getView('events', JRequest::getWord('format', 'html'));
+        $view->setModel($this->getModel('Events'), true);
+        $view->setModel($this->getModel('Workers'), true);
+
         JRequest::setVar('view', 'events');
 
         parent::display();
