@@ -3,7 +3,6 @@ defined('_JEXEC') or die('Restricted access');
 
 $pagination = &$this->pagination;
 $events      = $this->events;
-
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" name="adminForm" id="adminForm">
     <div id="editcell">
@@ -19,8 +18,41 @@ $events      = $this->events;
                     <th width="1px">
                         P
                     </th>
+                    <th width="7%">
+                        <?=JText::_('PRECINCT');?>
+                    </th>
+                    <th width="7%">
+                        <?=JText::_('START');?>
+                    </th>
+                    <th width="7%">
+                        <?=JText::_('END');?>
+                    </th>
+                    <th width="12%">
+                        <?=JText::_('EVENT NAME');?>
+                    </th>
+                    <th width="12%">
+                        <?=JText::_('LOCATION NAME');?>
+                    </th>
                     <th width="10%">
-                        <?=JText::_('FIELD');?>
+                        <?=JText::_('ADDRESS');?>
+                    </th>
+                    <th width="10%">
+                        <?=JText::_('CONTACT');?>
+                    </th>
+                    <th width="15px">
+                        <?=JText::_('GEOCODED');?>
+                    </th>
+                    <th width="15px">
+                        <?=JText::_('ADA COMPLIANT');?>
+                    </th>
+                    <th width="15px">
+                        <?=JText::_('SPECIAL BALLOT');?>
+                    </th>
+                    <th width="7%">
+                        <?=JText::_('SCHEDULER');?>
+                    </th>
+                    <th width="auto">
+                        &nbsp;
                     </th>
                 </tr>
             </thead>
@@ -45,7 +77,40 @@ for ($i = 0, $n = count($events); $i < $n; $i++) {
                         <?=$published;?>
                     </td>
                     <td>
-                        <a href="<?=$link?>"><?=$row->field;?></a>
+                        <?=$row->precinct ? $row->precinct : '?';?>
+                    </td>
+                    <td>
+                        <?=$row->start;?>
+                    </td>
+                    <td>
+                        <?=$row->end;?>
+                    </td>
+                    <td>
+                        <a href="<?=$link?>"><?=$row->name;?></a>
+                    </td>
+                    <td>
+                        <?=$row->location;?>
+                    </td>
+                    <td>
+                        <?=$row->street_address;?>
+                    </td>
+                    <td>
+                        <?=$row->contact;?>
+                    </td>
+                    <td>
+                        <?=$row->lat ? "Yes" : "No";?>
+                    </td>
+                    <td>
+                        <?=$row->ada_confirmed ? "Yes" : "No";?>
+                    </td>
+                    <td>
+                        <?=$row->special_ballot_needed ? "Yes" : "No";?>
+                    </td>
+                    <td>
+                        <?=$row->scheduler;?>
+                    </td>
+                    <td>
+                        &nbsp;
                     </td>
                 </tr>
             <?php
@@ -55,7 +120,7 @@ $k = 1 - $k;
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="10"><?php echo $pagination->getListFooter(); ?></td>
+                    <td colspan="15"><?php echo $pagination->getListFooter(); ?></td>
                 </tr>
             </tfoot>
         </table>
