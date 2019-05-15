@@ -105,7 +105,7 @@ for ($i = 0, $n = count($events); $i < $n; $i++) {
                         <?=$row->contact;?>
                     </td>
                     <td>
-                        <?=$row->lat ? "Yes" : "No";?>
+                        <?=$row->lat > 0 ? "Yes" : "No";?>
                     </td>
                     <td>
                         <?=$row->ada_confirmed ? "Yes" : "No";?>
