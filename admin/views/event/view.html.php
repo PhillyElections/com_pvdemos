@@ -22,24 +22,24 @@ class PvdemosViewEvent extends JView
         $workers = $model->getData();
         $this->assignRef('workers', $workers);
 
-        $item = &$this->get('Data');
+        $event = &$this->get('Data');
 
-        $isNew = ($item->id < 1);
+        $isNew = ($event->id < 1);
 
         $text = $isNew ? JText::_('New') : JText::_('Edit');
         JToolBarHelper::title(JText::_('Item') . ': <small><small>[ ' . $text . ' ]</small></small>');
         if ($isNew) {
             JToolBarHelper::save('save', 'Register');
             JToolBarHelper::cancel('cancel', 'Close');
-            // We'll use a separate template for new items: default_add
+            // We'll use a separate template for new events: default_add
             // $tpl = 'add';
         } else {
-            // for existing items the button is renamed `close`
+            // for existing events the button is renamed `close`
             JToolBarHelper::save('save', 'Update');
             JToolBarHelper::cancel('cancel', 'Close');
         }
 
-        $this->assignRef('item', $item);
+        $this->assignRef('event', $event);
         $this->assignRef('isNew', $isNew);
 
         parent::display($tpl);
