@@ -17,11 +17,34 @@ $id = "id";
 $name = "name";
 $object->$id="AM";
 $object->$name="AM";
-$am_pm[]=$object;
+$am_pms[]=$object;
 $object = new stdClass();
 $object->$id="PM";
 $object->$name="PM";
-$am_pm[]=$object;
+$am_pms[]=$object;
+
+$hours = [];
+$minutes = [];
+$id = "id";
+$name = "name";
+for (var $i = 0; $i < 60; $i=$i+5) {
+    $object = new stdClass();
+    $id = "id";
+    $name = "name";
+    $formatted = sprintf("%02d",$i);
+    $object->$id = $formatted;
+    $object->$name = $formatted;
+    $hours[]=$object;
+}
+for (var $i = 1; $i <= 12; $i++) {
+    $object = new stdClass();
+    $id = "id";
+    $name = "name";
+    $formatted = sprintf("%02d",$i);
+    $object->$id = $formatted;
+    $object->$name = $formatted;
+    $minutes[]=$object;
+}
 
 // try to cast to object next
 $item = !$this->isNew ? $this->item : JRequest::get('post');
@@ -48,7 +71,9 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                 </td>
                 <td>
                     <?php echo JHTML::_ ( 'calendar', date("Y-m-d", strtotime($item->start)), "day", "day" );?>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pm, 'id', 'name'), 'am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($hours, 'id', 'name'), 'start_hour', '', 'idx', 'value', ($item->start_hour ? $item->start_hour : '01'), 'start_hour');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($minutes, 'id', 'name'), 'start_minute', '', 'idx', 'value', ($item->start_minute ? $item->start_minute : '00'), 'start_minute');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pms, 'id', 'name'), 'start_am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?>
                 </td>
             </tr>
             <tr>
