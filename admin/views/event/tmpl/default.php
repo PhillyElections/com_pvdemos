@@ -22,7 +22,7 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->worker, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($row->scheduler_id ? $row->scheduler_id : ''), 'scheduler_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->worker, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($item->scheduler_id ? $item->scheduler_id : ''), 'scheduler_id');?>
                 </td>
             </tr>
             <tr>
@@ -32,8 +32,8 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?php echo JHTML::_ ( 'calendar', $this->row->start, "start_day", "start_day" );?>
-                    <?php echo JHTML::_ ( 'calendar', $this->row->end, "end_day", "end_day" );?>
+                    <?php echo JHTML::_ ( 'calendar', $this->item->start, "start_day", "start_day" );?>
+                    <?php echo JHTML::_ ( 'calendar', $this->item->end, "end_day", "end_day" );?>
                 </td>
             </tr>
             <tr>
