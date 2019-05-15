@@ -48,7 +48,7 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                 </td>
                 <td>
                     <?php echo JHTML::_ ( 'calendar', $item->start, "day", "day" );?>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pm, 'id', 'name', 'Select scheduler'), 'am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : ''), 'am_pm');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pm, 'id', 'name', 'PM'), 'am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?>
                 </td>
             </tr>
             <tr>
