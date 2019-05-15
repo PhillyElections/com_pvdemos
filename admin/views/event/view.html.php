@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage Components
  * @license    GNU/GPL
  */
-class PvdemosViewItem extends JView
+class PvdemosViewEvent extends JView
 {
     /**
      * display method of Item view
