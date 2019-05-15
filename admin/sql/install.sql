@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `#__pv_demos_events` (
   `staffer1_id` int(11) unsigned NOT NULL DEFAULT 0,
   `staffer2_id` int(11) unsigned NOT NULL DEFAULT 0,
   `staffer3_id` int(11) unsigned NOT NULL DEFAULT 0,
+  `precinct` int(4) unsigned NOT NULL DEFAULT 0,
   `lat` decimal(15,12) NOT NULL,
   `lng` decimal(15,12) NOT NULL,
   `published` tinyint(1) unsigned NOT NULL DEFAULT 0,
@@ -55,7 +56,7 @@ VALUES
 ('', 'scheduler', 'Trina Bodink', 'trina.bodink@phila.gov', '2151231234', 1, @tnow),
 ('', 'scheduler', 'Aizaz Gill', 'aizaz.gill@phila.gov', '2151231234', 1, @tnow),
 ('', 'balloter', 'Eric Kapenstein', 'eric.kapenstein@phila.gov', '2151231234', 1, @tnow),
-('', 'balloter', 'Garrett Deitz', 'garrett.deitz@phila.gov', '2151231234', 1, @tnow)
+('', 'balloter', 'Garrett Deitz', 'garrett.deitz@phila.gov', '2151231234', 1, @tnow);
 
 INSERT INTO `#__pv_demos_events` 
 (`id`, `scheduler_id`, `start`, `end`, `name`, `location`, `street_address`, `zip`, `contact`, `email`, `phone`, `ada_confirmed`, `special_ballot_needed`, `published`, `created`)
