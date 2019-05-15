@@ -9,7 +9,7 @@ $workers_array = [];
 foreach ($workers as $key=>$worker) {
     $workers_array[$worker->id] = $worker;
 }
-d($workers, $workers_array);
+d($workers, $workers_array, $workers_array[2]);
 
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" name="adminForm" id="adminForm">
