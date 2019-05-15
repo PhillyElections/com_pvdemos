@@ -25,7 +25,7 @@ foreach ($workers as $key=>$worker) {
                     <th width="1px">
                         P
                     </th>
-                    <th width="7%">
+                    <th width="3%">
                         <?=JText::_('PRECINCT');?>
                     </th>
                     <th width="7%">
