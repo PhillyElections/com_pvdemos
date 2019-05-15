@@ -9,7 +9,6 @@ $workers_array = [];
 foreach ($workers as $key=>$worker) {
     $workers_array[$worker->id] = $worker;
 }
-d($workers, $workers_array, $workers_array[2]->name);
 
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" name="adminForm" id="adminForm">
@@ -115,7 +114,7 @@ for ($i = 0, $n = count($events); $i < $n; $i++) {
                         <?=$row->special_ballot_needed ? "Yes" : "No";?>
                     </td>
                     <td>
-                        <?=$workers_array[$row->scheduler]->name;?>
+                        <?=$workers_array[$row->scheduler_id]->name;?>
                     </td>
                     <td>
                         &nbsp;
