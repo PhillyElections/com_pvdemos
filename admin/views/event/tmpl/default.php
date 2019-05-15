@@ -70,11 +70,13 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <span> Day: <?php echo JHTML::_ ( 'calendar', date("Y-m-d", strtotime($item->start)), "day", "day", '%Y-%m-%d', 'size="10"' );?></span>
-                    <<?=JHTML::_('select.genericlist', PVCombo::getsFromObject($hours, 'id', 'name'), 'start_hour', '', 'idx', 'value', ($item->start_hour ? $item->start_hour : '01'), 'start_hour');?>
+                    <span> Day:<?php echo JHTML::_ ( 'calendar', date("Y-m-d", strtotime($item->start)), "day", "day", '%Y-%m-%d', 'size="8"' );?></span>
+                    <span> Start:<?=JHTML::_('select.genericlist', PVCombo::getsFromObject($hours, 'id', 'name'), 'start_hour', '', 'idx', 'value', ($item->start_hour ? $item->start_hour : '01'), 'start_hour');?>
                     <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($minutes, 'id', 'name'), 'start_minute', '', 'idx', 'value', ($item->start_minute ? $item->start_minute : '00'), 'start_minute');?>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pms, 'id', 'name'), 'start_am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?>
-                </td>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pms, 'id', 'name'), 'start_am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?></span>
+                    <span> Start:<?=JHTML::_('select.genericlist', PVCombo::getsFromObject($hours, 'id', 'name'), 'end_hour', '', 'idx', 'value', ($item->end_hour ? $item->end_hour : '03'), 'end_hour');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($minutes, 'id', 'name'), 'end_minute', '', 'idx', 'value', ($item->end_minute ? $item->end_minute : '00'), 'end_minute');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pms, 'id', 'name'), 'end_am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?></span>                </td>
             </tr>
             <tr>
                 <td width="200" height="30">
