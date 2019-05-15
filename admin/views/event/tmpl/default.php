@@ -27,7 +27,7 @@ $hours = [];
 $minutes = [];
 $id = "id";
 $name = "name";
-for (var $i = 0; $i < 60; $i=$i+5) {
+for ($i = 0; $i < 60; $i=$i+5) {
     $object = new stdClass();
     $id = "id";
     $name = "name";
@@ -36,7 +36,7 @@ for (var $i = 0; $i < 60; $i=$i+5) {
     $object->$name = $formatted;
     $hours[]=$object;
 }
-for (var $i = 1; $i <= 12; $i++) {
+for ($i = 1; $i <= 12; $i++) {
     $object = new stdClass();
     $id = "id";
     $name = "name";
