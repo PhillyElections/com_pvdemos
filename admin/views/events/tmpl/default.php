@@ -115,7 +115,7 @@ for ($i = 0, $n = count($events); $i < $n; $i++) {
                         <?=$row->special_ballot_needed ? "Yes" : "No";?>
                     </td>
                     <td>
-                        <?=$row->scheduler;?>
+                        <?=$workers_array[$row->scheduler]->name;?>
                     </td>
                     <td>
                         &nbsp;
