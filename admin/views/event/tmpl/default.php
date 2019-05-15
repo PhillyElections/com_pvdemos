@@ -17,6 +17,87 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
         <tbody>
             <tr>
                 <td width="200" height="30">
+                    <label id="namemsg" for="secheduler_id">
+                        <?=JText::_('SCHEDULER');?>:
+                    </label>
+                </td>
+                <td>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->worker, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($row->scheduler_id ? $row->scheduler_id : ''), 'scheduler_id');?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="field">
+                        <?=JText::_('TIMES');?>:
+                    </label>
+                </td>
+                <td>
+                    <?php echo JHTML::_ ( 'calendar', $this->row->start, "start_day", "start_day" );?>
+                    <?php echo JHTML::_ ( 'calendar', $this->row->end, "end_day", "end_day" );?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="name">
+                        <?=JText::_('EVENT NAME');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="name" size="62" value="<?=$item->name ? $item->name : $item['name'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EVENT NAME PLACEHOLDER');?>" />
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="location">
+                        <?=JText::_('LOCATION NAME');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="location" name="location" size="62" value="<?=$item->location ? $item->location : $item['location'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('LOCATION NAME PLACEHOLDER');?>" />
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="street_address">
+                        <?=JText::_('STREET ADDRESS');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="street_address" name="street_address" size="62" value="<?=$item->street_address ? $item->street_address : $item['street_address'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('STREET ADDRESS PLACEHOLDER');?>" />
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="contact">
+                        <?=JText::_('CONTACT');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="contact" name="contact" size="62" value="<?=$item->contact ? $item->contact : $item['contact'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('CONTACT PLACEHOLDER');?>" />
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="phone">
+                        <?=JText::_('PHONE');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="phone" name="phone" size="62" value="<?=$item->phone ? $item->phone : $item['phone'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('PHONE PLACEHOLDER');?>" />
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="email">
+                        <?=JText::_('EMAIL');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="email" name="email" size="62" value="<?=$item->email ? $item->email : $item['email'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EMAIL PLACEHOLDER');?>" />
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
                     <label id="namemsg" for="field">
                         <?=JText::_('FIELD');?>:
                     </label>
