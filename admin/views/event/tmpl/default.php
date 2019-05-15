@@ -60,7 +60,7 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($item->scheduler_id ? $item->scheduler_id : ''), 'scheduler_id', 'size="10"');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($item->scheduler_id ? $item->scheduler_id : ''), 'scheduler_id', 'width="20px"');?>
                 </td>
             </tr>
             <tr>
