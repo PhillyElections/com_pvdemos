@@ -47,7 +47,7 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?php echo JHTML::_ ( 'calendar', date(strtotime($item->start),"Y-M-D"), "day", "day" );?>
+                    <?php echo JHTML::_ ( 'calendar', date("Y-m-d", strtotime($item->start)), "day", "day" );?>
                     <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pm, 'id', 'name'), 'am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?>
                 </td>
             </tr>

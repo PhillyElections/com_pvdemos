@@ -17,8 +17,7 @@ class PvdemosViewEvent extends JView
      **/
     public function display($tpl = null)
     {
-
-        // bring in classes
+       // bring in classes
         $model = $this->getModel('Workers');
         $workers = $model->getData();
         $this->assignRef('workers', $workers);
