@@ -18,6 +18,11 @@ class PvdemosViewItem extends JView
     public function display($tpl = null)
     {
 
+        // bring in classes
+        $model = $this->getModel('Workers');
+        $workers = $model->getData();
+        $this->assignRef('workers', $workers);
+
         $item = &$this->get('Data');
 
         $isNew = ($item->id < 1);
