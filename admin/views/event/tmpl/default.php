@@ -11,6 +11,18 @@ if (count(JRequest::getVar('msg', null, 'post'))) {
     }
 }
 
+
+$object = new stdClass();
+$id = "id";
+$name = "name";
+$object->$id="AM";
+$object->$name="AM";
+$am_pm[]=$object;
+$object = new stdClass();
+$object->$id="PM";
+$object->$name="PM";
+$am_pm[]=$object;
+
 // try to cast to object next
 $item = !$this->isNew ? $this->item : JRequest::get('post');
 
@@ -35,8 +47,8 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?php echo JHTML::_ ( 'calendar', $item->start, "start_day", "start_day" );?>
-                    <?php echo JHTML::_ ( 'calendar', $item->end, "end_day", "end_day" );?>
+                    <?php echo JHTML::_ ( 'calendar', $item->start, "day", "day" );?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pm, 'id', 'name', 'Select scheduler'), 'am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : ''), 'am_pm');?>
                 </td>
             </tr>
             <tr>
