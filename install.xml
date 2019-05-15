@@ -38,7 +38,7 @@
         <menu link="option=com_pvdemos">Voting Machine Demos</menu>
         <submenu>
           <menu link="option=com_pvdemos">Events</menu>
-          <menu link="option=com_pvdemos&amp;controller=workers">workers</menu>
+          <menu link="option=com_pvdemos&amp;controller=workers">Workers</menu>
         </submenu>
         <files folder="admin">
             <filename>index.html</filename>
