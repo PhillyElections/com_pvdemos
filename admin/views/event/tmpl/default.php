@@ -34,8 +34,8 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?php echo JHTML::_ ( 'calendar', $item->start, "start_day", "start_day" );?>
-                    <?php echo JHTML::_ ( 'calendar', $item->end, "end_day", "end_day" );?>
+                    <?php //echo JHTML::_ ( 'calendar', $item->start, "start_day", "start_day" );?>
+                    <?php //gecho JHTML::_ ( 'calendar', $item->end, "end_day", "end_day" );?>
                 </td>
             </tr>
             <tr>
