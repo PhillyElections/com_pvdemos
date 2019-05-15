@@ -47,7 +47,6 @@ class PvdemosControllerEvent extends PvdemosController
      */
     public function save()
     {
-dd('save');
         JRequest::checkToken() or jexit('Invalid Token');
 
         $model = $this->getModel('event');
