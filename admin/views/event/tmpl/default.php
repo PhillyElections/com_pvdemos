@@ -60,7 +60,7 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($item->scheduler_id ? $item->scheduler_id : ''), 'scheduler_id', 'width="20px"');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select scheduler'), 'scheduler_id', '', 'idx', 'value', ($item->scheduler_id ? $item->scheduler_id : ''), 'scheduler_id');?>
                 </td>
             </tr>
             <tr>
@@ -70,7 +70,7 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <span> Day: <?php echo JHTML::_ ( 'calendar', date("Y-m-d", strtotime($item->start)), "day", "day" );?></span>
+                    <span> Day: <?php echo JHTML::_ ( 'calendar', date("Y-m-d", strtotime($item->start)), "day", "day", 'width="20px"' );?></span>
                     <<?=JHTML::_('select.genericlist', PVCombo::getsFromObject($hours, 'id', 'name'), 'start_hour', '', 'idx', 'value', ($item->start_hour ? $item->start_hour : '01'), 'start_hour');?>
                     <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($minutes, 'id', 'name'), 'start_minute', '', 'idx', 'value', ($item->start_minute ? $item->start_minute : '00'), 'start_minute');?>
                     <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pms, 'id', 'name'), 'start_am_pm', '', 'idx', 'value', ($item->am_pm ? $item->am_pm : 'PM'), 'am_pm');?>
