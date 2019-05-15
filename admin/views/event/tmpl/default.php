@@ -2,6 +2,8 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
+jimport("pvcombo.PVCombo");
+
 if (count(JRequest::getVar('msg', null, 'post'))) {
     foreach (JRequest::getVar('msg', null, 'post') as $msg) {
         JError::raiseWarning(1, $msg);
