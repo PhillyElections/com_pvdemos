@@ -9,7 +9,7 @@ if (count(JRequest::getVar('msg', null, 'post'))) {
         JError::raiseWarning(1, $msg);
     }
 }
-d('item: in default form', $this);
+
 // try to cast to object next
 $item = !$this->isNew ? $this->item : JRequest::get('post');
 
@@ -34,8 +34,8 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                     </label>
                 </td>
                 <td>
-                    <?php echo JHTML::_ ( 'calendar', $this->item->start, "start_day", "start_day" );?>
-                    <?php echo JHTML::_ ( 'calendar', $this->item->end, "end_day", "end_day" );?>
+                    <?php echo JHTML::_ ( 'calendar', $item->start, "start_day", "start_day" );?>
+                    <?php echo JHTML::_ ( 'calendar', $item->end, "end_day", "end_day" );?>
                 </td>
             </tr>
             <tr>
@@ -96,16 +96,6 @@ $item = !$this->isNew ? $this->item : JRequest::get('post');
                 </td>
                 <td>
                     <input type="text" id="email" name="email" size="62" value="<?=$item->email ? $item->email : $item['email'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EMAIL PLACEHOLDER');?>" />
-                </td>
-            </tr>
-            <tr>
-                <td width="200" height="30">
-                    <label id="namemsg" for="field">
-                        <?=JText::_('FIELD');?>:
-                    </label>
-                </td>
-                <td>
-                    <input type="text" id="field" name="field" size="62" value="<?=$item->field ? $item->field : $item['field'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('FIELD PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
