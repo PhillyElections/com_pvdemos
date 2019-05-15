@@ -34,7 +34,7 @@ for ($i = 0; $i < 60; $i=$i+5) {
     $formatted = sprintf("%02d",$i);
     $object->$id = $formatted;
     $object->$name = $formatted;
-    $hours[]=$object;
+    $minutes[]=$object;
 }
 for ($i = 1; $i <= 12; $i++) {
     $object = new stdClass();
@@ -43,7 +43,7 @@ for ($i = 1; $i <= 12; $i++) {
     $formatted = sprintf("%02d",$i);
     $object->$id = $formatted;
     $object->$name = $formatted;
-    $minutes[]=$object;
+    $hours[]=$object;
 }
 
 // try to cast to object next
