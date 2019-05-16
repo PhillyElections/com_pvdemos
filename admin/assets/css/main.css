@@ -16,4 +16,5 @@ div.button {
     border-style: outset;
     border-color: buttonface;
     border-image: initial;
+    cursor: pointer;
 }
