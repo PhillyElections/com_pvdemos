@@ -55,7 +55,27 @@ d($event);
         <tbody>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="secheduler_id">
+                    <label id="idmsg" for="id">
+                        <?=JText::_('ID');?>:
+                    </label>
+                </td>
+                <td>
+                    <?php echo $event->id; ?>
+                </td>
+            </tr>
+             <tr>
+                <td width="200" height="30">
+                    <label id="publishedmsg" for="published">
+                        <?=JText::_('PUBLISHED');?>:
+                    </label>
+                </td>
+                <td>
+                    <?php echo JHTML::_('select.booleanlist', 'published', 'class="inputbox"', $event->published); ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="scheduler_idmsg" for="secheduler_id">
                         <?=JText::_('SCHEDULER');?>:
                     </label>
                 </td>
@@ -65,7 +85,7 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="day">
+                    <label id="daymsg" for="day">
                         <?=JText::_('TIMES');?>:
                     </label>
                 </td>
@@ -79,7 +99,7 @@ d($event);
                     <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($am_pms, 'id', 'name'), 'end_am_pm', '', 'idx', 'value', ($event->end_am_pm ? $event->end_am_pm : 'PM'), 'end_am_pm');?></td></tr></table>
                 </td>
             </tr>
-            <tr>
+             <tr>
                 <td width="200" height="30">
                     <label id="namemsg" for="name">
                         <?=JText::_('EVENT NAME');?>:
@@ -91,7 +111,7 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="location">
+                    <label id="locationmsg" for="location">
                         <?=JText::_('LOCATION NAME');?>:
                     </label>
                 </td>
@@ -101,7 +121,7 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="address_street">
+                    <label id="address_streetmsg" for="address_street">
                         <?=JText::_('ADDRESS STREET');?>:
                     </label>
                 </td>
@@ -111,7 +131,7 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="address_extra">
+                    <label id="address_extramsg" for="address_extra">
                         <?=JText::_('ADDRESS EXTRAS');?>:
                     </label>
                 </td>
@@ -121,7 +141,7 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="contact">
+                    <label id="contactmsg" for="contact">
                         <?=JText::_('CONTACT');?>:
                     </label>
                 </td>
@@ -131,7 +151,7 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="phone">
+                    <label id="phonemsg" for="phone">
                         <?=JText::_('PHONE');?>:
                     </label>
                 </td>
@@ -141,12 +161,72 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
-                    <label id="namemsg" for="email">
+                    <label id="emailmsg" for="email">
                         <?=JText::_('EMAIL');?>:
                     </label>
                 </td>
                 <td>
                     <input type="text" id="email" name="email" size="62" value="<?=$event->email ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EMAIL PLACEHOLDER');?>" />
+                </td>
+            </tr>
+             <tr>
+                <td width="200" height="30">
+                    <label id="ada_compliantmsg" for="ada_compliant">
+                        <?=JText::_('PUBLISHED');?>:
+                    </label>
+                </td>
+                <td>
+                    <?php echo JHTML::_('select.booleanlist', 'ada_compliant', 'class="inputbox"', $event->ada_compliant); ?>
+                </td>
+            </tr>
+             <tr>
+                <td width="200" height="30">
+                    <label id="special_ballot_neededmsg" for="special_ballot_needed">
+                        <?=JText::_('PUBLISHED');?>:
+                    </label>
+                </td>
+                <td>
+                    <?php echo JHTML::_('select.booleanlist', 'special_ballot_needed', 'class="inputbox"', $event->special_ballot_needed); ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="special_ballot_worker_idmsg" for="special_ballot_worker_id">
+                        <?=JText::_('FIELD');?>:
+                    </label>
+                </td>
+                <td>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'special_ballot_worker_id', '', 'idx', 'value', ($row->special_ballot_worker_id ? $row->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="staffer1_idmsg" for="staffer1_id">
+                        <?=JText::_('FIELD');?>:
+                    </label>
+                </td>
+                <td>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'staffer1_id', '', 'idx', 'value', ($row->staffer1_id ? $row->staffer1_id : ''), 'staffer1_id');?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="staffer2_idmsg" for="staffer2_id">
+                        <?=JText::_('FIELD');?>:
+                    </label>
+                </td>
+                <td>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'staffer2_id', '', 'idx', 'value', ($row->staffer2_id ? $row->staffer2_id : ''), 'staffer2_id');?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
+                    <label id="staffer3_idmsg" for="staffer3_id">
+                        <?=JText::_('FIELD');?>:
+                    </label>
+                </td>
+                <td>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'staffer3_id', '', 'idx', 'value', ($row->staffer3_id ? $row->staffer3_id : ''), 'staffer3_id');?>
                 </td>
             </tr>
             <tr>
