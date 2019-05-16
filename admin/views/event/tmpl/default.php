@@ -48,7 +48,7 @@ for ($i = 1; $i <= 12; $i++) {
 
 // try to cast to object next
 $event = !$this->isNew ? $this->event : JRequest::get('post');
-
+d($event);
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
     <table cellpadding="0" cellspacing="0" border="0" class="adminform">
@@ -109,7 +109,16 @@ $event = !$this->isNew ? $this->event : JRequest::get('post');
                     <input type="text" id="address_street" name="address_street" size="62" value="<?=$event->address_street ? $event->address_street : $event['address_street'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS STREET PLACEHOLDER');?>" />
                 </td>
             </tr>
-
+            <tr>
+                <td width="200" height="30">
+                    <label id="namemsg" for="address_extra">
+                        <?=JText::_('ADDRESS EXTRAS');?>:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="address_extra" name="address_extra" size="62" value="<?=$event->address_extra ? $event->address_extra : $event['address_extra'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS EXTRAS PLACEHOLDER');?>" />
+                </td>
+            </tr>
             <tr>
                 <td width="200" height="30">
                     <label id="namemsg" for="contact">
