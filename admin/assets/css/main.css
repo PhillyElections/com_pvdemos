@@ -1,7 +1,7 @@
 /* main.css */
 
-span.button {
+div.button {
 	padding: 4px 4px 4px 4px;
 	background-color: #e3ecf0;
-	border: 1px 1px 1px 1px;
+	border: 1px 1px 1px 1px black;
 }
