@@ -63,7 +63,7 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
     <div id="map"></div>
     <p>Click to set:
       <ul class="markers">
-        <li class="marker" data-marker="building"><img src="/components/com_voterapp/polling.png" /> <?=JText::_('BUILDING');?></li>
+        <li class="marker" data-marker="building"><img src="components/com_pvdemos/assets/images/b.png" /> <?=JText::_('BUILDING');?></li>
         <li class="marker" data-marker="entrance"><img src="components/com_pvdemos/assets/images/e.png" /><?=JText::_('MAIN ENTRANCE');?></li>
         <li class="marker" data-marker="accessible"><img src="components/com_pvdemos/assets/images/h.png" /><?=JText::_('ACCESSIBLE ENTRANCE');?></li>
         <li class="marker-cancel"><img src="components/com_pvdemos/assets/images/x.png" /><?=JText::_('STOP PLACING MARKERS');?></li>
