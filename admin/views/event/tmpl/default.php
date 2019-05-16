@@ -147,7 +147,7 @@ d($event);
                 </td>
                 <td>
 <?php
-if ($event->lat) :
+if ($event->lat > 0) :
 ?>
                     <table>
                         <tr>
