@@ -12,6 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 class TableWorker extends JTable
 {
     public $id;
+    public $job;
     public $name;
     public $email;
     public $phone;
@@ -25,7 +26,7 @@ class TableWorker extends JTable
      */
     public function __construct(&$_db)
     {
-        parent::__construct('#__pv_demos_staff', 'id', $_db);
+        parent::__construct('#__pv_demos_workers', 'id', $_db);
     }
 
     /**

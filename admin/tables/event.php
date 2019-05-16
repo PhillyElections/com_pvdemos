@@ -17,7 +17,8 @@ class TableEvent extends JTable
     public $end;
     public $name;
     public $location;
-    public $street_address;
+    public $address_street;
+    public $address_extra;
     public $zip;
     public $contact;
     public $email;

@@ -53,10 +53,10 @@ class PvdemosModelEvent extends JModel
                           *
                         , HOUR(`start`) as start_hour
                         , MINUTE(`start`) as start_minute
-                        , DATEFORMAT(`start`, "%p") as start_am_pm
+                        , DATE_FORMAT(`start`, "%p") as start_am_pm
                         , HOUR(`end`) as end_hour
                         , MINUTE(`end`) as end_minute
-                        , DATEFORMAT(`end`, "%p") as end_am_pm 
+                        , DATE_FORMAT(`end`, "%p") as end_am_pm 
                        FROM `#__pv_demos_events` 
                        WHERE 
                         `id`=' . $this->_db->quote($this->_id);
