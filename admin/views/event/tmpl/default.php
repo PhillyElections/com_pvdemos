@@ -60,7 +60,7 @@ $document->addCustomTag('<script src="components/com_pvdemos/assets/js/main.js" 
 
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
   <div class="right fifty-five">
-    <div id="map"></div>
+    <div id="map-canvas"></div>
     <p>Click to set:
       <ul class="markers">
         <li class="marker" data-marker="building"><img src="components/com_pvdemos/assets/images/b.png" /> <?=JText::_('BUILDING');?></li>
