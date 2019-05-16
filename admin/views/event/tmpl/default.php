@@ -161,17 +161,21 @@ if ($event->lat > 0) :
                             <td>Coord:</td><td><?=$event->lat ;?>, <?=$event->lng ;?></td>
                         </tr> 
                         <tr> 
-                            <td>&nbsp;</td><td><span class="button" id="checkme">Check map</span></td>
+                            <td>&nbsp;</td><td><div class="button" id="checkme">Check map</div></td>
+                        </tr> 
+                        <tr> 
+                            <td>&nbsp;</td><td><div class="button" id="checkme">Check map</div></td>
                         </tr> 
                     </table>
 <?php
 else :
 ?>
-                    Geocoding has not yet been set.  Click <span class="button" id="geocodeme">here</span> to set.
+                    Geocoding has not yet been set.  <div class="button" id="geocodeme">GEOCODE</div>
 <?php
 endif;
 ?>
-
+                    <input type="hidden" name="lat" value="<?=$event->lat ;?>" />
+                    <input type="hidden" name="lng" value="<?=$event->lng ;?>" />
                 </td>
             </tr>
             <tr>
