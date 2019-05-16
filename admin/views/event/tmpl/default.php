@@ -57,6 +57,9 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
 //$document->addCustomTag('<script src="components/com_pvdemos/assets/js/main.js" async defer></script>');
 
 ?>
+<script type="text/javascript">
+  var baseUri = "<?php echo JURI::base(); ?>";
+</script>
 
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
   <div class="right fifty-five">
