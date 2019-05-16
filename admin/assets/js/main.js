@@ -291,6 +291,8 @@ jQuery.noConflict();
 
     // begin ajax functions
     function addressComplete() {
+console.log('in addressComplete');
+
         if (!searchBox) return false;
         $(searchBox).autocomplete({
             minLength: 3,
@@ -327,6 +329,8 @@ jQuery.noConflict();
     }
 
     function addressNotEntered() {
+console.log('in addressNotEntered');
+
         if (!searchBox || !searchBox.value) {
             return false;
         }
@@ -344,6 +348,8 @@ jQuery.noConflict();
     }
 
     function addressEntered(message) {
+console.log('in addressEntered');
+
         if (!searchBox || !searchBox.value) {
             return false;
         }
@@ -421,6 +427,8 @@ jQuery.noConflict();
     }
 
     function popupFunctionAddress(data, service, icon, enteredAddress, content) {
+console.log('in popupFunctionAddress');
+
         $('#multiple_address_tbl').html(content);
         $('#cstm-score-address-popup').dialog({
             modal: true,
@@ -463,6 +471,8 @@ jQuery.noConflict();
     }
 
     function dropPollingPin() {
+console.log('in dropPollingPin');
+
         Markers.pollingplace = L.marker(AddressData.pollingplace_table.coordinates.main, {
             icon: Icons.polling,
         });
@@ -474,6 +484,8 @@ jQuery.noConflict();
     }
 
     function getOfficials() {
+console.log('in getOfficials');
+
         // federal_house
         var federal_house = AllIndexes.federal_house_old || AllIndexes.federal_house,
             state_senate = AllIndexes.state_senate,
@@ -502,6 +514,8 @@ jQuery.noConflict();
     }
 
     function writeOfficials(data) {
+console.log('in writeOfficials');
+
         $('.office-accordion').find('dd').html('');
         $.each(data.officials, function(idx, datum) {
             var guId = guid(),
@@ -644,6 +658,8 @@ jQuery.noConflict();
     }
 
     function dropOfficePin(address) {
+console.log('in dropOfficePin');
+
         var officeLocation = getPhilaAddressData(address);
         officeLocation.done(function(data) {
             var exact = false;
@@ -666,6 +682,8 @@ jQuery.noConflict();
     }
 
     function getPhilaAddressData(input) {
+console.log('in getPhilaAddressData');
+
         var deferred = $.Deferred(),
             service = Services.geocoder,
             addresses = []
@@ -679,6 +697,8 @@ jQuery.noConflict();
     }
 
     function makeAddressDataElement(feature, service, input) {
+console.log('in makeAddressDataElement');
+
         return {
             coordinates: [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
             style: service.style,
@@ -688,6 +708,8 @@ jQuery.noConflict();
     }
 
     function getShapeFromService(input, service) {
+console.log('in getShapeFromService');
+
         var deferred = $.Deferred()
         $.getJSON(service.url(input), service.params).done(function(response) {
             var poly, area, centroid;
@@ -731,6 +753,8 @@ jQuery.noConflict();
     }
 
     function getIndexes(input) {
+console.log('in getIndexes');
+
         var deferred = $.Deferred(),
             service = Services.indexer;
         $.getJSON(service.url(input), service.params).done(function(data) {
@@ -746,6 +770,8 @@ jQuery.noConflict();
     }
 
     function getOldIndexes(input) {
+console.log('in getOldIndexes');
+
         var deferred = $.Deferred(),
             service = Services.old_indexer;
         $.getJSON(service.url(input), service.params).done(function(data) {
@@ -761,6 +787,8 @@ jQuery.noConflict();
     }
 
     function setIndexes() {
+console.log('in setIndexes');
+
         var indexes,
             shapedData = [];
 
@@ -825,6 +853,8 @@ jQuery.noConflict();
     }
 
     function getVoterShapes() {
+console.log('in getVoterShapes');
+
         if ("undefined" == typeof VoterShapes['Division (' + AllIndexes.precinct + ')'] && AllIndexes.precinct) {
             VoterShapes['Division (' + AllIndexes.precinct + ')'] = ''
             getShapeFromService(AllIndexes.precinct, Services.shape_city_division_them).done(function(data) {
@@ -929,12 +959,16 @@ jQuery.noConflict();
 
     // map functions
     function removeBasemaps() {
+console.log('in removeBasemaps');
+
         Lmap.eachLayer(function(layer) {
             Lmap.removeLayer(layer);
         });
     }
 
     function setDefaultBasemaps() {
+console.log('in setDefaultBasemaps');
+
         removeBasemaps()
         if (BASEMAP1) {
             L.esri.tiledMapLayer({
@@ -949,6 +983,8 @@ jQuery.noConflict();
     }
 
     function setAlternateBasemaps() {
+console.log('in setAlternateBasemaps');
+
         removeBasemaps()
         if (BASEMAP2) {
             L.esri.tiledMapLayer({
@@ -958,6 +994,8 @@ jQuery.noConflict();
     }
 
     function clearShapes() {
+console.log('in clearShapes');
+
         for (var prop in Shapes) {
             if (!Shapes.hasOwnProperty(prop)) continue;
             Lmap.removeLayer(Shapes[prop]);
@@ -966,6 +1004,8 @@ jQuery.noConflict();
     }
 
     function clearMarkers(justOne) {
+console.log('in clearMarkers');
+
         // if justOne is set, we clear Markers[justOne], if it exists
         if (justOne && 'undefined' !== typeof Markers[justOne]) {
             Lmap.removeLayer(Markers[justOne]);
@@ -979,11 +1019,15 @@ jQuery.noConflict();
     }
 
     function drawShape(shape, label) {
+console.log('in drawShape');
+
         Shapes[shape.geoJSON.properties.name] = L.geoJSON(shape.geoJSON, shape.style);
         Shapes[shape.geoJSON.properties.name]['up'] = true;
     }
 
     function drawShapes(shapesToDraw) {
+console.log('in drawShapes');
+
         for (var prop in shapesToDraw) {
             if (!shapesToDraw.hasOwnProperty(prop)) continue;
             drawShape(shapesToDraw[prop], prop);
@@ -994,6 +1038,8 @@ jQuery.noConflict();
 
     // ui functions
     function showInfos() {
+console.log('in showInfos');
+
         $('#polling-place-intro').hide();
         $('#polling-place-info').show();
         $('#elected-officials-intro').hide();
@@ -1004,20 +1050,28 @@ jQuery.noConflict();
     }
 
     function addDistrictToList(element, content, value, set) {
+console.log('in addDistrictToList');
+
         element.append($('<option />').text(content).val(value).prop('disabled', !!set));
     }
 
     function tabFunc() {
+console.log('in tabFunc');
+
         return tabFunctions[getActive()]();
     }
 
     function getActive() {
+console.log('in getActive');
+
         return $('#nav').find('li.active').attr('id')
     }
 
     // my utils
     // specify markers or set Markers
     function grouper() {
+console.log('in grouper');
+
         var features = [],
             props = [];
 
@@ -1079,6 +1133,8 @@ jQuery.noConflict();
     }
 
     function invalidAddress() {
+console.log('in invalidAddress');
+
         wardDivision = '';
         //if (!searchBox || !searchBox.value) return
         alert('The address you have chosen is invalid. Please select an address in Philadelphia.');
@@ -1087,12 +1143,16 @@ jQuery.noConflict();
 
 
     function clearCustomMap() {
+console.log('in clearCustomMap');
+
         $('.custom-map-selector').val([]).change();
     }
 
 
 
     function getSampleBallot() {
+console.log('in getSampleBallot');
+
         var ward = AllIndexes.ward,
             division = AllIndexes.division,
             sample_div = ward + "-" + division,
@@ -1160,6 +1220,8 @@ jQuery.noConflict();
     }
 
     function showBallotDropdown() {
+console.log('in showBallotDropdown');
+
         var b = $('#ballots_dropdown').val();
         if (b != '') {
             var a = baseUri + 'ballot_paper/' + b + '.pdf';
@@ -1171,6 +1233,8 @@ jQuery.noConflict();
     }
 
     function tabsReset() {
+console.log('in tabsReset');
+
         clearShapes();
         clearMarkers();
         $('#nav-elected-officials').removeClass('active');
@@ -1186,6 +1250,8 @@ jQuery.noConflict();
     }
 
     function showTabElectedOfficials() {
+console.log('in showTabElectedOfficials');
+
         tabsReset();
         $('#nav-elected-officials').addClass('active');
         $('#elected-officials').show();
@@ -1193,6 +1259,8 @@ jQuery.noConflict();
     }
 
     function showTabPollingplace() {
+console.log('in showTabPollingplace');
+
         tabsReset();
         $('#nav-polling-place').addClass('active');
         $('#polling-place').show();
@@ -1200,6 +1268,8 @@ jQuery.noConflict();
     }
 
     function showTabMyMaps() {
+console.log('in showTabMyMaps');
+
         tabsReset();
         $('#nav-my-maps').addClass('active');
         $('#my-maps').show();
@@ -1208,6 +1278,8 @@ jQuery.noConflict();
     }
 
     function resetAllSelect2() {
+console.log('in resetAllSelect2');
+
         $('#my-maps-selector').empty();
         $('#custom-divisions').empty();
         $('#custom-wards').empty();
@@ -1218,6 +1290,8 @@ jQuery.noConflict();
     }
 
     function showTabMaps() {
+console.log('in showTabMaps');
+
         tabsReset();
         var service = Services.indexer_list;
         $('#nav-maps').addClass('active');
@@ -1232,6 +1306,8 @@ jQuery.noConflict();
     }
 
     function showTabBallot() {
+console.log('in showTabBallot');
+
         tabsReset();
         $('#nav-download-ballot').addClass('active');
         $('#download-ballot').show();
@@ -1239,6 +1315,8 @@ jQuery.noConflict();
     }
 
     function populateSelect2Lists(elemId, data, index, url) {
+console.log('in populateSelect2Lists');
+
         var $elem = $(elemId);
         $elem.empty()
         if (data) {
@@ -1259,6 +1337,8 @@ jQuery.noConflict();
     }
 
     function populateMySelect2Lists(elemId, data, index, url) {
+console.log('in populateMySelect2Lists');
+
         var $elem = $(elemId);
         $elem.empty();
         for (var prop in data) {
@@ -1278,10 +1358,14 @@ jQuery.noConflict();
     };
 
     function getHash() {
+console.log('in getHash');
+
         return W.location.hash.substring(1);
     }
 
     function isEqual(value, other) {
+console.log('in isEqual');
+
 
         // Get the value type
         var type = Object.prototype.toString.call(value);
@@ -1343,10 +1427,14 @@ jQuery.noConflict();
     }
 
     function coordsSwap(coords) {
+console.log('in coordsSwap');
+
         return [coords[1], coords[0]]
     }
 
     function coordsSwapAll(coords) {
+console.log('in coordsSwapAll');
+
         var tmp = []
         for (var i = 0; i < coords.length - 1; i++) {
             tmp.push([coords[i][1], coords[i][0]])
@@ -1355,6 +1443,8 @@ jQuery.noConflict();
     }
 
     function pad(n, width, z) {
+console.log('in pad');
+
         n = n + '' // cast to string
         z = z || '0' // default padding: '0'
         width = width || 2 // default digits: 2
@@ -1362,14 +1452,20 @@ jQuery.noConflict();
     }
 
     function s4() {
+console.log('in s4');
+
         return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1);
     }
 
     function guid() {
+console.log('in guid');
+
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
     function getQueryParams(qs) {
+console.log('in getQueryParams');
+
         qs = qs.split('+').join(' ');
 
         var params = {},
@@ -1384,6 +1480,8 @@ jQuery.noConflict();
     }
 
     function onhashChange() {
+console.log('in onhashChange');
+
         switch (getHash()) {
             case 'elected-officials':
                 showTabElectedOfficials();
@@ -1404,6 +1502,8 @@ jQuery.noConflict();
     }
 
     function CN() {
+console.log('in CN');
+
 
         if (0) {
             return '';
