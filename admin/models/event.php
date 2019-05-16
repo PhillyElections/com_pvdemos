@@ -71,9 +71,9 @@ class PvdemosModelEvent extends JModel
         $dateNow = &JFactory::getDate();
         $dateIndex = $this->_id ? 'updated' : 'created';
 
-        $data['start'] = date("Y-m-d H:i:s", strtotime($data['day'] . " " . ( $data['start_am_pm'] == 'PM' && $data['start_hour'] != 12 ? $data['start_hour']+12 : $data['start_hour'] ). ":" . $data['start_minute'] . ":" . "00"));
-        $data['end'] = date("Y-m-d H:i:s", strtotime($data['day'] . " " . ( $data['end_am_pm'] == 'PM' && $data['end_hour'] != 12 ? $data['end_hour']+12 : $data['end_hour'] ). ":" . $data['end_minute'] . ":" . "00"));
-dd($data);
+        $data['start'] = date("Y-m-d H:i:s", strtotime($data['day'] . " " . $data['start_hour']. ":" . $data['start_minute'] . ":" . "00 " . $data['start_am_pm']));
+        $data['end'] = date("Y-m-d H:i:s", strtotime($data['day'] . " " . $data['end_hour']. ":" . $data['end_minute'] . ":" . "00 " . $data['end_am_pm']));
+
         foreach ($data as $key => $value) {
             $data[$key] = JString::trim($value);
         }
