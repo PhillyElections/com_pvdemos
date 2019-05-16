@@ -235,7 +235,7 @@ var place = (function(d) {
     var script = d.createElement('script');
     script.id = '_gmaps';
     script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=place.createMap&key=AIzaSyDKUKOnN7xvUV31IcZrXFYYqtLYrkO38hw';
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=place.createMap&key=AIzaSyBF4_3JdzSdZfJ731qJMWiH6DTuut6nb18';
     d.body.appendChild(script);
 
     inner.bindCoords();
