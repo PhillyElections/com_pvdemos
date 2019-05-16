@@ -92,47 +92,6 @@ jQuery.noConflict();
                 iconSize: [24, 24],
             })
         },
-        tabFunctions = {
-            'nav-polling-place': function() {
-                if (wardDivision) {
-                    GrouperContext = ['home', 'pollingplace', wardDivision.toString()];
-                }
-                $('#map-canvas').show();
-                $('#sample-pdf').hide();
-//                setTimeout(
-//                    getPollingPlace, 200);
-                getPollingPlace()
-            },
-            'nav-elected-officials': function() {
-                GrouperContext = ['office'];
-                $('#map-canvas').show();
-                $('#sample-pdf').hide();
-                getOfficials();
-                if (mayorAddress) {
-                    dropOfficePin(mayorAddress);
-                }
-            },
-            'nav-my-maps': function() {
-                $('#map-canvas').show();
-                $('#sample-pdf').hide();
-                if (VoterShapes) {
-                    updateMyMap()
-                }
-            },
-            'nav-maps': function() {
-                $('#map-canvas').show();
-                $('#sample-pdf').hide();
-                if (CustomShapes) {
-                    updateCustomMap()
-                }
-            },
-            'nav-download-ballot': function() {
-                GrouperContext = '';
-                getSampleBallot();
-                $('#map-canvas').hide();
-                $('#sample-pdf').show();
-            }
-        },
         shared_params = 'outFields=*&callback=?&outSR=4326&returnCentroid=true&f=pjson&',
         Services = {
             address_completer: {
@@ -380,7 +339,7 @@ jQuery.noConflict();
         if (!AllIndexes.length) {
             setIndexes();
         } else {
-            tabFunc();
+/*            tabFunc();*/
         }
     }
 
@@ -428,11 +387,10 @@ jQuery.noConflict();
                     customAddressTablesFullMarks += '<tr><td><input type="radio" name="address_vals" value="' + feature.properties.street_address + '">' + feature.properties.street_address + '</td></tr>';
                 }
             });
-            customAddressTables += '<tr><td><input type="radio" name="address_vals" value="-1">' + Joomla.JText._('MODALBOX LAST OPTION') + '</td></tr>';
+            customAddressTables += '<tr><td><input type="radio" name="address_vals" value="-1">None of the Above</td></tr>';
             customAddressTables += '</table>';
-            customAddressTablesFullMarks += '<tr><td><input type="radio" name="address_vals" value="-1">' + Joomla.JText._('MODALBOX LAST OPTION') + '</td></tr>';
+            customAddressTablesFullMarks += '<tr><td><input type="radio" name="address_vals" value="-1">None of the Above</td></tr>';
             customAddressTablesFullMarks += '</table>';
-
             if (i == 0 || i > 1) {
                 if (i > 1) {
 
@@ -501,78 +459,6 @@ jQuery.noConflict();
                     }
                 }
             }
-        });
-    }
-
-    function getPollingPlace() {
-
-        if (!AddressData.pollingplace_table) {
-            $.ajax({
-                type: 'GET',
-                url: Services.polling_place.url(AllIndexes.precinct),
-//                url: baseUri + 'index.php',
-/*                data: {
-                    option: 'com_pollingplaces',
-                    view: 'json',
-                    ward: AllIndexes.ward,
-                    division: AllIndexes.division
-                },*/
-                dataType: 'json',
-                //            async: false,
-                success: writePollingPlace,
-                error: function(request, status, error) {
-                    alert(status + ' ' + error);
-                }
-            });
-        } else {
-            writePollingPlace();
-        }
-    }
-
-    function writePollingPlace(data) {
-        var coordinates = {},
-            datum,
-            content,
-            buildingCode,
-            parkingCode,
-            $pollingPlaceMain = $('#polling-place-main');
-        buildingCode = parkingCode = content = null;
-        if (data) {
-            datum = data.features.attributes[0];
-            coordinates.main = [datum.lat, datum.lng];
-            coordinates.entrance = [datum.elat, datum.elng];
-            coordinates.handicap = [datum.alat, datum.alng];
-            AddressData.pollingplace_table = datum;
-            AddressData.pollingplace_table.coordinates = coordinates;
-        } else {
-            datum = AddressData.pollingplace_table;
-        }
-
-        if ($('#nav-polling-place').hasClass('active')) {
-            dropPollingPin();
-        }
-
-        buildingCode = buildingCodes[datum.building];
-        parkingCode = parkingCodes[datum.parking];
-
-        content = '<div id="polling-place-info"><h3 class="polling-place-info-header">' +
-            Joomla.JText._('YOUR POLLING PLACE') +
-            '</h3><div id="polling-place-info-container"><br><div id="polling-info-card"><strong>' +
-            Joomla.JText._('WARD') + ' ' + datum.ward + ' ' +
-            Joomla.JText._('DIVISION') + ' ' + datum.division + '</strong><br><hr><strong>' +
-            Joomla.JText._('P_LOCATION') + ' </strong><br/>' + datum.location.toProperCase() + '<br/><br/><strong>' +
-            Joomla.JText._('P_ADDRESS') + ' </strong><br/>' + datum.display_address + '<br/>Philadelphia, PA ' +
-            datum.zip_code + '<br/><br/><strong>' + Joomla.JText._('P_ACCESSIBILITY') +
-            '</strong><br/><span id="polling-building">' + buildingCode + '</span><br/><br/><strong>' +
-            Joomla.JText._('P_PARKING') + '</strong><br/><span id="polling-parking">' + parkingCode +
-            '</span><br/></div><br /></div><button class="btn" id="polling-place-directions-header">' +
-            Joomla.JText._('DIRECTIONS') + '</button>';
-
-        $pollingPlaceMain.empty();
-        $pollingPlaceMain.html(content);
-        $('#polling-place-info').accordion({
-            header: 'h3',
-            collapsible: true
         });
     }
 
@@ -921,8 +807,8 @@ jQuery.noConflict();
 
             AllIndexes = shapedData;
         }).then(function() {
-            getVoterShapes();
-            tabFunc();
+/*            getVoterShapes();
+            tabFunc();*/
             var timeout = 750;
             switch (getActive()) {
                 case 'nav-my-maps':
