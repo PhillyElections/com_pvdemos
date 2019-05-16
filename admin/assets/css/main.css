@@ -1,8 +1,19 @@
 /* main.css */
 
 div.button {
-	padding: 4px 4px 4px 4px;
-	background-color: #e3ecf0;
-	border: 1px 1px 1px 1px black;
+/*	padding: 4px 4px 4px 4px;*/
+	background-color: #84a7db;
+	color: #05b;
 	display: inline-block;
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
 }
