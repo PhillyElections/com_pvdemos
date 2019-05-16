@@ -57,7 +57,38 @@ $document->addStyleSheet('https://code.jquery.com/ui/1.12.1/themes/smoothness/jq
 $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
 
 ?>
+
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
+  <div class="right fifty-five">
+    <div id="map"></div>
+    <p>Click to set:
+      <ul class="markers">
+        <li class="marker" data-marker="building"><img src="/components/com_voterapp/polling.png" /> <?=JText::_('BUILDING');?></li>
+        <li class="marker" data-marker="entrance"><img src="components/com_pvdemos/assets/images/e.png" /><?=JText::_('MAIN ENTRANCE');?></li>
+        <li class="marker" data-marker="accessible"><img src="components/com_pvdemos/assets/images/h.png" /><?=JText::_('ACCESSIBLE ENTRANCE');?></li>
+        <li class="marker-cancel"><img src="components/com_pvdemos/assets/images/x.png" /><?=JText::_('STOP PLACING MARKERS');?></li>
+        <li class="marker-clear"><?=JText::_('CLEAR MARKERS');?></li>
+      </ul>
+    </p>
+  </div>
+  <div class="left">
+<?php
+if (($place->id - 1)):
+?>
+    <div class="left">
+        <a title="<?=JText::_('SKIP TO DIVISION');?> Previous" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id - 1));?>" ><?=JText::_('PREVIOUS');?></a>
+    </div>
+<?php
+endif;
+if (($event->id + 1)):
+?>
+    <div class="right">
+      <a title="Skip to division: Next" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id + 1));?>" ><?=JText::_('NEXT');?></a>
+    </div>
+<?php
+endif;
+?>
+  <div class="clearfix"></div>    
     <table cellpadding="0" cellspacing="0" border="0" class="adminform">
         <tbody>
             <tr>
@@ -158,7 +189,7 @@ if ($event->lat > 0) :
 ?>
                     <table>
                         <tr>
-                            <td>Coord:</td><td><?=$event->lat ;?>, <?=$event->lng ;?></td>
+                            <td>Coord:</td><td id="display-building"><?=$event->lat ;?>, <?=$event->lng ;?></td>
                         </tr> 
                         <tr> 
                             <td>&nbsp;</td><td><div class="button" id="checkme">Check map</div></td>
