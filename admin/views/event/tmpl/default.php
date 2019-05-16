@@ -112,11 +112,11 @@ d($event);
             <tr>
                 <td width="200" height="30">
                     <label id="namemsg" for="address_extra">
-                        <?=JText::_('FIELD');?>:
+                        <?=JText::_('ADDRESS EXTRAS');?>:
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="address_extra" name="address_extra" size="62" value="<?=$event->address_extra ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('FIELD PLACEHOLDER');?>" />
+                    <input type="text" id="address_extra" name="address_extra" size="62" value="<?=$event->address_extra ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS EXTRAS PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
