@@ -54,7 +54,7 @@ $document = JFactory::getDocument();
 
 $document->addStyleSheet('//unpkg.com/leaflet@1.3.1/dist/leaflet.css');
 $document->addStyleSheet('https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
-$document->addStyleSheet('administrator/components/com_pvdemos/assets/css/main.css');
+$document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
 
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
@@ -285,4 +285,4 @@ endif;
 <script src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"></script>
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-<!--<script type="text/javascript" src="administrator/components/com_pvdemos/assets/js/main.js"></script>-->
+<!--<script type="text/javascript" src="components/com_pvdemos/assets/js/main.js"></script>-->
