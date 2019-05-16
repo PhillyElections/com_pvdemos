@@ -51,10 +51,10 @@ class PvdemosModelEvent extends JModel
         if (empty($this->_data)) {
             $query = ' SELECT 
                           *
-                        , HOUR(`start`) as start_hour
+                        , DATE_FORMAT(`start`, "%I") as start_hour
                         , MINUTE(`start`) as start_minute
                         , DATE_FORMAT(`start`, "%p") as start_am_pm
-                        , HOUR(`end`) as end_hour
+                        , DATE_FORMAT(`end`, "%I") as end_hour
                         , MINUTE(`end`) as end_minute
                         , DATE_FORMAT(`end`, "%p") as end_am_pm 
                        FROM `#__pv_demos_events` 
