@@ -196,7 +196,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'special_ballot_worker_id', '', 'idx', 'value', ($row->special_ballot_worker_id ? $row->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'special_ballot_worker_id', '', 'idx', 'value', ($event->special_ballot_worker_id ? $event->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
                 </td>
             </tr>
             <tr>
@@ -206,7 +206,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer1_id', '', 'idx', 'value', ($row->staffer1_id ? $row->staffer1_id : ''), 'staffer1_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer1_id', '', 'idx', 'value', ($event->staffer1_id ? $event->staffer1_id : ''), 'staffer1_id');?>
                 </td>
             </tr>
             <tr>
@@ -216,7 +216,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer2_id', '', 'idx', 'value', ($row->staffer2_id ? $row->staffer2_id : ''), 'staffer2_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer2_id', '', 'idx', 'value', ($event->staffer2_id ? $event->staffer2_id : ''), 'staffer2_id');?>
                 </td>
             </tr>
             <tr>
@@ -226,7 +226,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer3_id', '', 'idx', 'value', ($row->staffer3_id ? $row->staffer3_id : ''), 'staffer3_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer3_id', '', 'idx', 'value', ($event->staffer3_id ? $event->staffer3_id : ''), 'staffer3_id');?>
                 </td>
             </tr>
             <tr>
@@ -242,3 +242,8 @@ d($event);
         </tbody>
     </table>
 </form>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"></script>
+<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+<script type="text/javascript" src="administrator/components/com_voterapp/assets/js/main.js"></script>
