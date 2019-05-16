@@ -141,6 +141,34 @@ d($event);
             </tr>
             <tr>
                 <td width="200" height="30">
+                    <label id="geocodingramsg" for="geocoding">
+                        <?=JText::_('GEOCODING');?>:
+                    </label>
+                </td>
+                <td>
+<?php
+if ($event->lat) :
+?>
+                    <table>
+                        <tr>
+                            <td>Coord:</td><td><?=$event->lat ;?>, <?=$event->lng ;?></td>
+                        </tr> 
+                        <tr> 
+                            <td>&nbsp;</td><td><span id="checkme">Check map</span></td>
+                        </tr> 
+                    </table>
+<?php
+else :
+?>
+                    Geocoding has not yet been set.  Click <span id="geocodeme">here</span> to set.
+<?php
+endif;
+?>
+
+                </td>
+            </tr>
+            <tr>
+                <td width="200" height="30">
                     <label id="contactmsg" for="contact">
                         <?=JText::_('CONTACT');?>:
                     </label>
