@@ -172,7 +172,7 @@ d($event);
              <tr>
                 <td width="200" height="30">
                     <label id="ada_compliantmsg" for="ada_compliant">
-                        <?=JText::_('PUBLISHED');?>:
+                        <?=JText::_('ADA COMPLIANT');?>:
                     </label>
                 </td>
                 <td>
@@ -182,7 +182,7 @@ d($event);
              <tr>
                 <td width="200" height="30">
                     <label id="special_ballot_neededmsg" for="special_ballot_needed">
-                        <?=JText::_('PUBLISHED');?>:
+                        <?=JText::_('SPECIAL BALLOT NEEDED');?>:
                     </label>
                 </td>
                 <td>
