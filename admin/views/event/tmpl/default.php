@@ -192,41 +192,41 @@ d($event);
             <tr>
                 <td width="200" height="30">
                     <label id="special_ballot_worker_idmsg" for="special_ballot_worker_id">
-                        <?=JText::_('FIELD');?>:
+                        <?=JText::_('SPECIAL BALLOT HANDLER');?>:
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'special_ballot_worker_id', '', 'idx', 'value', ($row->special_ballot_worker_id ? $row->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'special_ballot_worker_id', '', 'idx', 'value', ($row->special_ballot_worker_id ? $row->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
                 </td>
             </tr>
             <tr>
                 <td width="200" height="30">
                     <label id="staffer1_idmsg" for="staffer1_id">
-                        <?=JText::_('FIELD');?>:
+                        <?=JText::_('ASSIGNED STAFF 1');?>:
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'staffer1_id', '', 'idx', 'value', ($row->staffer1_id ? $row->staffer1_id : ''), 'staffer1_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer1_id', '', 'idx', 'value', ($row->staffer1_id ? $row->staffer1_id : ''), 'staffer1_id');?>
                 </td>
             </tr>
             <tr>
                 <td width="200" height="30">
                     <label id="staffer2_idmsg" for="staffer2_id">
-                        <?=JText::_('FIELD');?>:
+                        <?=JText::_('ASSIGNED STAFF 2');?>:
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'staffer2_id', '', 'idx', 'value', ($row->staffer2_id ? $row->staffer2_id : ''), 'staffer2_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer2_id', '', 'idx', 'value', ($row->staffer2_id ? $row->staffer2_id : ''), 'staffer2_id');?>
                 </td>
             </tr>
             <tr>
                 <td width="200" height="30">
                     <label id="staffer3_idmsg" for="staffer3_id">
-                        <?=JText::_('FIELD');?>:
+                        <?=JText::_('ASSIGNED STAFF 3');?>:
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Select an filer class'), 'staffer3_id', '', 'idx', 'value', ($row->staffer3_id ? $row->staffer3_id : ''), 'staffer3_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer3_id', '', 'idx', 'value', ($row->staffer3_id ? $row->staffer3_id : ''), 'staffer3_id');?>
                 </td>
             </tr>
             <tr>
