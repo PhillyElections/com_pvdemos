@@ -160,7 +160,7 @@ if ($event->lat > 0) :
 <?php
 else :
 ?>
-                    Geocoding has not yet been set.  Click <span  class="button" id="geocodeme">here</span> to set.
+                    Geocoding has not yet been set.  Click <span class="button" id="geocodeme">here</span> to set.
 <?php
 endif;
 ?>
@@ -275,3 +275,4 @@ endif;
 <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"></script>
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
 <script type="text/javascript" src="administrator/components/com_voterapp/assets/js/main.js"></script>
+<link type="text/css" href="administrator/components/com_voterapp/assets/css/main.js"></link>
