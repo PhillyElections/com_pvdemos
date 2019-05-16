@@ -49,6 +49,13 @@ for ($i = 1; $i <= 12; $i++) {
 // try to cast to object next
 $event = !$this->isNew ? $this->event : (object) JRequest::get('post');
 d($event);
+
+$document = JFactory::getDocument();
+
+$document->addStyleSheet('//unpkg.com/leaflet@1.3.1/dist/leaflet.css');
+$document->addStyleSheet('https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
+$document->addStyleSheet('administrator/components/com_pvdemos/assets/css/main.css');
+
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
     <table cellpadding="0" cellspacing="0" border="0" class="adminform">
@@ -275,4 +282,3 @@ endif;
 <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"></script>
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
 <script type="text/javascript" src="administrator/components/com_voterapp/assets/js/main.js"></script>
-<link type="text/css" href="administrator/components/com_voterapp/assets/css/main.js"></link>
