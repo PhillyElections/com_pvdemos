@@ -1556,68 +1556,7 @@ jQuery.noConflict();
         }
         return false;
     });
-    $(D).on('click', '#show-me', function() {
-        showBallotDropdown();
-    });
-    $(D).on('click', '#nav-polling-place', function() {
-        if (this.hasClass('active')) return;
-        showTabPollingplace(wardDivision);
-    });
-    $(D).on('click', '#nav-elected-officials', function() {
-        if (this.hasClass('active')) return;
-        showTabElectedOfficials();
-        $('.office-accordion > dd').hide();
-        $('.office-level-accordion > dd').hide();
-        $('#local-accordion').slideDown();
-        $('#mayor').slideDown();
-        /*        if (mayorAddress) {
-                    dropOfficePin(mayorAddress);
-                }
-        */
-    });
-    $(D).on('click', '#nav-my-maps', function() {
-        if (this.hasClass('active')) return;
-        GrouperContext = 'my.up';
-        showTabMyMaps()
-    });
-    $(D).on('click', '#nav-maps', function() {
-        if (this.hasClass('active')) return;
-        GrouperContext = 'all.up';
-        showTabMaps()
-    });
-    $(D).on('click', '#nav-download-ballot', function() {
-        if (this.hasClass('active')) return;
-        GrouperContext = '';
-        showTabBallot();
-    });
-    $(D).on('click', 'span.hide-more-link', function() {
-        var $this = $(this),
-            $more = $('div.more-info-div[data-value=' + $this.data('value') + ']')
-        $more.hide();
-        $this.parent().siblings('.basic-official-info').fadeIn('slow');
-    });
-    $(D).on('click', 'span.drop-office-pin', function() {
-        clearMarkers();
-        dropOfficePin($(this).data('value'))
-    });
-    $(D).on('click', 'span.more-info', function() {
-        var $this = $(this),
-            $more = $('div.more-info-div[data-value=' + $this.data('value') + ']')
-        $this.parent().hide();
-        $more.parent().scrollTop(0);
-        $this.parent().siblings().hide();
-        $more.fadeIn('slow');
-    });
-    $(D).on('click', '#show-ballot-dropdown', function() {
-        showBallotDropdown();
-    });
-    $(D).on('click', '#polling-place-directions-header', function(e) {
-        var saddr = (AddressData.home.data.street_address + ' Philadelphia PA ' + AddressData.home.data.zip_code).replace(" ", "+"),
-            daddr = (AddressData.pollingplace_table.pin_address + ' Philadelphia PA ' + AddressData.pollingplace_table.zip_code).replace(" ", "+")
-        window.open('https://maps.google.com?saddr=' + saddr + '&daddr=' + daddr, "driving-directions")
-        e.preventDefault();
-        return false;
-    });
+
     $(D).on('keydown', '#target', function(event) {
         if (event.key === 'Enter' && searchBox.value) {
             LastAddressComplete = [];
@@ -1645,8 +1584,6 @@ jQuery.noConflict();
     // init
     $(function() {
         // ui setup actions
-        setupMultipleSelects();
-        onhashChange();
         $('.office-level-accordion > dd').hide();
         $('.office-accordion > dd').hide();
 
