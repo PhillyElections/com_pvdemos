@@ -163,6 +163,20 @@ jQuery.noConflict();
 
     // end ajax functions
 
+    function setDefaultBasemaps() {
+        removeBasemaps()
+        if (BASEMAP1) {
+            L.esri.tiledMapLayer({
+                url: BASEMAP1
+            }).addTo(Lmap)
+        }
+        if (BASEMAP1_LABELS) {
+            L.esri.tiledMapLayer({
+                url: BASEMAP1_LABELS
+            }).addTo(Lmap)
+        }
+    }
+
     function setAlternateBasemaps() {
         removeBasemaps()
         if (BASEMAP2) {
