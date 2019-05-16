@@ -49,7 +49,17 @@ class PvdemosModelEvent extends JModel
     {
         // Load the data
         if (empty($this->_data)) {
-            $query = ' SELECT * from `#__pv_demos_events` where `id`=' . $this->_db->quote($this->_id);
+            $query = ' SELECT 
+                          *
+                        , HOUR(`start`) as start_hour
+                        , MINUTE(`start`) as start_minute
+                        , DATEFORMAT(`start`, "%p") as start_am_pm
+                        , HOUR(`end`) as end_hour
+                        , MINUTE(`end`) as end_minute
+                        , DATEFORMAT(`end`, "%p") as end_am_pm 
+                       FROM `#__pv_demos_events` 
+                       WHERE 
+                        `id`=' . $this->_db->quote($this->_id);
             $this->_db->setQuery($query);
             $this->_data = $this->_db->loadObject();
         }
