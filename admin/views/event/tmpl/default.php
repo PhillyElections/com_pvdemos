@@ -47,7 +47,7 @@ for ($i = 1; $i <= 12; $i++) {
 }
 
 // try to cast to object next
-$event = !$this->isNew ? $this->event : JRequest::get('post');
+$event = !$this->isNew ? $this->event : (object) JRequest::get('post');
 d($event);
 ?>
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
@@ -86,7 +86,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="name" name="name" size="62" value="<?=$event->name ? $event->name : $event['name'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EVENT NAME PLACEHOLDER');?>" />
+                    <input type="text" id="name" name="name" size="62" value="<?=$event->name;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EVENT NAME PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="location" name="location" size="62" value="<?=$event->location ? $event->location : $event['location'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('LOCATION NAME PLACEHOLDER');?>" />
+                    <input type="text" id="location" name="location" size="62" value="<?=$event->location ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('LOCATION NAME PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
@@ -106,7 +106,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="address_street" name="address_street" size="62" value="<?=$event->address_street ? $event->address_street : $event['address_street'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS STREET PLACEHOLDER');?>" />
+                    <input type="text" id="address_street" name="address_street" size="62" value="<?=$event->address_street ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS STREET PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
@@ -116,7 +116,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="address_extra" name="address_extra" size="62" value="<?=$event->address_street ? $event->address_extra : $event['address_extra'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('FIELD PLACEHOLDER');?>" />
+                    <input type="text" id="address_extra" name="address_extra" size="62" value="<?=$event->address_extra ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('FIELD PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
@@ -126,7 +126,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="contact" name="contact" size="62" value="<?=$event->contact ? $event->contact : $event['contact'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('CONTACT PLACEHOLDER');?>" />
+                    <input type="text" id="contact" name="contact" size="62" value="<?=$event->contact ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('CONTACT PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
@@ -136,7 +136,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="phone" name="phone" size="62" value="<?=$event->phone ? $event->phone : $event['phone'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('PHONE PLACEHOLDER');?>" />
+                    <input type="text" id="phone" name="phone" size="62" value="<?=$event->phone ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('PHONE PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
@@ -146,7 +146,7 @@ d($event);
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="email" name="email" size="62" value="<?=$event->email ? $event->email : $event['email'];?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EMAIL PLACEHOLDER');?>" />
+                    <input type="text" id="email" name="email" size="62" value="<?=$event->email ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('EMAIL PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
