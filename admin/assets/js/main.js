@@ -1,3 +1,4 @@
+jQuery.noConflict();
 (function(scoped) {
     scoped(window.jQuery, window.L, window, document)
 }(function($, L, W, D) {
