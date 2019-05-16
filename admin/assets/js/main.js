@@ -163,6 +163,12 @@ jQuery.noConflict();
 
     // end ajax functions
 
+    // map functions
+    function removeBasemaps() {
+        Lmap.eachLayer(function(layer) {
+            Lmap.removeLayer(layer);
+        });
+    }
     function setDefaultBasemaps() {
         removeBasemaps()
         if (BASEMAP1) {
