@@ -15,14 +15,20 @@ class TableEvent extends JTable
     public $scheduler_id;
     public $start;
     public $end;
+    public $name;
     public $location;
     public $street_address;
     public $zip;
-    public $contact_name;
+    public $contact;
     public $email;
     public $phone;
     public $ada_confirmed;
     public $special_ballot_needed;
+    public $special_ballot_worker_id;
+    public $staffer1_id;
+    public $staffer2_id;
+    public $staffer3_id;
+    public $precinct;
     public $lat;
     public $lng;
     public $published;
@@ -35,7 +41,7 @@ class TableEvent extends JTable
      */
     public function __construct(&$_db)
     {
-        parent::__construct('#__pv_demos_staff', 'id', $_db);
+        parent::__construct('#__pv_demos_events', 'id', $_db);
     }
 
     /**
