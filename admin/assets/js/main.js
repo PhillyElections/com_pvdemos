@@ -1197,121 +1197,13 @@ jQuery.noConflict();
         alert('The address you have chosen is invalid. Please select an address in Philadelphia.');
     }
 
-    function setupMultipleSelects() {
-        var matcher = function(term, text) {
-            return text.toUpperCase().indexOf(term.toUpperCase()) == 0;
-        };
-        var args = {
-            matcher: matcher
-        };
-        $("#custom-divisions").select2(args);
-        $("#custom-wards").select2(args);
-        $("#custom-council-districts").select2(args);
-        $("#custom-parep-districts").select2(args);
-        $("#custom-pasen-districts").select2(args);
-        $("#custom-uscongress-districts").select2(args);
-        $("#my-maps-selector").select2(args);
-    }
+
 
     function clearCustomMap() {
         $('.custom-map-selector').val([]).change();
     }
 
-    function updateMyMap() {
-        clearShapes();
-        clearMarkers();
-        var defs = [],
-            pushCoords = function(selector, service) {
-                var vals = $.map(selector.select2('data'), function(v) {
-                    return v.text;
-                });
 
-                if (vals) {
-                    vals.forEach(function(val) {
-                        defs.push(service[val]);
-                    });
-                }
-            },
-            $selector = $('#my-maps-selector');
-
-        pushCoords($selector, VoterShapes);
-        if (defs.length) {
-            // my maps stuff
-            //$('#maps-intro').show();
-            //$('#maps-info').hide();
-        }
-        $.when.apply($, defs).then(function() {
-            var shapes = Array.prototype.slice.call(arguments);
-            if (shapes.length > 0) {
-                // resetBounds();'
-                clearShapes();
-                drawShapes(shapes);
-            }
-        });
-    }
-
-    function updateCustomMap() {
-        clearShapes();
-        clearMarkers();
-        var defs = [],
-            pushCoords = function(label, selector, service) {
-                var vals = $.map(selector.select2('data'), function(v) {
-                    return v.text;
-                });
-                if ("undefined" == typeof CustomShapes[label]) {
-                    CustomShapes[label] = [];
-                }
-                if (vals) {
-                    if (vals[0] === 'ALL') {
-                        vals = $.map(selector.children(), function(v) {
-                            var val = $(v).val();
-                            if (val !== 'ALL') {
-                                return val;
-                            }
-                        });
-                    }
-                    vals.forEach(function(val) {
-                        if ("undefined" == typeof CustomShapes[label][val]) {
-                            CustomShapes[label][val] = getShapeFromService(val, service)
-                        }
-                        defs.push(CustomShapes[label][val]);
-                    });
-                }
-            },
-            divs = $('#custom-divisions'),
-            wrds = $('#custom-wards'),
-            councils = $('#custom-council-districts'),
-            pareps = $('#custom-parep-districts'),
-            pasens = $('#custom-pasen-districts'),
-            uscongs = $('#custom-uscongress-districts'),
-            tasks = [
-                ['divs', divs, Services.shape_city_division_them],
-                ['wrds', wrds, Services.shape_city_ward_them],
-                ['councils', councils, Services.shape_city_district_them],
-                ['pareps', pareps, Services.shape_state_house_them],
-                ['pasens', pasens, Services.shape_state_senate_them],
-                ['uscongs', uscongs, Services.shape_federal_house_them]
-            ];
-
-        tasks.forEach(function(t) {
-            pushCoords(t[0], t[1], t[2]);
-        });
-
-        if (defs.length) {
-            // my maps stuff
-            //$('#maps-intro').show();
-            //$('#maps-info').hide();
-        }
-
-        $.when.apply($, defs).then(function() {
-            var shapes = Array.prototype.slice.call(arguments);
-            if (shapes.length > 0) {
-                // resetBounds();'
-                clearShapes();
-                drawShapes(shapes);
-            }
-        });
-    }
 
     function getSampleBallot() {
         var ward = AllIndexes.ward,
@@ -1697,29 +1589,6 @@ jQuery.noConflict();
         if (this.hasClass('active')) return;
         GrouperContext = '';
         showTabBallot();
-    });
-    $(D).on('change', '.custom-map-selector', function(event) {
-        var selector = $(event.target);
-        var values = $.map(selector.select2('data'), function(value) {
-            return value.text;
-        });
-        $.each(values, function(index, value) {
-            if (event.added && event.added.text === 'ALL') {
-                if (value !== 'ALL') {
-                    values.splice(index, 1);
-                }
-            } else {
-                if (value === 'ALL') {
-                    values.splice(index, 1);
-                }
-            }
-        });
-        selector.select2('val', values);
-        if (event.target.id == "my-maps-selector") {
-            updateMyMap();
-        } else {
-            updateCustomMap();
-        }
     });
     $(D).on('click', 'span.hide-more-link', function() {
         var $this = $(this),
