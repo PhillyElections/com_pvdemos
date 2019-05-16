@@ -649,12 +649,6 @@ jQuery.noConflict();
 
     // init
     JQ(function() {
-        // ui setup actions
-        setupMultipleSelects();
-        onhashChange();
-        JQ('.office-level-accordion > dd').hide();
-        JQ('.office-accordion > dd').hide();
-
         // Lmap setup
         D.getElementById('map-canvas').style.zIndex = 1
         Lmap = L.map('map-canvas').setView(CITY_HALL, ZOOM)
