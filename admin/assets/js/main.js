@@ -1599,7 +1599,7 @@ jQuery.noConflict();
         setDefaultBasemaps();
         //setAlternateBasemaps()
 
-        L.control.browserPrint().addTo(Lmap)
+        //L.control.browserPrint().addTo(Lmap)
         searchBox = D.getElementById('target');
 
         addressComplete();
