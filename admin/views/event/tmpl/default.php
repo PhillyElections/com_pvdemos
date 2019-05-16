@@ -154,13 +154,13 @@ if ($event->lat > 0) :
                             <td>Coord:</td><td><?=$event->lat ;?>, <?=$event->lng ;?></td>
                         </tr> 
                         <tr> 
-                            <td>&nbsp;</td><td><span id="checkme">Check map</span></td>
+                            <td>&nbsp;</td><td><span class="button" id="checkme">Check map</span></td>
                         </tr> 
                     </table>
 <?php
 else :
 ?>
-                    Geocoding has not yet been set.  Click <span id="geocodeme">here</span> to set.
+                    Geocoding has not yet been set.  Click <span  class="button" id="geocodeme">here</span> to set.
 <?php
 endif;
 ?>
