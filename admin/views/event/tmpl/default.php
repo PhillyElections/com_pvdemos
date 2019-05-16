@@ -281,6 +281,7 @@ endif;
         </tbody>
     </table>
 </form>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"></script>
