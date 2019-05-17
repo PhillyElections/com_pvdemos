@@ -736,14 +736,13 @@ console.log('in grouper');
             props = [];
 
         for (var prop in Markers) {
+          console.log(prop)
             if (!Markers.hasOwnProperty(prop)) continue;
             var feature = Markers[prop];
-            if ((GrouperContext == 'all.up' && feature.up) || GrouperContext.indexOf(prop) > -1) {
                 feature.up = true;
                 feature.addTo(Lmap);
                 props.push(prop);
                 features.push(feature);
-            }
         }
         for (var prop in Shapes) {
             if (!Shapes.hasOwnProperty(prop)) continue;
