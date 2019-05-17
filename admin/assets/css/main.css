@@ -18,8 +18,8 @@ div.button {
 }
 
 #map {
-    height: 400px;
-    width: 95%
+    height: 350px;
+    width: 90%
 }
 
 div.wrap {
@@ -274,8 +274,8 @@ div#polling-header {
 
 #target {
     width: 80%;
-    margin-left: 10px;
-    margin-top: 4px;
+    margin-left: 12px;
+    margin-bottom: 6px;
     padding: 5px;
     border: 1px solid #ddd;
     background: -moz-linear-gradient(center top, #fff, #eee 1px, #fff 20px);
