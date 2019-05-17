@@ -424,7 +424,7 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-            GrouperContext = 'my.up'
+            GrouperContext = 'one.up'
             setTimeout(grouper, 500);
         }).fail(invalidAddress);
     }
@@ -785,11 +785,11 @@ console.log('in grouper');
         if (GrouperContext == 'all.up' || GrouperContext == 'my.up') {
             FeatureGroup = new L.featureGroup(features);
             Lmap.fitBounds(FeatureGroup.getBounds());
+        } else if (GrouperContext == 'one.up') {
+            Lmap.setView(Markers.home._latlng, 18)
         } else if (isEqual(props, GrouperContext)) {
             FeatureGroup = new L.featureGroup(features);
             Lmap.fitBounds(FeatureGroup.getBounds());
-        } else if (GrouperContext == 'one.up') {
-            Lmap.setView(Markers.home._latlng, 18)
         } else {
             // not all, not specifically in GrouperContext
         }
