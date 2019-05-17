@@ -341,7 +341,7 @@ console.log('in addressNotEntered');
         }
 
         if (!AllIndexes.length) {
-            setIndexes();
+/*            setIndexes();*/
         } else {
 /*            tabFunc();*/
         }
@@ -412,7 +412,7 @@ console.log('in addressEntered');
                         if (temp.split('-').length > 1) temp = temp.split('-')[0]
                         wardDivision = temp;
                         GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
-                        setIndexes();
+/*                        setIndexes();*/
                         AddressData.home = makeAddressDataElement(feature, service, enteredAddress)
                         Markers.home = L.marker(AddressData.home.coordinates, {
                             icon: Icons.home,
@@ -424,8 +424,7 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-            GrouperContext = 'all.up'
-            setTimeout(grouper, 500);
+          console.log(wardDivision, GrouperContext, AddressData.home, Markers.home)
         }).fail(invalidAddress);
     }
 
