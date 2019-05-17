@@ -8,6 +8,7 @@ jQuery.noConflict();
         GATEKEEPER_KEY = 'f2e3e82987f8a1ef78ca9d9d3cfc7f1d',
         CITY_HALL = [39.95262, -75.16365],
         ZOOM = 13,
+        ZOOM2 = 19,
         BASEMAP1 = '//tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityBasemap/MapServer',
         BASEMAP1_LABELS = '//tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityBasemap_Labels/MapServer',
         BASEMAP2 = '//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer',
@@ -424,7 +425,7 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-            GrouperContext = 'one.up'
+            GrouperContext = 'one------------.up'
             setTimeout(grouper, 500);
         }).fail(invalidAddress);
     }
@@ -786,7 +787,7 @@ console.log('in grouper');
             FeatureGroup = new L.featureGroup(features);
             Lmap.fitBounds(FeatureGroup.getBounds());
         } else if (GrouperContext == 'one.up') {
-            Lmap.setView(Markers.home._latlng, 18)
+            Lmap.setView(Markers.home._latlng, ZOOM2)
         } else if (isEqual(props, GrouperContext)) {
             FeatureGroup = new L.featureGroup(features);
             Lmap.fitBounds(FeatureGroup.getBounds());
