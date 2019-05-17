@@ -367,9 +367,7 @@ console.log('in addressEntered');
         AddressData = [];
         clearShapes();
         clearMarkers();
-        resetAllSelect2();
         AddressData.home = null;
-        clearCustomMap();
         service = Services.geocoder;
 
         if (!searchBox.value) {
