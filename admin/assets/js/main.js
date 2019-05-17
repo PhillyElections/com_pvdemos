@@ -70,7 +70,7 @@ jQuery.noConflict();
         Icons = {
             home: L.icon({
                 iconUrl: 'components/com_pvdemos/assets/images/b.png',
-                iconSize: [32, 37],
+                iconSize: [32, 32],
                 iconAnchor: [16, 37]
             }),
             polling: L.icon({
