@@ -787,6 +787,7 @@ console.log('in grouper');
             FeatureGroup = new L.featureGroup(features);
             Lmap.fitBounds(FeatureGroup.getBounds());
         } else if (GrouperContext == 'one.up') {
+          console.log('one.up group')
             Lmap.setView(Markers.home._latlng, ZOOM2)
         } else if (isEqual(props, GrouperContext)) {
             FeatureGroup = new L.featureGroup(features);
