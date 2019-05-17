@@ -739,7 +739,7 @@ console.log('in grouper');
         for (var prop in Markers) {
             if (!Markers.hasOwnProperty(prop)) continue;
             var feature = Markers[prop];
-            if ((GrouperContext == 'all.up' && feature.up) || GrouperContext.indexOf(prop) > -1) {
+            if ((GrouperContext == 'all.up' && feature.up) || GrouperContext.indexOf(prop) > -1 || GrouperContext == 'one.up') {
                 feature.up = true;
                 feature.addTo(Lmap);
                 props.push(prop);
@@ -788,6 +788,8 @@ console.log('in grouper');
         } else if (isEqual(props, GrouperContext)) {
             FeatureGroup = new L.featureGroup(features);
             Lmap.fitBounds(FeatureGroup.getBounds());
+        } else if (GrouperContext == 'one.up') {
+            Lmap.setView(Markers.home._latlng, 18)
         } else {
             // not all, not specifically in GrouperContext
         }
