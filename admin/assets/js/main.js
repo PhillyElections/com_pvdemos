@@ -71,7 +71,7 @@ jQuery.noConflict();
             home: L.icon({
                 iconUrl: 'components/com_pvdemos/assets/images/b.png',
                 iconSize: [32, 32],
-                iconAnchor: [16, 37]
+                iconAnchor: [16, 32]
             }),
             polling: L.icon({
                 iconUrl: 'components/com_pvdemos/assets/images/polling.png',
