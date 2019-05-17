@@ -606,7 +606,7 @@ console.log('in setIndexes');
             switch (getActive()) {
                 case 'nav-my-maps':
                     setTimeout(function() {
-                        GrouperContext = 'my.up';
+                        GrouperContext = 'one.up';
                         $('#my-maps').show();
                         populateMySelect2Lists('#my-maps-selector', VoterShapes, 'district-type', '');
                     }, timeout)
