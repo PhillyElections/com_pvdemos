@@ -69,26 +69,26 @@ jQuery.noConflict();
         },
         Icons = {
             home: L.icon({
-                iconUrl: 'components/com_voterapp/assets/images/home.png',
+                iconUrl: 'components/com_pvdemos/assets/images/b.png',
                 iconSize: [32, 37],
                 iconAnchor: [16, 37]
             }),
             polling: L.icon({
-                iconUrl: 'components/com_voterapp/assets/images/polling.png',
+                iconUrl: 'components/com_pvdemos/assets/images/polling.png',
                 iconSize: [32, 37],
                 iconAnchor: [16, 37]
             }),
             congress: L.icon({
-                iconUrl: 'components/com_voterapp/assets/images/congress.png',
+                iconUrl: 'components/com_pvdemos/assets/images/congress.png',
                 iconSize: [32, 37],
                 iconAnchor: [16, 37]
             }),
             entrance: L.icon({
-                iconUrl: 'components/com_voterapp/assets/images/e.png',
+                iconUrl: 'components/com_pvdemos/assets/images/e.png',
                 iconSize: [24, 24],
             }),
             handi: L.icon({
-                iconUrl: 'components/com_voterapp/assets/images/h.png',
+                iconUrl: 'components/com_pvdemos/assets/images/h.png',
                 iconSize: [24, 24],
             })
         },
@@ -376,7 +376,7 @@ console.log('in addressEntered');
             return;
         }
         enteredAddress = searchBox.value;
-        icon = baseUri + 'components/com_voterapp/assets/images/home.png';
+        icon = baseUri + 'components/com_pvdemos/assets/images/home.png';
         if (message == '1') {
             getHome = getPhilaAddressData(enteredAddress)
         } else {
@@ -423,6 +423,8 @@ console.log('in addressEntered');
                     invalidAddress();
                 }
             }
+        }).then(function(){
+            grouper();
         }).fail(invalidAddress);
     }
 
@@ -470,8 +472,8 @@ console.log('in popupFunctionAddress');
         });
     }
 
-    function dropPollingPin() {
-console.log('in dropPollingPin');
+    function dropEventPin() {
+console.log('in dropEventPin');
 
         Markers.pollingplace = L.marker(AddressData.pollingplace_table.coordinates.main, {
             icon: Icons.polling,
@@ -481,204 +483,6 @@ console.log('in dropPollingPin');
             return
         }
         setTimeout(grouper, 1000);
-    }
-
-    function getOfficials() {
-console.log('in getOfficials');
-
-        // federal_house
-        var federal_house = AllIndexes.federal_house_old || AllIndexes.federal_house,
-            state_senate = AllIndexes.state_senate,
-            state_house = AllIndexes.state_house,
-            city_council = AllIndexes.city_district,
-            ward = AllIndexes.ward,
-            division = AllIndexes.division;
-        $.ajax({
-            type: 'GET',
-            url: baseUri + 'index.php',
-            data: {
-                option: 'com_electedofficials',
-                view: 'json',
-                congressional_district: federal_house,
-                state_senate_district: state_senate,
-                state_representative_district: state_house,
-                council_district: city_council
-            },
-            dataType: 'json',
-            async: false,
-            success: writeOfficials,
-            error: function(request, status, error) {
-                alert(status + ' ' + error);
-            }
-        });
-    }
-
-    function writeOfficials(data) {
-console.log('in writeOfficials');
-
-        $('.office-accordion').find('dd').html('');
-        $.each(data.officials, function(idx, datum) {
-            var guId = guid(),
-                officer = '',
-                officeLevel = datum.office_level,
-                leadershipRole = datum.leadership_role,
-                office = datum.office,
-                federal_house = datum.congressional_district,
-                state_senate = datum.state_senate_district,
-                state_house = datum.state_representative_district,
-                city_council = datum.council_district,
-                pinStyle = 'class="drop-office-pin"',
-                addressOne = datum.main_contact_address_1 + ',' + datum.main_contact_city + ',' + datum.main_contact_state + ' ' + datum.main_contact_zip,
-                addressTwo = datum.local_contact_1_address_1 + ',' + datum.local_contact_1_city + ',' + datum.local_contact_1_state + ' ' + datum.local_contact_1_zip,
-                addressThree = datum.local_contact_2_address_1 + ',' + datum.local_contact_2_city + ',' + datum.local_contact_2_state + ' ' + datum.local_contact_2_zip,
-                addressFour = datum.local_contact_3_address_1 + ',' + datum.local_contact_3_city + ',' + datum.local_contact_3_state + ' ' + datum.local_contact_3_zip,
-                information = '';
-            if (datum.first_name) {
-                officer = datum.first_name;
-            }
-            if (datum.middle_name) {
-                officer = officer + ' ' + datum.middle_name;
-            }
-            if (datum.last_name) {
-                officer = officer + ' ' + datum.last_name;
-            }
-            if (datum.suffix) {
-                officer = officer + ' ' + datum.suffix;
-            }
-            // <div id="more-' + guId + '" class="more-info-div"><a href="javascript:void(0)" id="hide-more-link-' + guId + '" onClick="hideMoreInfo(\'' + guId + '\')" class="hide-more-link"><a class="icon-angle-left icon-3x"></a></a><strong style="font-size:11px;">' + officer + "</strong> (' + party + ')<br>' + office + ' ' + leadershipRole + '<br>';
-            information = '<div data-value="' + guId + '" class="more-info-div"><span data-value="' + guId + '" class="hide-more-link">&laquo;</span><strong style="font-size:11px;">' + officer + '</strong> (' + datum.party + ')<br>' + office + ' ' + leadershipRole + '<br>';
-            if (datum.email) {
-                information += '<br><a href="mailto:' + datum.email + '" target="_top">' + Joomla.JText._('EMAIL') + ' <a class="icon-envelope-alt"></a></a>';
-            }
-            if (datum.website) {
-                information += '<br><a href="https://' + datum.website + '" target="_blank">' + Joomla.JText._('WEBSITE') + ' <a class="icon-external-link"></a></a>';
-            }
-            if (datum.main_contact_address_1 || datum.main_contact_address_2 || datum.main_contact_phone || datum.main_contact_fax || datum.main_contact_city || datum.main_contact_state || datum.main_contact_zip) {
-                information += '<hr><h4><span data-value="' + addressOne + '" ' + (datum.main_contact_address_1 && datum.main_contact_city == 'Philadelphia' ? pinStyle : '') + '>' + Joomla.JText._('MAIN OFFICE') + ' <a class="icon-map-marker icon-large"></a></a></h4><br>';
-            }
-            if (datum.main_contact_phone) {
-                information += '<strong>' + Joomla.JText._('PHONE') + '</strong> <span class="phone">' + datum.main_contact_phone + '</span><br>';
-            }
-            if (datum.main_contact_fax) {
-                information += '<strong>' + Joomla.JText._('FAX') + '</strong> <span class="phone">' + datum.main_contact_fax + '</span><br>';
-            }
-            if (datum.main_contact_address_1 || datum.main_contact_address_2 || datum.main_contact_city || datum.main_contact_state || datum.main_contact_zip) {
-                information += '<br><strong>' + Joomla.JText._('OFFICE_ADDRESS') + '</strong><br>';
-            }
-            if (datum.main_contact_address_1) {
-                information += datum.main_contact_address_1 + '<br>';
-            }
-            if (datum.main_contact_address_2) {
-                information += datum.main_contact_address_2 + '<br>';
-            }
-            if (datum.main_contact_city) {
-                information += datum.main_contact_city + ', ' + datum.main_contact_state + ' ' + datum.main_contact_zip + '<br>';
-            }
-            if (datum.local_contact_1_address_1 || datum.local_contact_1_address_2 || datum.local_contact_1_phone || datum.local_contact_1_fax || datum.local_contact_1_city || datum.local_contact_1_state || datum.local_contact_1_zip) {
-                information += '<hr><h4><span data-value="' + addressTwo + '" ' + (datum.local_contact_1_address_1 && datum.local_contact_1_city == 'Philadelphia' ? pinStyle : '') + '>' + Joomla.JText._('LOCAL OFFICE') + ' <a class="icon-map-marker icon-large"></a></a></h4><br>';
-            }
-            if (datum.local_contact_1_phone) {
-                information += '<strong>' + Joomla.JText._('PHONE') + '</strong> <span class="phone">' + datum.local_contact_1_phone + '</span><br>';
-            }
-            if (datum.local_contact_1_fax) {
-                information += '<strong>' + Joomla.JText._('FAX') + '</strong> <span class="phone">' + datum.local_contact_1_fax + '</span><br>';
-            }
-            if (datum.local_contact_1_address_1 || datum.local_contact_1_address_2 || datum.local_contact_1_city || datum.local_contact_1_state || datum.local_contact_1_zip) {
-                information += '<br><strong>' + Joomla.JText._('OFFICE_ADDRESS') + '</strong><br>';
-            }
-            if (datum.local_contact_1_address_1) {
-                information += datum.local_contact_1_address_1 + '<br>';
-            }
-            if (datum.local_contact_1_address_2) {
-                information += datum.local_contact_1_address_2 + '<br>';
-            }
-            if (datum.local_contact_1_city) {
-                information += datum.local_contact_1_city + ', ' + datum.local_contact_1_state + ' ' + datum.local_contact_1_zip + '<br>';
-            }
-            if (datum.local_contact_2_address_1 || datum.local_contact_2_address_2 || datum.local_contact_2_phone || datum.local_contact_2_fax || datum.local_contact_2_city || datum.local_contact_2_state || datum.local_contact_2_zip) {
-                information += '<hr><h4><span data-value="' + addressThree + '" ' + (datum.local_contact_2_address_1 && datum.local_contact_2_city == 'Philadelphia' ? pinStyle : '') + '>' + Joomla.JText._('LOCAL OFFICE') + ' <a class="icon-map-marker icon-large"></a></a></h4><br>';
-            }
-            if (datum.local_contact_2_phone) {
-                information += '<strong>' + Joomla.JText._('PHONE') + '</strong> <span class="phone">' + datum.local_contact_2_phone + '</span><br>';
-            }
-            if (datum.local_contact_2_fax) {
-                information += '<strong>' + Joomla.JText._('FAX') + '</strong> <span class="phone">' + datum.local_contact_2_fax + '</span><br>';
-            }
-            if (datum.local_contact_2_address_1 || datum.local_contact_2_address_2 || datum.local_contact_2_city || datum.local_contact_2_state || datum.local_contact_2_zip) {
-                information += '<br><strong>' + Joomla.JText._('OFFICE_ADDRESS') + '</strong><br>';
-            }
-            if (datum.local_contact_2_address_1) {
-                information += datum.local_contact_2_address_1 + '<br>';
-            }
-            if (datum.local_contact_2_address_2) {
-                information += datum.local_contact_2_address_2 + '<br>';
-            }
-            if (datum.local_contact_2_city) {
-                information += datum.local_contact_2_city + ', ' + datum.local_contact_2_state + ' ' + datum.local_contact_2_zip + '<br>';
-            }
-            if (datum.local_contact_3_address_1 || datum.local_contact_3_address_2 || datum.local_contact_3_phone || datum.local_contact_3_fax || datum.local_contact_3_city || datum.local_contact_3_state || datum.local_contact_3_zip) {
-                information += '<hr><h4><span data-value="' + addressFour + '" ' + (datum.local_contact_3_address_1 && datum.local_contact_3_city == 'Philadelphia' ? pinStyle : '') + '>' + Joomla.JText._('LOCAL OFFICE') + ' <a class="icon-map-marker icon-large"></a></a></h4><br>';
-            }
-            if (datum.local_contact_3_phone) {
-                information += '<strong>' + Joomla.JText._('PHONE') + '</strong> <span class="phone">' + datum.local_contact_3_phone + '</span><br>';
-            }
-            if (datum.local_contact_3_fax) {
-                information += '<strong>' + Joomla.JText._('FAX') + '</strong> <span class="phone">' + datum.local_contact_3_fax + '</span><br>';
-            }
-            if (datum.local_contact_3_address_1 || datum.local_contact_3_address_2 || datum.local_contact_3_city || datum.local_contact_3_state || datum.local_contact_3_zip) {
-                information += '<br><strong>' + Joomla.JText._('OFFICE_ADDRESS') + '</strong><br>';
-            }
-            if (datum.local_contact_3_address_1) {
-                information += datum.local_contact_3_address_1 + '<br>';
-            }
-            if (datum.local_contact_3_address_2) {
-                information += datum.local_contact_3_address_2 + '<br>';
-            }
-            if (datum.local_contact_3_city) {
-                information += datum.local_contact_3_city + ', ' + datum.local_contact_3_state + ' ' + datum.local_contact_3_zip + '<br>';
-            }
-            information += '</div>';
-            var contact = '<div id="basic-' + guId + '" class="basic-official-info"><strong style="font-size:11px;">' + officer + '</strong> (' + datum.party + ')<br>' + office + ' ' + leadershipRole + '<br>';
-            if (datum.email) {
-                contact = contact + '<br><a href="mailto:' + datum.email + '" target="_top">' + Joomla.JText._('EMAIL') + ' <a class="icon-envelope-alt"></a></a>';
-            }
-            if (datum.website) {
-                contact = contact + '<br><a href="https://' + datum.website + '" target="_blank">' + Joomla.JText._('WEBSITE') + ' <a class="icon-external-link"></a></a>';
-            }
-            contact = contact + '<br><span data-value="' + guId + '" class="more-info">' + Joomla.JText._('MORE INFORMATION') + ' <a class="icon-angle-right"></a></span><hr></div>';
-            $(officeToId[office]).append(contact);
-            $(officeToId[office]).append(information);
-            if (office === 'Mayor') {
-                mayorAddress = addressOne;
-            }
-            $('.phone').text(function(y, z) {
-                return z.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-            });
-        });
-    }
-
-    function dropOfficePin(address) {
-console.log('in dropOfficePin');
-
-        var officeLocation = getPhilaAddressData(address);
-        officeLocation.done(function(data) {
-            var exact = false;
-            for (var ii = 0; ii <= data.features.length - 1; ii++) {
-                var feature = data.features[ii];
-                if (feature.match_type === 'exact') {
-                    exact = true;
-                    Markers.office = L.marker(coordsSwap(feature.geometry.coordinates), {
-                        icon: Icons.congress,
-                    });
-                } else {}
-            }
-            if (!exact) {
-                alert('Geocode of office failed: ' + data.status);
-            }
-            setTimeout(grouper, 650);
-        }).fail(function(data) {
-            dropOfficePin(mayorAddress)
-        });
     }
 
     function getPhilaAddressData(input) {
@@ -769,23 +573,6 @@ console.log('in getIndexes');
         return deferred.promise();
     }
 
-    function getOldIndexes(input) {
-console.log('in getOldIndexes');
-
-        var deferred = $.Deferred(),
-            service = Services.old_indexer;
-        $.getJSON(service.url(input), service.params).done(function(data) {
-            if (data.features) {
-                deferred.resolve(data);
-            } else {
-                deferred.reject();
-            }
-        }).fail(function(data) {
-            deferred.reject();
-        });
-        return deferred.promise();
-    }
-
     function setIndexes() {
 console.log('in setIndexes');
 
@@ -799,44 +586,20 @@ console.log('in setIndexes');
         LastAddressComplete.precinct = (!LastAddressComplete.precinct) ? wardDivision : LastAddressComplete.precinct;
 
         indexes = getIndexes(wardDivision)
-        oldIndexes = getOldIndexes(LastAddressComplete.precinct)
-        $.when(indexes, oldIndexes).done(function(idata, odata) {
+        $.when(indexes).done(function(idata) {
             var ifeature, ofeature;
             ifeature = idata.features[0];
-            ofeature = odata.features[0];
             shapedData.precinct = ifeature.precinct;
-            if (shapedData.precinct != ofeature.precinct) {
-                shapedData.precinct_old = ofeature.precinct;
-            }
             shapedData.division = ifeature.division;
-            if (ifeature.division != ofeature.division) {
-                shapedData.division_old = ofeature.division;
-            }
             shapedData.ward = ifeature.ward;
-            if (ifeature.ward != ofeature.ward) {
-                shapedData.ward_old = ofeature.ward;
-            }
             shapedData.city_district = ifeature.city_district;
-            if (ifeature.city_district != ofeature.city_district) {
-                shapedData.city_district_old = ofeature.city_district;
-            }
             shapedData.state_house = ifeature.state_house;
-            if (ifeature.state_house != ofeature.state_house) {
-                shapedData.state_house_old = ofeature.state_house;
-            }
             shapedData.state_senate = ifeature.state_senate;
-            if (ifeature.state_senate != ofeature.state_senate) {
-                shapedData.state_senate_old = ofeature.state_senate;
-            }
             shapedData.federal_house = ifeature.federal_house;
-            if (ifeature.federal_house != ofeature.federal_house) {
-                shapedData.federal_house_old = ofeature.federal_house;
-            }
 
             AllIndexes = shapedData;
         }).then(function() {
-/*            getVoterShapes();
-            tabFunc();*/
+/*            tabFunc();*/
             var timeout = 750;
             switch (getActive()) {
                 case 'nav-my-maps':
@@ -852,109 +615,6 @@ console.log('in setIndexes');
         }).fail(function(data) {});
     }
 
-    function getVoterShapes() {
-console.log('in getVoterShapes');
-
-        if ("undefined" == typeof VoterShapes['Division (' + AllIndexes.precinct + ')'] && AllIndexes.precinct) {
-            VoterShapes['Division (' + AllIndexes.precinct + ')'] = ''
-            getShapeFromService(AllIndexes.precinct, Services.shape_city_division_them).done(function(data) {
-                VoterShapes['Division (' + AllIndexes.precinct + ')'] = data
-                drawShape(VoterShapes['Division (' + AllIndexes.precinct + ')'], 'home-division')
-            }).fail(function(data) {
-                console.log('precinct fail', data)
-            });
-        } else {
-            drawShape(VoterShapes['Division (' + AllIndexes.precinct + ')'], 'home-division')
-        }
-        if ("undefined" == typeof VoterShapes['Division (previous: ' + AllIndexes.precinct_old + ')'] && AllIndexes.precinct_old) {
-            VoterShapes['Division (previous: ' + AllIndexes.precinct_old + ')'] = ''
-            getShapeFromService(AllIndexes.precinct_old, Services.shape_city_division).done(function(data) {
-                VoterShapes['Division (previous: ' + AllIndexes.precinct_old + ')'] = data
-            }).fail(function(data) {
-                console.log('precinct_old fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['Ward (' + AllIndexes.ward + ')'] && AllIndexes.ward) {
-            VoterShapes['Ward (' + AllIndexes.ward + ')'] = ''
-            getShapeFromService(AllIndexes.ward, Services.shape_city_ward_them).done(function(data) {
-                VoterShapes['Ward (' + AllIndexes.ward + ')'] = data
-            }).fail(function(data) {
-                console.log('ward fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['Ward (previous: ' + AllIndexes.ward_old + ')'] && AllIndexes.ward_old) {
-            VoterShapes['Ward (previous: ' + AllIndexes.ward_old + ')'] = ''
-            getShapeFromService(AllIndexes.ward_old, Services.shape_city_ward).done(function(data) {
-                VoterShapes['Ward (previous: ' + AllIndexes.ward_old + ')'] = data
-            }).fail(function(data) {
-                console.log('ward_old fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['City Council (' + AllIndexes.city_district + ')'] && AllIndexes.city_district) {
-            VoterShapes['City Council (' + AllIndexes.city_district + ')'] = ''
-            getShapeFromService(AllIndexes.city_district, Services.shape_city_district_them).done(function(data) {
-                VoterShapes['City Council (' + AllIndexes.city_district + ')'] = data
-            }).fail(function(data) {
-                console.log('city_district fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['City Council (previous: ' + AllIndexes.city_district_old + ')'] && AllIndexes.city_district_old) {
-            VoterShapes['City Council (previous: ' + AllIndexes.city_district_old + ')'] = ''
-            getShapeFromService(AllIndexes.city_district_old, Services.shape_city_district).done(function(data) {
-                VoterShapes['City Council (previous: ' + AllIndexes.city_district_old + ')'] = data
-            }).fail(function(data) {
-                console.log('city_district_old fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['State Representative (' + AllIndexes.state_house + ')'] && AllIndexes.state_house) {
-            VoterShapes['State Representative (' + AllIndexes.state_house + ')'] = ''
-            getShapeFromService(AllIndexes.state_house, Services.shape_state_house_them).done(function(data) {
-                VoterShapes['State Representative (' + AllIndexes.state_house + ')'] = data
-            }).fail(function(data) {
-                console.log('state_house fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['State Representative (previous: ' + AllIndexes.state_house_old + ')'] && AllIndexes.state_house_old) {
-            VoterShapes['State Representative (previous: ' + AllIndexes.state_house_old + ')'] = ''
-            getShapeFromService(AllIndexes.state_house_old, Services.shape_state_house).done(function(data) {
-                VoterShapes['State Representative (previous: ' + AllIndexes.state_house_old + ')'] = data
-            }).fail(function(data) {
-                console.log('state_house_old fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['State Senate (' + AllIndexes.state_senate + ')'] && AllIndexes.state_senate) {
-            VoterShapes['State Senate (' + AllIndexes.state_senate + ')'] = ''
-            getShapeFromService(AllIndexes.state_senate, Services.shape_state_senate_them).done(function(data) {
-                VoterShapes['State Senate (' + AllIndexes.state_senate + ')'] = data
-            }).fail(function(data) {
-                console.log('state_senate fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['State Senate (previous: ' + AllIndexes.state_senate_old + ')'] && AllIndexes.state_senate_old) {
-            VoterShapes['State Senate (previous: ' + AllIndexes.state_senate_old + ')'] = ''
-            getShapeFromService(AllIndexes.state_senate_old, Services.shape_state_senate).done(function(data) {
-                VoterShapes['State Senate (previous: ' + AllIndexes.state_senate_old + ')'] = data
-            }).fail(function(data) {
-                console.log('state_senate_old fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['US Congress (' + AllIndexes.federal_house + ')'] && AllIndexes.federal_house) {
-            VoterShapes['US Congress (' + AllIndexes.federal_house + ')'] = ''
-            getShapeFromService(AllIndexes.federal_house, Services.shape_federal_house_them).done(function(data) {
-                VoterShapes['US Congress (' + AllIndexes.federal_house + ')'] = data
-            }).fail(function(data) {
-                console.log('federal_house fail', data)
-            });
-        }
-        if ("undefined" == typeof VoterShapes['US Congress (previous: ' + AllIndexes.federal_house_old + ')'] && AllIndexes.federal_house_old) {
-            VoterShapes['US Congress (previous: ' + AllIndexes.federal_house_old + ')'] = ''
-            getShapeFromService(AllIndexes.federal_house_old, Services.shape_federal_house_them_old).done(function(data) {
-                VoterShapes['US Congress (previous: ' + AllIndexes.federal_house_old + ')'] = data
-            }).fail(function(data) {
-                console.log('federal_house_old fail', data)
-            });
-        }
-    }
     // end ajax functions
 
     // map functions
@@ -1140,83 +800,10 @@ console.log('in invalidAddress');
         alert('The address you have chosen is invalid. Please select an address in Philadelphia.');
     }
 
-
-
     function clearCustomMap() {
 console.log('in clearCustomMap');
 
         $('.custom-map-selector').val([]).change();
-    }
-
-
-
-    function getSampleBallot() {
-console.log('in getSampleBallot');
-
-        var ward = AllIndexes.ward,
-            division = AllIndexes.division,
-            sample_div = ward + "-" + division,
-            el_parent = $("#download-ballot-intro");
-
-        if (typeof ward_divisions_files === 'undefined' || !ward_divisions_files) {
-
-            var inner_html = '<h3>' + Joomla.JText._('DOWNLOAD BALLOT INTRO HEADER NO BALLOT') + '</h3><br/><p>' + Joomla.JText._('DOWNLOAD BALLOT INTRO TEXT NO BALLOT') + '</p>';
-            $(el_parent).html(inner_html);
-            $("#sample-pdf").html("");
-            return;
-        }
-        if (typeof ward_divisions_files[sample_div] !== 'undefined') {
-            if (typeof ward_divisions_files[sample_div].file_id !== 'undefined') {
-                if (ward_divisions_files[sample_div].file_id != '') {
-
-                    var pdf_url = baseUri + 'ballot_paper/' + ward_divisions_files[sample_div].file_id + '.pdf';
-
-                    var html = '<object width="100%" height="100%" data="' + pdf_url + '?#zoom=0&amp;scrollbar=1&amp;toolbar=0&amp;navpanes=0" type="application/pdf">NO PDF FOUND</object>';
-
-                    $("#sample-pdf").html(html);
-                    var inner_html = '<h3>' + Joomla.JText._('DOWNLOAD BALLOT INTRO HEADER AFTER') + '</h3><br/><p>' + Joomla.JText._('DOWNLOAD BALLOT INTRO TEXT AFTER') + '</p><br/><a href="' + baseUri + 'ballot_paper/' + ward_divisions_files[sample_div].file_id + '.pdf" target="_blank" class="showPDF">' + Joomla.JText._('DOWNLOAD BALLOT BUTTON TEXT') + '</a>';
-                    $(el_parent).html(inner_html);
-                    /* Looping for other ballot */
-                    var unique = [];
-                    var unique_wards = [];
-                    $.each(ward_divisions_files, function(i, val) {
-
-                        if ((unique.indexOf(val.sid) === -1)) {
-                            unique.push(val.sid);
-                            unique_wards.push(i);
-                        }
-                    });
-                    //Generate other downloads here
-                    var other_htm = '';
-                    if (unique.length > 1) {
-                        other_htm += '<select id="ballots_dropdown" name="ballots_dropdown" ><option value="">' + Joomla.JText._('DOWNLOAD BALLOT EMPTY DROPDOWN TEXT') + '</option>';
-                        var display = {},
-                            sortMe = [];
-
-                        for (var i = 0; i < unique_wards.length; i++) {
-                            if (ward_divisions_files[unique_wards[i]].file_id != ward_divisions_files[sample_div].file_id) {
-                                sortMe.push(ward_divisions_files[unique_wards[i]].sid);
-                                display[ward_divisions_files[unique_wards[i]].sid] = ward_divisions_files[unique_wards[i]].file_id;
-                            }
-                        }
-
-                        sortMe.sort().forEach(function(i) {
-                            other_htm += '<option value="' + display[i] + '">Spilt ' + i + '</option>';
-                        });
-
-                        other_htm += '</select>&nbsp;&nbsp;<button value="Show Me" name="Show Me" id="show-ballot-dropdown">' + Joomla.JText._('SHOW ME TEXT') + '</button>';
-                    }
-                    var htm = '<h3>' + Joomla.JText._('OTHER SAMPLE BALLOTS HEADER') + '</h3><br/><p>' + Joomla.JText._('OTHER SAMPLE BALLOTS TEXT') + '</p><br/>' + other_htm;
-                    $("#download-ballot-info").html(htm);
-                    $("#download-ballot-info").show();
-                    return;
-                }
-            }
-        }
-
-        var inner_html = '<h3>' + Joomla.JText._('DOWNLOAD BALLOT INTRO HEADER NO BALLOT') + '</h3><br/><p>' + Joomla.JText._('DOWNLOAD BALLOT INTRO TEXT NO BALLOT') + '</p>';
-        $(el_parent).html(inner_html);
-        $("#sample-pdf").html("");
     }
 
     function showBallotDropdown() {
@@ -1521,28 +1108,6 @@ console.log('in CN');
     } else if (D.attachEvent) {
         W.attachEvent('onhashchange', onhashChange);
     }
-
-
-    $(D).on('click', '.office-level-accordion > dt > a', function() {
-        $('.office-level-accordion > dd').slideUp();
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-        } else {
-            $(this).parent().next().slideDown();
-            $(this).addClass('active');
-        }
-        return false;
-    });
-    $(D).on('click', '.office-accordion > dt > a', function() {
-        $('.office-accordion > dd').slideUp();
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-        } else {
-            $(this).parent().next().slideDown();
-            $(this).addClass('active');
-        }
-        return false;
-    });
 
     $(D).on('keydown', '#target', function(event) {
         if (event.key === 'Enter' && searchBox.value) {
