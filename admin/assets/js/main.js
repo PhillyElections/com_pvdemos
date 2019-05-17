@@ -424,7 +424,7 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-            setTimeout(grouper(), 500);
+            setTimeout(grouper, 500);
         }).fail(invalidAddress);
     }
 
