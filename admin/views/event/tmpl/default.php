@@ -54,7 +54,6 @@ $document = JFactory::getDocument();
 $document->addStyleSheet('//unpkg.com/leaflet@1.3.1/dist/leaflet.css');
 $document->addStyleSheet('https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
 $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
-//$document->addCustomTag('<script src="components/com_pvdemos/assets/js/main.js" async defer></script>');
 
 ?>
 <script type="text/javascript">
@@ -270,7 +269,7 @@ endif;
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'special_ballot_worker_id', '', 'idx', 'value', ($event->special_ballot_worker_id ? $event->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', '- assign staff -'), 'special_ballot_worker_id', '', 'idx', 'value', ($event->special_ballot_worker_id ? $event->special_ballot_worker_id : ''), 'classspecial_ballot_worker_id');?>
                 </td>
             </tr>
             <tr>
@@ -280,7 +279,7 @@ endif;
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer1_id', '', 'idx', 'value', ($event->staffer1_id ? $event->staffer1_id : ''), 'staffer1_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', '- assign staff -'), 'staffer1_id', '', 'idx', 'value', ($event->staffer1_id ? $event->staffer1_id : ''), 'staffer1_id');?>
                 </td>
             </tr>
             <tr>
@@ -290,7 +289,7 @@ endif;
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer2_id', '', 'idx', 'value', ($event->staffer2_id ? $event->staffer2_id : ''), 'staffer2_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', '- assign staff -'), 'staffer2_id', '', 'idx', 'value', ($event->staffer2_id ? $event->staffer2_id : ''), 'staffer2_id');?>
                 </td>
             </tr>
             <tr>
@@ -300,7 +299,7 @@ endif;
                     </label>
                 </td>
                 <td>
-                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', 'Assign staff'), 'staffer3_id', '', 'idx', 'value', ($event->staffer3_id ? $event->staffer3_id : ''), 'staffer3_id');?>
+                    <?=JHTML::_('select.genericlist', PVCombo::getsFromObject($this->workers, 'id', 'name', '- assign staff -'), 'staffer3_id', '', 'idx', 'value', ($event->staffer3_id ? $event->staffer3_id : ''), 'staffer3_id');?>
                 </td>
             </tr>
             <tr>
