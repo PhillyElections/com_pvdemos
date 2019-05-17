@@ -425,7 +425,7 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-            GrouperContext = 'one------------.up'
+            GrouperContext = 'one.up'
             setTimeout(grouper, 500);
         }).fail(invalidAddress);
     }
@@ -606,7 +606,7 @@ console.log('in setIndexes');
             switch (getActive()) {
                 case 'nav-my-maps':
                     setTimeout(function() {
-                        GrouperContext = 'one.up';
+                        GrouperContext = 'my.up';
                         $('#my-maps').show();
                         populateMySelect2Lists('#my-maps-selector', VoterShapes, 'district-type', '');
                     }, timeout)
