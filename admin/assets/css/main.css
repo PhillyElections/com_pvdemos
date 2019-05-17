@@ -273,9 +273,8 @@ div#polling-header {
 }
 
 #target {
-    width: 510px;
-    margin-left: 12px;
-    margin-top: -2px;
+    width: 90%;
+    margin-left: 10px;
     padding: 5px;
     border: 1px solid #ddd;
     background: -moz-linear-gradient(center top, #fff, #eee 1px, #fff 20px);
