@@ -424,8 +424,8 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-          console.log(Markers.home._latlng)
-          Lmap.setView(Markers.home._latlng, 18)
+            GrouperContext = 'my.up'
+            setTimeout(grouper, 500);
         }).fail(invalidAddress);
     }
 
