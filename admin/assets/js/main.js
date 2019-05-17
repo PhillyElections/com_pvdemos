@@ -573,48 +573,6 @@ console.log('in getIndexes');
         return deferred.promise();
     }
 
-    function setIndexes() {
-console.log('in setIndexes');
-
-        var indexes,
-            shapedData = [];
-
-        if (typeof LastAddressComplete != 'Array' && typeof LastAddressComplete.precinct == 'undefined' ) {
-            LastAddressComplete = [];
-        }
-
-        LastAddressComplete.precinct = (!LastAddressComplete.precinct) ? wardDivision : LastAddressComplete.precinct;
-
-        indexes = getIndexes(wardDivision)
-        $.when(indexes).done(function(idata) {
-            var ifeature, ofeature;
-            ifeature = idata.features[0];
-            shapedData.precinct = ifeature.precinct;
-            shapedData.division = ifeature.division;
-            shapedData.ward = ifeature.ward;
-            shapedData.city_district = ifeature.city_district;
-            shapedData.state_house = ifeature.state_house;
-            shapedData.state_senate = ifeature.state_senate;
-            shapedData.federal_house = ifeature.federal_house;
-
-            AllIndexes = shapedData;
-        }).then(function() {
-/*            tabFunc();*/
-            var timeout = 750;
-            switch (getActive()) {
-                case 'nav-my-maps':
-                    setTimeout(function() {
-                        GrouperContext = 'my.up';
-                        $('#my-maps').show();
-                        populateMySelect2Lists('#my-maps-selector', VoterShapes, 'district-type', '');
-                    }, timeout)
-                    break;
-                default:
-                    break;
-            }
-        }).fail(function(data) {});
-    }
-
     // end ajax functions
 
     // map functions
