@@ -424,7 +424,7 @@ console.log('in addressEntered');
                 }
             }
         }).then(function(){
-          console.log(wardDivision, GrouperContext, AddressData.home, Markers.home)
+          console.log(Markers.home._latlng)
         }).fail(invalidAddress);
     }
 
