@@ -425,6 +425,7 @@ console.log('in addressEntered');
             }
         }).then(function(){
           console.log(Markers.home._latlng)
+          map.setView(Markers.home._latlng, 8)
         }).fail(invalidAddress);
     }
 
