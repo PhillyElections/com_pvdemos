@@ -78,6 +78,11 @@ li.marker-cancel img {
     display: none
 }
 
+#map-canvas {
+    height: 645px;
+    width: 100%;
+}
+
 #target {
     width: 90%;
     margin-left: 12px;
