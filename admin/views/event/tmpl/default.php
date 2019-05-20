@@ -194,22 +194,34 @@ if ($event->lat > 0) :
                         <tr>
                             <td>Coord:</td><td id="display-building"><?=$event->lat ;?>, <?=$event->lng ;?></td>
                         </tr> 
-                        <tr> 
-                            <td>&nbsp;</td><td><div class="button" id="checkme">Check map</div></td>
+                        <tr>
+                            <td>Precinct:</td><td id="display-precint"><?=$event->precinct ;?></td>
                         </tr> 
-                        <tr> 
-                            <td>&nbsp;</td><td><div class="button" id="checkme">Check map</div></td>
                         </tr> 
                     </table>
 <?php
 else :
 ?>
-                    Geocoding has not yet been set.  <div class="button" id="geocodeme">GEOCODE</div>
+                    <div id="geocodeme_container">Geocoding has not yet been set.  <div class="button" id="geocodeme">GEOCODE</div></div>
+                    <table id="geocoded_container" class="hidden">
+                        <tr>
+                            <td class="info">Note: please update or save this record to write these values.</td>
+                        </tr>
+                        <tr>
+                            <td>Coord:</td><td id="display-building">{LAT}, {LNG}</td>
+                        </tr> 
+                        <tr>
+                            <td>Precinct:</td><td id="display-precinct">{PRECINT}</td>
+                        </tr> 
+                        </tr> 
+                    </table>
+
 <?php
 endif;
 ?>
-                    <input type="hidden" name="lat" value="<?=$event->lat ;?>" />
-                    <input type="hidden" name="lng" value="<?=$event->lng ;?>" />
+                    <input type="hidden" name="precinct" id="precinct" value="<?=$event->precinct ;?>" />
+                    <input type="hidden" name="lat" id="lat" value="<?=$event->lat ;?>" />
+                    <input type="hidden" name="lng" id="lng" value="<?=$event->lng ;?>" />
                 </td>
             </tr>
             <tr>
