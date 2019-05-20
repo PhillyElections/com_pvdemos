@@ -479,8 +479,8 @@ console.log('in popupFunctionAddress');
       $("#lat").val(AddressData.home.coordinates.lat);
       $("#lng").val(AddressData.home.coordinates.lng);
       $("#precinct").val(AddressData.home.data.election_precinct);
-      $("#display-building").html(AddressData.home.coordinates.lat + ", " + AddressData.home.coordinates.lng)
-      $("#display-precinct").html(AddressData.home.data.election_precinct)
+      $("#display-building").text(AddressData.home.coordinates.lat + ", " + AddressData.home.coordinates.lng)
+      $("#display-precinct").text(AddressData.home.data.election_precinct)
     }
 
     function getPhilaAddressData(input) {
