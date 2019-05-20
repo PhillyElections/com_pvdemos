@@ -993,8 +993,23 @@ console.log('in CN');
         L.control.browserPrint().addTo(Lmap)
         searchBox = D.getElementById('target');
 
-        $('#geocoded_container').removeClass('hidden').hide();
-
+        var $gc = $('#geocoded_container');
+        if ($gc.length) {
+          $gc.removeClass('hidden').hide();
+        } else {
+          wardDivision = $("#precinct").val();
+          GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
+          var feature;
+          feature.properties = []
+          feature.geometry = []
+          feature.properties.election_precinct = wardDivision
+          feature.geometry.coordinates = [$('#lng').val(), $('#lat').val()]
+          AddressData.home = makeAddressDataElement(feature, Sevices.geocoder, $("#address_street").val())
+          Markers.home = L.marker(AddressData.home.coordinates, {
+            icon: Icons.home,
+          });
+          writeGeocoding();
+        }
         addressComplete();
     });
 }))
