@@ -472,17 +472,10 @@ console.log('in popupFunctionAddress');
         });
     }
 
-    function dropEventPin() {
+
+    function dropEventPin(enteredAddress) {
 console.log('in dropEventPin');
 
-        Markers.pollingplace = L.marker(AddressData.pollingplace_table.coordinates.main, {
-            icon: Icons.polling,
-        });
-        if (getActive() == 'nav-polling-place' && "undefined" == typeof Shapes['home-division']) {
-            setTimeout(grouper, 1000);
-            return
-        }
-        setTimeout(grouper, 1000);
     }
 
     function getPhilaAddressData(input) {
@@ -954,12 +947,21 @@ console.log('in CN');
         W.attachEvent('onhashchange', onhashChange);
     }
 
+    // explicit typed search
     $(D).on('keydown', '#target', function(event) {
         if (event.key === 'Enter' && searchBox.value) {
             LastAddressComplete = [];
             addressEntered(1)
         }
     });
+
+    // explicit clicked search
+    $(D).on('click', '#geocodeme', function(event) {
+        searchBox.value = $('#address_street').val();
+        LastAddressComplete = [];
+        addressEntered(1)
+    });
+
     // overcome chrome autocomplete
     $(D).on('mouseup keyup','#target', function () {
         var val = $('#target').val();
@@ -1000,16 +1002,5 @@ console.log('in CN');
         searchBox = D.getElementById('target');
 
         addressComplete();
-        var params = getQueryParams(D.location.search);
-        if (typeof params.address !== 'undefined') {
-            searchBox.value = params.address;
-
-            showInfos();
-            setTimeout(function() {
-                LastAddressComplete = [];
-                addressEntered(1)
-
-            }, 650)
-        }
     });
 }))
