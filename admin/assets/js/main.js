@@ -476,10 +476,10 @@ console.log('in popupFunctionAddress');
       console.log(wardDivision, AddressData.home)
       $('#geocodeme_container').fadeOut(100);
       $('#geocoded_container').fadeIn(250);
-      $("#lat").val(AddressData.home.coordinates.lat);
-      $("#lng").val(AddressData.home.coordinates.lng);
+      $("#lat").val(AddressData.home.coordinates[0]);
+      $("#lng").val(AddressData.home.coordinates[1]);
       $("#precinct").val(AddressData.home.data.election_precinct);
-      $("#display-building").text(AddressData.home.coordinates.lat + ", " + AddressData.home.coordinates.lng)
+      $("#display-building").text(AddressData.home.coordinates[0] + ", " + AddressData.home.coordinates[1])
       $("#display-precinct").text(AddressData.home.data.election_precinct)
     }
 
