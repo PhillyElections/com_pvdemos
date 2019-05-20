@@ -894,7 +894,7 @@ jQuery.noConflict();
         var re = /function (.*?)\(/;
         var s = CN.caller.toString();
         var m = re.exec(s);
-        console.log(m[1], args);
+        console.log(m[1], args.length ? args : "");
     }
 
     // events
