@@ -478,7 +478,7 @@ console.log('in popupFunctionAddress');
       $('#geocoded_container').fadeIn(250);
       $("#lat").val(AddressData.home.coordinates.lat);
       $("#lng").val(AddressData.home.coordinates.lng);
-      $("#precinct") = AddressData.home.data.election_precinct;
+      $("#precinct").val(AddressData.home.data.election_precinct);
       $("#display-building").val(AddressData.home.coordinates.lat + ", " + AddressData.home.coordinates.lng)
       $("#display-precinct").val(AddressData.home.data.election_precinct)
     }
