@@ -988,6 +988,8 @@ console.log('in CN');
         L.control.browserPrint().addTo(Lmap)
         searchBox = D.getElementById('target');
 
+        $('#geocoded_container').removeClass('hidden').hide();
+
         addressComplete();
     });
 }))
