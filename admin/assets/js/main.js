@@ -323,7 +323,6 @@ console.log('in addressComplete');
             select: function(evt, ui) {
                 LastAddressComplete = ui.item
                 searchBox.value = ui.item.label
-                showInfos();
                 addressEntered()
             }
         })
@@ -416,6 +415,7 @@ console.log('in addressEntered');
                         Markers.home = L.marker(AddressData.home.coordinates, {
                             icon: Icons.home,
                         });
+                        writeGeocoding();
                     }
                 }
                 if (!wardDivision || data.features.length === 0) {
@@ -473,8 +473,8 @@ console.log('in popupFunctionAddress');
     }
 
 
-    function dropEventPin(enteredAddress) {
-console.log('in dropEventPin');
+    function writeGeocoding() {
+      console.log(wardDivision, AddressData.home)
 
     }
 
@@ -646,19 +646,6 @@ console.log('in drawShapes');
         setTimeout(grouper, 1000);
     }
     // end map functions
-
-    // ui functions
-    function showInfos() {
-console.log('in showInfos');
-
-        $('#polling-place-intro').hide();
-        $('#polling-place-info').show();
-        $('#elected-officials-intro').hide();
-        $('#elected-officials-info').show();
-        //my maps stuff
-        $('#maps-intro').hide();
-        $('#maps-info').show();
-    }
 
     function addDistrictToList(element, content, value, set) {
 console.log('in addDistrictToList');
