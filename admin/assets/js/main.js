@@ -292,8 +292,7 @@ jQuery.noConflict();
 
     // begin ajax functions
     function addressComplete() {
-console.log('in addressComplete');
-
+        CN()
         if (!searchBox) return false;
         $(searchBox).autocomplete({
             minLength: 3,
@@ -329,8 +328,7 @@ console.log('in addressComplete');
     }
 
     function addressNotEntered() {
-console.log('in addressNotEntered');
-
+        CN()
         if (!searchBox || !searchBox.value) {
             return false;
         }
@@ -348,8 +346,7 @@ console.log('in addressNotEntered');
     }
 
     function addressEntered(message) {
-console.log('in addressEntered');
-
+        CN()
         if (!searchBox || !searchBox.value) {
             return false;
         }
@@ -429,8 +426,7 @@ console.log('in addressEntered');
     }
 
     function popupFunctionAddress(data, service, icon, enteredAddress, content) {
-console.log('in popupFunctionAddress');
-
+        CN()
         $('#multiple_address_tbl').html(content);
         $('#cstm-score-address-popup').dialog({
             modal: true,
@@ -473,7 +469,6 @@ console.log('in popupFunctionAddress');
     }
 
     function writeGeocoding() {
-      console.log(wardDivision, AddressData.home)
       $('#geocodeme_container').fadeOut(100);
       $('#geocoded_container').fadeIn(250);
       $("#lat").val(AddressData.home.coordinates[0]);
@@ -484,8 +479,7 @@ console.log('in popupFunctionAddress');
     }
 
     function getPhilaAddressData(input) {
-console.log('in getPhilaAddressData');
-
+        CN()
         var deferred = $.Deferred(),
             service = Services.geocoder,
             addresses = []
@@ -499,8 +493,7 @@ console.log('in getPhilaAddressData');
     }
 
     function makeAddressDataElement(feature, service, input) {
-console.log('in makeAddressDataElement');
-
+        CN()
         return {
             coordinates: [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
             style: service.style,
@@ -510,8 +503,7 @@ console.log('in makeAddressDataElement');
     }
 
     function getShapeFromService(input, service) {
-console.log('in getShapeFromService');
-
+        CN()
         var deferred = $.Deferred()
         $.getJSON(service.url(input), service.params).done(function(response) {
             var poly, area, centroid;
@@ -555,8 +547,7 @@ console.log('in getShapeFromService');
     }
 
     function getIndexes(input) {
-console.log('in getIndexes');
-
+        CN()
         var deferred = $.Deferred(),
             service = Services.indexer;
         $.getJSON(service.url(input), service.params).done(function(data) {
@@ -575,16 +566,14 @@ console.log('in getIndexes');
 
     // map functions
     function removeBasemaps() {
-console.log('in removeBasemaps');
-
+        CN()
         Lmap.eachLayer(function(layer) {
             Lmap.removeLayer(layer);
         });
     }
 
     function setDefaultBasemaps() {
-console.log('in setDefaultBasemaps');
-
+        CN()
         removeBasemaps()
         if (BASEMAP1) {
             L.esri.tiledMapLayer({
@@ -599,8 +588,7 @@ console.log('in setDefaultBasemaps');
     }
 
     function setAlternateBasemaps() {
-console.log('in setAlternateBasemaps');
-
+        CN()
         removeBasemaps()
         if (BASEMAP2) {
             L.esri.tiledMapLayer({
@@ -610,8 +598,7 @@ console.log('in setAlternateBasemaps');
     }
 
     function clearShapes() {
-console.log('in clearShapes');
-
+        CN()
         for (var prop in Shapes) {
             if (!Shapes.hasOwnProperty(prop)) continue;
             Lmap.removeLayer(Shapes[prop]);
@@ -620,8 +607,7 @@ console.log('in clearShapes');
     }
 
     function clearMarkers(justOne) {
-console.log('in clearMarkers');
-
+        CN()
         // if justOne is set, we clear Markers[justOne], if it exists
         if (justOne && 'undefined' !== typeof Markers[justOne]) {
             Lmap.removeLayer(Markers[justOne]);
@@ -635,15 +621,13 @@ console.log('in clearMarkers');
     }
 
     function drawShape(shape, label) {
-console.log('in drawShape');
-
+        CN()
         Shapes[shape.geoJSON.properties.name] = L.geoJSON(shape.geoJSON, shape.style);
         Shapes[shape.geoJSON.properties.name]['up'] = true;
     }
 
     function drawShapes(shapesToDraw) {
-console.log('in drawShapes');
-
+        CN()
         for (var prop in shapesToDraw) {
             if (!shapesToDraw.hasOwnProperty(prop)) continue;
             drawShape(shapesToDraw[prop], prop);
@@ -653,28 +637,24 @@ console.log('in drawShapes');
     // end map functions
 
     function addDistrictToList(element, content, value, set) {
-console.log('in addDistrictToList');
-
+        CN()
         element.append($('<option />').text(content).val(value).prop('disabled', !!set));
     }
 
     function tabFunc() {
-console.log('in tabFunc');
-
+        CN()
         return tabFunctions[getActive()]();
     }
 
     function getActive() {
-console.log('in getActive');
-
+        CN()
         return $('#nav').find('li.active').attr('id')
     }
 
     // my utils
     // specify markers or set Markers
     function grouper() {
-console.log('in grouper');
-
+        CN()
         var features = [],
             props = [];
 
@@ -739,22 +719,19 @@ console.log('in grouper');
     }
 
     function invalidAddress() {
-console.log('in invalidAddress');
-
+        CN()
         wardDivision = '';
         //if (!searchBox || !searchBox.value) return
         alert('The address you have chosen is invalid. Please select an address in Philadelphia.');
     }
 
     function clearCustomMap() {
-console.log('in clearCustomMap');
-
+        CN()
         $('.custom-map-selector').val([]).change();
     }
 
     function showBallotDropdown() {
-console.log('in showBallotDropdown');
-
+        CN()
         var b = $('#ballots_dropdown').val();
         if (b != '') {
             var a = baseUri + 'ballot_paper/' + b + '.pdf';
@@ -775,14 +752,12 @@ console.log('in showBallotDropdown');
     };
 
     function getHash() {
-console.log('in getHash');
-
+        CN()
         return W.location.hash.substring(1);
     }
 
     function isEqual(value, other) {
-console.log('in isEqual');
-
+        CN()
 
         // Get the value type
         var type = Object.prototype.toString.call(value);
@@ -844,14 +819,12 @@ console.log('in isEqual');
     }
 
     function coordsSwap(coords) {
-console.log('in coordsSwap');
-
+        CN()
         return [coords[1], coords[0]]
     }
 
     function coordsSwapAll(coords) {
-console.log('in coordsSwapAll');
-
+        CN()
         var tmp = []
         for (var i = 0; i < coords.length - 1; i++) {
             tmp.push([coords[i][1], coords[i][0]])
@@ -860,8 +833,7 @@ console.log('in coordsSwapAll');
     }
 
     function pad(n, width, z) {
-console.log('in pad');
-
+        CN()
         n = n + '' // cast to string
         z = z || '0' // default padding: '0'
         width = width || 2 // default digits: 2
@@ -869,20 +841,17 @@ console.log('in pad');
     }
 
     function s4() {
-console.log('in s4');
-
+        CN()
         return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1);
     }
 
     function guid() {
-console.log('in guid');
-
+        CN()
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
     function getQueryParams(qs) {
-console.log('in getQueryParams');
-
+        CN()
         qs = qs.split('+').join(' ');
 
         var params = {},
@@ -897,8 +866,7 @@ console.log('in getQueryParams');
     }
 
     function onhashChange() {
-console.log('in onhashChange');
-
+        CN()
         switch (getHash()) {
             case 'elected-officials':
                 showTabElectedOfficials();
@@ -919,8 +887,6 @@ console.log('in onhashChange');
     }
 
     function CN() {
-console.log('in CN');
-
 
         if (0) {
             return '';
@@ -928,7 +894,7 @@ console.log('in CN');
         var re = /function (.*?)\(/;
         var s = CN.caller.toString();
         var m = re.exec(s);
-        return (m[1]);
+        console.log(m[1]);
     }
 
     // events
