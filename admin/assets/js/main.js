@@ -292,7 +292,7 @@ jQuery.noConflict();
 
     // begin ajax functions
     function addressComplete() {
-        CN()
+        CN(arguments)
         if (!searchBox) return false;
         $(searchBox).autocomplete({
             minLength: 3,
@@ -328,7 +328,7 @@ jQuery.noConflict();
     }
 
     function addressNotEntered() {
-        CN()
+        CN(arguments)
         if (!searchBox || !searchBox.value) {
             return false;
         }
@@ -346,7 +346,7 @@ jQuery.noConflict();
     }
 
     function addressEntered(message) {
-        CN()
+        CN(arguments)
         if (!searchBox || !searchBox.value) {
             return false;
         }
@@ -426,7 +426,7 @@ jQuery.noConflict();
     }
 
     function popupFunctionAddress(data, service, icon, enteredAddress, content) {
-        CN()
+        CN(arguments)
         $('#multiple_address_tbl').html(content);
         $('#cstm-score-address-popup').dialog({
             modal: true,
@@ -479,7 +479,7 @@ jQuery.noConflict();
     }
 
     function getPhilaAddressData(input) {
-        CN()
+        CN(arguments)
         var deferred = $.Deferred(),
             service = Services.geocoder,
             addresses = []
@@ -493,7 +493,7 @@ jQuery.noConflict();
     }
 
     function makeAddressDataElement(feature, service, input) {
-        CN()
+        CN(arguments)
         return {
             coordinates: [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
             style: service.style,
@@ -503,7 +503,7 @@ jQuery.noConflict();
     }
 
     function getShapeFromService(input, service) {
-        CN()
+        CN(arguments)
         var deferred = $.Deferred()
         $.getJSON(service.url(input), service.params).done(function(response) {
             var poly, area, centroid;
@@ -547,7 +547,7 @@ jQuery.noConflict();
     }
 
     function getIndexes(input) {
-        CN()
+        CN(arguments)
         var deferred = $.Deferred(),
             service = Services.indexer;
         $.getJSON(service.url(input), service.params).done(function(data) {
@@ -566,14 +566,14 @@ jQuery.noConflict();
 
     // map functions
     function removeBasemaps() {
-        CN()
+        CN(arguments)
         Lmap.eachLayer(function(layer) {
             Lmap.removeLayer(layer);
         });
     }
 
     function setDefaultBasemaps() {
-        CN()
+        CN(arguments)
         removeBasemaps()
         if (BASEMAP1) {
             L.esri.tiledMapLayer({
@@ -588,7 +588,7 @@ jQuery.noConflict();
     }
 
     function setAlternateBasemaps() {
-        CN()
+        CN(arguments)
         removeBasemaps()
         if (BASEMAP2) {
             L.esri.tiledMapLayer({
@@ -598,7 +598,7 @@ jQuery.noConflict();
     }
 
     function clearShapes() {
-        CN()
+        CN(arguments)
         for (var prop in Shapes) {
             if (!Shapes.hasOwnProperty(prop)) continue;
             Lmap.removeLayer(Shapes[prop]);
@@ -607,7 +607,7 @@ jQuery.noConflict();
     }
 
     function clearMarkers(justOne) {
-        CN()
+        CN(arguments)
         // if justOne is set, we clear Markers[justOne], if it exists
         if (justOne && 'undefined' !== typeof Markers[justOne]) {
             Lmap.removeLayer(Markers[justOne]);
@@ -621,13 +621,13 @@ jQuery.noConflict();
     }
 
     function drawShape(shape, label) {
-        CN()
+        CN(arguments)
         Shapes[shape.geoJSON.properties.name] = L.geoJSON(shape.geoJSON, shape.style);
         Shapes[shape.geoJSON.properties.name]['up'] = true;
     }
 
     function drawShapes(shapesToDraw) {
-        CN()
+        CN(arguments)
         for (var prop in shapesToDraw) {
             if (!shapesToDraw.hasOwnProperty(prop)) continue;
             drawShape(shapesToDraw[prop], prop);
@@ -637,24 +637,24 @@ jQuery.noConflict();
     // end map functions
 
     function addDistrictToList(element, content, value, set) {
-        CN()
+        CN(arguments)
         element.append($('<option />').text(content).val(value).prop('disabled', !!set));
     }
 
     function tabFunc() {
-        CN()
+        CN(arguments)
         return tabFunctions[getActive()]();
     }
 
     function getActive() {
-        CN()
+        CN(arguments)
         return $('#nav').find('li.active').attr('id')
     }
 
     // my utils
     // specify markers or set Markers
     function grouper() {
-        CN()
+        CN(arguments)
         var features = [],
             props = [];
 
@@ -719,19 +719,19 @@ jQuery.noConflict();
     }
 
     function invalidAddress() {
-        CN()
+        CN(arguments)
         wardDivision = '';
         //if (!searchBox || !searchBox.value) return
         alert('The address you have chosen is invalid. Please select an address in Philadelphia.');
     }
 
     function clearCustomMap() {
-        CN()
+        CN(arguments)
         $('.custom-map-selector').val([]).change();
     }
 
     function showBallotDropdown() {
-        CN()
+        CN(arguments)
         var b = $('#ballots_dropdown').val();
         if (b != '') {
             var a = baseUri + 'ballot_paper/' + b + '.pdf';
@@ -752,12 +752,12 @@ jQuery.noConflict();
     };
 
     function getHash() {
-        CN()
+        CN(arguments)
         return W.location.hash.substring(1);
     }
 
     function isEqual(value, other) {
-        CN()
+        CN(arguments)
 
         // Get the value type
         var type = Object.prototype.toString.call(value);
@@ -819,12 +819,12 @@ jQuery.noConflict();
     }
 
     function coordsSwap(coords) {
-        CN()
+        CN(arguments)
         return [coords[1], coords[0]]
     }
 
     function coordsSwapAll(coords) {
-        CN()
+        CN(arguments)
         var tmp = []
         for (var i = 0; i < coords.length - 1; i++) {
             tmp.push([coords[i][1], coords[i][0]])
@@ -833,7 +833,7 @@ jQuery.noConflict();
     }
 
     function pad(n, width, z) {
-        CN()
+        CN(arguments)
         n = n + '' // cast to string
         z = z || '0' // default padding: '0'
         width = width || 2 // default digits: 2
@@ -841,17 +841,17 @@ jQuery.noConflict();
     }
 
     function s4() {
-        CN()
+        CN(arguments)
         return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1);
     }
 
     function guid() {
-        CN()
+        CN(arguments)
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
     function getQueryParams(qs) {
-        CN()
+        CN(arguments)
         qs = qs.split('+').join(' ');
 
         var params = {},
@@ -866,7 +866,7 @@ jQuery.noConflict();
     }
 
     function onhashChange() {
-        CN()
+        CN(arguments)
         switch (getHash()) {
             case 'elected-officials':
                 showTabElectedOfficials();
