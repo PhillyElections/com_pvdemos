@@ -332,5 +332,5 @@ endif;
 <script src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <script src="components/com_pvdemos/assets/js/leaflet.print.js"></script>
 <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"></script>
-<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+<!-- <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>-->
 <script type="text/javascript" src="components/com_pvdemos/assets/js/main.js"></script>
