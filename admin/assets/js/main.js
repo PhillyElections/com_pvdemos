@@ -999,7 +999,7 @@ console.log('in CN');
         } else {
           wardDivision = $("#precinct").val();
           GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
-          var feature;
+          var feature = []
           feature.properties = []
           feature.geometry = []
           feature.properties.election_precinct = wardDivision
