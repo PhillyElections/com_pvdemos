@@ -474,7 +474,7 @@ console.log('in popupFunctionAddress');
 
     function writeGeocoding() {
       console.log(wardDivision, AddressData.home)
-      $('#geocodme_container').fade(100);
+      $('#geocodme_container').fadeOut(100);
       $('#geocoded_container').fadeIn(250);
       $("#lat") = AddressData.home.coordinates.lat;
       $("#lng") = AddressData.home.coordinates.lng;
