@@ -62,7 +62,11 @@ class PvdemosControllerEvent extends PvdemosController
         }
 
         // Let's go back to the default view
-        $link = 'index.php?option=com_pvdemos';
+        if ( 0 < $post['id'] && 'update' == $post['task'] ) {
+            $link = 'index.php?option=com_pvdemos&controller=event&task=edit&cid=' . $post['id'];
+        } else {
+            $link = 'index.php?option=com_pvdemos';
+        }
 
         $this->setRedirect($link, $msg);
     }
