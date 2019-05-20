@@ -1004,7 +1004,7 @@ console.log('in CN');
           feature.geometry = []
           feature.properties.election_precinct = wardDivision
           feature.geometry.coordinates = [$('#lng').val(), $('#lat').val()]
-          AddressData.home = makeAddressDataElement(feature, Sevices.geocoder, $("#address_street").val())
+          AddressData.home = makeAddressDataElement(feature, Services.geocoder, $("#address_street").val())
           Markers.home = L.marker(AddressData.home.coordinates, {
             icon: Icons.home,
           });
