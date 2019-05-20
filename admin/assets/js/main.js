@@ -475,7 +475,13 @@ console.log('in popupFunctionAddress');
 
     function writeGeocoding() {
       console.log(wardDivision, AddressData.home)
-
+      $('#geocodme_container').fade(100);
+      $('#geocoded_container').fadeIn(250);
+      $("#lat") = AddressData.home.coordinates.lat;
+      $("#lng") = AddressData.home.coordinates.lng;
+      $("#precinct") = AddressData.home.data.election_precinct;
+      $("#display-building").val(AddressData.home.coordinates.lat + ", " + AddressData.home.coordinates.lng)
+      $("#display-precinct").val(AddressData.home.data.election_precinct)
     }
 
     function getPhilaAddressData(input) {
