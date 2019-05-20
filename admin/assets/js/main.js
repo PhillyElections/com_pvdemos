@@ -472,7 +472,6 @@ console.log('in popupFunctionAddress');
         });
     }
 
-
     function writeGeocoding() {
       console.log(wardDivision, AddressData.home)
       $('#geocodme_container').fade(100);
