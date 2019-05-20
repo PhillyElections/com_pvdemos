@@ -34,6 +34,7 @@ class PvdemosControllerEvent extends PvdemosController
         $view = $this->getView('event', 'html');
         $view->setModel($this->getModel('Event'), true);
         $view->setModel($this->getModel('Workers'), true);
+        $view->setModel($this->getModel('Events'), true);
 
         JRequest::setVar('view', 'event');
 
