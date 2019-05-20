@@ -190,6 +190,7 @@ endif;
 <?php
 if ($event->lat > 0) :
 ?>
+                <div>
                     <table>
                         <tr>
                             <td>Coord:</td><td id="display-building"><?=$event->lat ;?>, <?=$event->lng ;?></td>
@@ -199,22 +200,24 @@ if ($event->lat > 0) :
                         </tr> 
                         </tr> 
                     </table>
+                <div>
 <?php
 else :
 ?>
                     <div id="geocodeme_container">Geocoding has not yet been set.  <div class="button" id="geocodeme">GEOCODE</div></div>
-                    <table id="geocoded_container" class="hidden">
-                        <tr>
-                            <td class="info">Note: please update or save this record to write these values.</td>
-                        </tr>
-                        <tr>
-                            <td>Coord:</td><td id="display-building">{LAT}, {LNG}</td>
-                        </tr> 
-                        <tr>
-                            <td>Precinct:</td><td id="display-precinct">{PRECINT}</td>
-                        </tr> 
-                        </tr> 
-                    </table>
+                    <div id="geocoded_container" class="hidden">
+                        <table>
+                            <tr>
+                                <td class="info">Note: please update or save this record to write these values.</td>
+                            </tr>
+                            <tr>
+                                <td>Coord:</td><td id="display-building">{LAT}, {LNG}</td>
+                            </tr> 
+                            <tr>
+                                <td>Precinct:</td><td id="display-precinct">{PRECINT}</td>
+                            </tr> 
+                        </table>
+                    </div>
 
 <?php
 endif;
