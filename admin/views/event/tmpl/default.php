@@ -76,7 +76,7 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
   </div>
   <div class="left">
 <?php
-if (($place->id - 1)):
+if (($event->id - 1)):
 ?>
     <div class="left">
         <a title="<?=JText::_('SKIP TO DIVISION');?> Previous" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id - 1));?>" ><?=JText::_('PREVIOUS');?></a>
