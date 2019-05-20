@@ -1007,9 +1007,10 @@ console.log('in CN');
           AddressData.home = makeAddressDataElement(feature, Services.geocoder, $("#address_street").val())
           Markers.home = L.marker(AddressData.home.coordinates, {
             icon: Icons.home,
-          });
-          writeGeocoding();
+          })
+          writeGeocoding()
+          setTimeout(grouper, 500);
         }
-        addressComplete();
+        addressComplete()
     });
 }))
