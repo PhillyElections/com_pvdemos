@@ -62,7 +62,7 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
 
 <form action="<?=JRoute::_('index.php?option=com_pvdemos');?>" method="post" id="adminForm" name="adminForm" class="form-validate">
   <div class="right fifty-five">
-    <input name="target" id="target" />
+    <input name="target" id="target" placeholder="TARGET PLACEHOLDER"/>
     <div id="map-canvas"></div>
     <p>Click to set:
       <ul class="markers">
