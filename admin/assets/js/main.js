@@ -1009,6 +1009,7 @@ console.log('in CN');
             icon: Icons.home,
           })
           writeGeocoding()
+          GrouperContext = 'one.up';
           setTimeout(grouper, 500);
         }
         addressComplete()
