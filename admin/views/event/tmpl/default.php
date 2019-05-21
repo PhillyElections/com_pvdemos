@@ -81,7 +81,6 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
       </ul>
     </p>
   </div>
-  <div class="left">
 <?php
 if (($event->id - 1 && !$this->isNew)):
 ?>
@@ -90,7 +89,7 @@ if (($event->id - 1 && !$this->isNew)):
     </div>
 <?phpz
 endif;
-if (($event->id + 1 !$this->isNew)):
+if (($event->id + 1 && !$this->isNew)):
 ?>
     <div class="right">
       <a title="Skip to division: Next" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id + 1));?>" ><?=JText::_('NEXT');?></a>
