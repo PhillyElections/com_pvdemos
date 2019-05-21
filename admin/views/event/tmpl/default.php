@@ -59,7 +59,7 @@ if (!$this->isNew) {
 // try to cast to object next
 $event = !$this->isNew ? $this->event : (object) JRequest::get('post');
 $events = $this->events;
-d($events);
+s($events);
 $document = JFactory::getDocument();
 
 $document->addStyleSheet('//unpkg.com/leaflet@1.3.1/dist/leaflet.css');
