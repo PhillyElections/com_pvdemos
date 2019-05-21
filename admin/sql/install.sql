@@ -62,4 +62,6 @@ VALUES
 INSERT INTO `#__pv_demos_events` 
 (`id`, `scheduler_id`, `start`, `end`, `name`, `location`, `address_street`, `zip`, `contact`, `email`, `phone`, `ada_confirmed`, `special_ballot_needed`, `published`, `created`)
 VALUES
-('', 2, @_start, @_end, 'super groovy event', 'super groovy event location', '3365 Vaux St', '19123', 'Some Guy', 'mattyhead@google.com', '234-234-1234', 1, 1, 1, @tnow)
+('', 2, @_start, @_end, 'super groovy event', 'super groovy event location', '3365 Vaux St', '19123', 'Some Guy', 'mattyhead@google.com', '234-234-1234', 1, 1, 1, @tnow),
+('', 2, @_start, @_end, 'Other super groovy event', 'Other super groovy event location', '3365 Market St', '19123', 'Some Guy', 'mattyhead@google.com', '234-234-1234', 1, 1, 1, @tnow),
+('', 2, @_start, @_end, 'Other Other super groovy event', 'Other Other super groovy event location', '3365 Market St', '19123', 'Some Guy', 'mattyhead@google.com', '234-234-1234', 1, 1, 1, @tnow)
