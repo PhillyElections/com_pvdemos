@@ -421,7 +421,7 @@ jQuery.noConflict();
             }
         }).then(function(){
             GrouperContext = 'one.up'
-            setTimeout(grouper, 500);
+            setTimeout(function () {grouper("<p><b>Precinct: " + wardDivision + "<br>" + enteredAddress + "</b></p>")}, 500);
         }).fail(invalidAddress);
     }
 
@@ -653,7 +653,7 @@ jQuery.noConflict();
 
     // my utils
     // specify markers or set Markers
-    function grouper() {
+    function grouper(tooltip) {
         CN(arguments)
         var features = [],
             props = [];
@@ -665,7 +665,9 @@ jQuery.noConflict();
                 feature.up = true;
                 feature.addTo(Lmap);
                 console.log(feature)
-                feature.bindTooltip("Test Tooltip").openTooltip();
+                if ($tooltip) {
+                  feature.bindTooltip($tooltip).openTooltip();                  
+                }
                 props.push(prop);
                 features.push(feature);
             }
