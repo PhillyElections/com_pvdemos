@@ -63,18 +63,21 @@ class PvdemosModelEvents extends JModel
         return $query . $where;
     }
 
-    /**
+   /**
      * Retrieve, store, and returns Events data
      * @return array Events Data
      */
-    public function getData()
+    public function getData($noLimit = false)
     {
         // if data hasn't already been obtained, load it
         if (empty($this->_data)) {
             $query       = $this->_buildQuery();
-            $this->_data = $this->_getList($query, $this->getState('limitstart'), $this->getState('limit'));
+            if ($noLimit) {
+                $this->_data = $this->_getList($query);
+            } else {
+                $this->_data = $this->_getList($query, $this->getState('limitstart'), $this->getState('limit'));
+            }
         }
-
         return $this->_data;
     }
 
