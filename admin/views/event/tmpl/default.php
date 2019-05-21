@@ -88,7 +88,7 @@ if (($event->id - 1 && !$this->isNew)):
     <div class="left">
         <a title="<?=JText::_('SKIP TO DIVISION');?> Previous" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id - 1));?>" ><?=JText::_('PREVIOUS');?></a>
     </div>
-<?phpz
+<?php
 endif;
 if (($event->id + 1 && !$this->isNew)):
 ?>
