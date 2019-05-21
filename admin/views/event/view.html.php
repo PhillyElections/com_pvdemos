@@ -22,6 +22,10 @@ class PvdemosViewEvent extends JView
         $workers = $model->getData();
         $this->assignRef('workers', $workers);
 
+        $model = $this->getModel('Events');
+        $events = $model->getData();
+        $this->assignRef('events', $events);
+
         $event = &$this->get('Data');
 
         $isNew = ($event->id < 1);

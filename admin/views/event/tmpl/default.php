@@ -46,9 +46,20 @@ for ($i = 1; $i <= 12; $i++) {
     $hours[]=$object;
 }
 
+
+
+if (!$this->isNew) {
+    $event = $this->event;
+
+} else {
+    $event = (object) JRequest::get('post');
+
+}
+
 // try to cast to object next
 $event = !$this->isNew ? $this->event : (object) JRequest::get('post');
-
+$events = $this->events;
+d($events);
 $document = JFactory::getDocument();
 
 $document->addStyleSheet('//unpkg.com/leaflet@1.3.1/dist/leaflet.css');
@@ -64,26 +75,22 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
   <div class="right fifty-five">
     <input name="target" id="target" placeholder="TARGET PLACEHOLDER"/>
     <div id="map-canvas"></div>
-    <p>Click to set:
+    <p>Click to place a custom marker / override geocoding:
       <ul class="markers">
-        <li class="marker" data-marker="building"><img src="components/com_pvdemos/assets/images/b.png" /> <?=JText::_('BUILDING');?></li>
-        <li class="marker" data-marker="entrance"><img src="components/com_pvdemos/assets/images/e.png" /><?=JText::_('MAIN ENTRANCE');?></li>
-        <li class="marker" data-marker="accessible"><img src="components/com_pvdemos/assets/images/h.png" /><?=JText::_('ACCESSIBLE ENTRANCE');?></li>
-        <li class="marker-cancel"><img src="components/com_pvdemos/assets/images/x.png" /><?=JText::_('STOP PLACING MARKERS');?></li>
-        <li class="marker-clear"><?=JText::_('CLEAR MARKERS');?></li>
+        <li class="marker" id="building"><img src="components/com_pvdemos/assets/images/b.png" /> <?=JText::_('BUILDING');?></li>
       </ul>
     </p>
   </div>
   <div class="left">
 <?php
-if (($event->id - 1)):
+if (($event->id - 1 && !$this->isNew)):
 ?>
     <div class="left">
         <a title="<?=JText::_('SKIP TO DIVISION');?> Previous" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id - 1));?>" ><?=JText::_('PREVIOUS');?></a>
     </div>
-<?php
+<?phpz
 endif;
-if (($event->id + 1)):
+if (($event->id + 1 !$this->isNew)):
 ?>
     <div class="right">
       <a title="Skip to division: Next" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id + 1));?>" ><?=JText::_('NEXT');?></a>
