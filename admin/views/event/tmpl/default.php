@@ -81,6 +81,7 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
       </ul>
     </p>
   </div>
+  <div class="left">
 <?php
 if (($event->id - 1 && !$this->isNew)):
 ?>
@@ -97,9 +98,7 @@ if (($event->id + 1 && !$this->isNew)):
 <?php
 endif;
 ?>
-
   <div class="clearfix"></div>    
-  <div class="left">
     <table cellpadding="0" cellspacing="0" border="0" class="adminform">
         <tbody>
             <tr>
@@ -334,9 +333,8 @@ endif;
             </tr>
         </tbody>
     </table>
-</div>
+  </div>
 </form>
-
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
