@@ -407,7 +407,7 @@ jQuery.noConflict();
                         if (temp.split('-').length > 1) temp = temp.split('-')[0]
                         wardDivision = temp;
                         GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
-/*                        setIndexes();*/
+                console.log(feature)
                         AddressData.home = makeAddressDataElement(feature, service, enteredAddress)
                         Markers.home = L.marker(AddressData.home.coordinates, {
                             icon: Icons.home,
