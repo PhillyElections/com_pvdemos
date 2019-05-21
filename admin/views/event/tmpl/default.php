@@ -58,7 +58,15 @@ if (!$this->isNew) {
 
 // try to cast to object next
 $event = !$this->isNew ? $this->event : (object) JRequest::get('post');
-$events = $this->events;
+$events=[];
+$counter = 0;
+foreach ($this->events as $element) {
+    $events[$counter]=$element;
+    if ($element->id == $event->id) {
+        $current=$counter;
+    }
+    $counter++;
+}
 s($events);
 $document = JFactory::getDocument();
 
@@ -83,17 +91,17 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
   </div>
   <div class="left">
 <?php
-if (($event->id - 1 && !$this->isNew)):
+if (!$this->isNew && isset($events[$current - 1])):
 ?>
     <div class="left">
-        <a title="<?=JText::_('SKIP TO DIVISION');?> Previous" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id - 1));?>" ><?=JText::_('PREVIOUS');?></a>
+        <a title="<?=JText::_('PREVIOUS EVENT RECORD');?> Previous" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . $events[$current - 1]->id) ;?>" ><?=JText::_('PREVIOUS');?></a>
     </div>
 <?php
 endif;
-if (($event->id + 1 && !$this->isNew)):
+if (!$this->isNew && isset($events[$current + 1]) ):
 ?>
     <div class="right">
-      <a title="Skip to division: Next" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . ($event->id + 1));?>" ><?=JText::_('NEXT');?></a>
+      <a title="<?=JText::_('NEXT EVENT RECORD');?>" class="btn" href="<?=JRoute::_('index.php?option=com_pvdemos&controller=event&task=edit&cid[]=' . $events[$current + 1]->id) ;?>" ><?=JText::_('NEXT');?></a>
     </div>
 <?php
 endif;
