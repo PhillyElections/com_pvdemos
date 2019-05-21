@@ -664,6 +664,7 @@ jQuery.noConflict();
             if ((GrouperContext == 'all.up' && feature.up) || GrouperContext.indexOf(prop) > -1 || GrouperContext == 'one.up') {
                 feature.up = true;
                 feature.addTo(Lmap);
+                feature.bindTooltip("Test Tooltip").openTooltip();
                 props.push(prop);
                 features.push(feature);
             }
