@@ -665,8 +665,8 @@ jQuery.noConflict();
                 feature.up = true;
                 feature.addTo(Lmap);
                 console.log(feature)
-                if ($tooltip) {
-                  feature.bindTooltip($tooltip).openTooltip();                  
+                if (tooltip) {
+                  feature.bindTooltip(tooltip).openTooltip();                  
                 }
                 props.push(prop);
                 features.push(feature);
