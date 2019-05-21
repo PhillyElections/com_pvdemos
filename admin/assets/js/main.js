@@ -423,7 +423,7 @@ jQuery.noConflict();
             }
         }).then(function(){
             GrouperContext = 'one.up'
-            setTimeout(function () {grouper("<p><b>" + enteredAddress + "</b><br>Zip: <b>" + zipCode + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
+            setTimeout(function () {grouper("<p style=\"border: 1px black\"><b>" + enteredAddress + "</b><br>Zip: <b>" + zipCode + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
         }).fail(invalidAddress);
     }
 
