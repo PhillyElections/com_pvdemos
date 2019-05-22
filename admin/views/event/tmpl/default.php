@@ -343,6 +343,7 @@ endif;
             </tr>
         </tbody>
     </table>
+    <div id="cstm-score-address-popup" style="display:none;" title="<?php echo JText::_('MODALBOX TEXT'); ?>" class="custom-class">
   </div>
 </form>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
