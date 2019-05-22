@@ -83,12 +83,6 @@ $document->addStyleSheet('components/com_pvdemos/assets/css/main.css');
   <div class="right fifty-five">
     <input name="target" id="target" placeholder="TARGET PLACEHOLDER"/>
     <div id="map-canvas"></div>
-<!--     <p>Click to place a custom marker / override geocoding:
-      <ul class="markers">
-        <li class="marker" id="building"><img src="components/com_pvdemos/assets/images/b.png" /> <?=JText::_('BUILDING');?></li>
-      </ul>
-    </p>
- -->
   </div>
   <div class="left">
 <?php
