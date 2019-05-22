@@ -46,16 +46,6 @@ for ($i = 1; $i <= 12; $i++) {
     $hours[]=$object;
 }
 
-
-
-if (!$this->isNew) {
-    $event = $this->event;
-
-} else {
-    $event = (object) JRequest::get('post');
-
-}
-
 // try to cast to object next
 $event = !$this->isNew ? $this->event : (object) JRequest::get('post');
 $events=[];
