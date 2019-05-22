@@ -24,50 +24,8 @@ jQuery.noConflict();
         FeatureGroup,
         Lmap,
         geocoder,
-        mayorAddress,
-        endMarker,
         wardDivision,
         searchBox,
-        divisions,
-        wards,
-        councilDistricts,
-        stateRepDistricts,
-        stateSenateDistricts,
-        usCongressDistricts,
-        officeToId = {
-            'President of the United States': '#potus',
-            'U.S. Senate': '#us-senators',
-            'U.S. Representative': '#us-representative',
-            'Governor': '#governor',
-            'Lieutenant Governor': '#lieutenant-governor',
-            'Attorney General': '#attorney-general',
-            'State Treasurer': '#state-treasurer',
-            'Auditor General': '#auditor-general',
-            'State Senator': '#state-senator',
-            'State Representative': '#state-representative',
-            'Mayor': '#mayor',
-            'District Attorney': '#district-attorney',
-            'City Controller': '#city-controller',
-            'Register of Wills': '#register-of-wills',
-            'Sheriff': '#sheriff',
-            'City Commissioner': '#city-commissioners',
-            'City Council At-Large': '#city-council-at-large',
-            'City Council': '#city-council'
-        },
-        buildingCodes = {
-            'F': 'BUILDING FULLY ACCESSIBLE',
-            'A': 'ALTERNATE ENTRANCE',
-            'B': 'BUILDING SUBSTANTIALLY ACCESSIBLE',
-            'R': 'ACCESSIBLE WITH RAMP',
-            'M': 'BUILDING ACCESSIBLITY MODIFIED',
-            'N': 'BUILDING NOT ACCESSIBLE'
-        },
-        parkingCodes = {
-            'N': 'NO PARKING',
-            'L': 'LOADING ZONE',
-            'H': 'HANDICAP PARKING',
-            'G': 'GENERAL PARKING'
-        },
         Icons = {
             home: L.icon({
                 iconUrl: 'components/com_pvdemos/assets/images/b.png',
@@ -473,6 +431,7 @@ jQuery.noConflict();
     function writeGeocoding() {
       $('#geocodeme_container').fadeOut(100);
       $('#geocoded_container').fadeIn(250);
+      $("#lat").val(AddressData.home.data.zip_code);
       $("#lat").val(AddressData.home.coordinates[0]);
       $("#lng").val(AddressData.home.coordinates[1]);
       $("#precinct").val(AddressData.home.data.election_precinct);
@@ -757,11 +716,6 @@ jQuery.noConflict();
         });
     };
 
-    function getHash() {
-        CN(arguments)
-        return W.location.hash.substring(1);
-    }
-
     function isEqual(value, other) {
         CN(arguments)
 
@@ -846,52 +800,6 @@ jQuery.noConflict();
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
     }
 
-    function s4() {
-        CN(arguments)
-        return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1);
-    }
-
-    function guid() {
-        CN(arguments)
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    }
-
-    function getQueryParams(qs) {
-        CN(arguments)
-        qs = qs.split('+').join(' ');
-
-        var params = {},
-            tokens,
-            re = /[?&]?([^=]+)=([^&]*)/g;
-
-        while (tokens = re.exec(qs)) {
-            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
-        }
-
-        return params;
-    }
-
-    function onhashChange() {
-        CN(arguments)
-        switch (getHash()) {
-            case 'elected-officials':
-                showTabElectedOfficials();
-                break;
-            case 'polling-place':
-                showTabPollingplace();
-                break;
-            case 'my-maps':
-                showTabMyMaps();
-                break;
-            case 'maps':
-                showTabMaps();
-                break;
-            case 'ballots':
-                showTabBallot();
-                break;
-        }
-    }
-
     function CN(args) {
 
         if (0) {
@@ -904,12 +812,6 @@ jQuery.noConflict();
     }
 
     // events
-
-    if (D.addEventListener) {
-        W.addEventListener('hashchange', onhashChange, false);
-    } else if (D.attachEvent) {
-        W.attachEvent('onhashchange', onhashChange);
-    }
 
     // explicit typed search
     $(D).on('keydown', '#target', function(event) {
