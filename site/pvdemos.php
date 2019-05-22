@@ -19,7 +19,7 @@ $language->load(JRequest::getCmd('option'), JPATH_SITE);
 require_once JPATH_COMPONENT . DS . 'controller.php';
 
 // Require specific controller if requested
-if ($controller = JRequest::getWord('view', 'items')) {
+if ($controller = JRequest::getWord('view', 'event')) {
     $path = JPATH_COMPONENT . DS . 'controllers' . DS . $controller . '.php';
     if (file_exists($path)) {
         require_once $path;
