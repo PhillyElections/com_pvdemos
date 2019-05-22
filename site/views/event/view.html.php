@@ -28,7 +28,7 @@ class PvdemosViewEvent extends JView
         }
         $this->assignRef('event', $event);
         $this->assignRef('isNew', $isNew);
-
-        parent::display($tpl);*/
+*/
+        parent::display();
     }
 }
