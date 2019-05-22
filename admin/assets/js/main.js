@@ -431,7 +431,7 @@ jQuery.noConflict();
     function writeGeocoding() {
       $('#geocodeme_container').fadeOut(100);
       $('#geocoded_container').fadeIn(250);
-      $("#lat").val(AddressData.home.data.zip_code);
+      $("#zip").val(AddressData.home.data.zip_code);
       $("#lat").val(AddressData.home.coordinates[0]);
       $("#lng").val(AddressData.home.coordinates[1]);
       $("#precinct").val(AddressData.home.data.election_precinct);
