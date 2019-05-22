@@ -39,7 +39,7 @@ class PvdemosViewEvent extends JView
             // $tpl = 'add';
         } else {
             // for existing events the button is renamed `close`
-            JToolBarHelper::save('save', 'Update');
+            JToolBarHelper::save('save', 'Save');
             JToolBarHelper::cancel('cancel', 'Close');
         }
 
