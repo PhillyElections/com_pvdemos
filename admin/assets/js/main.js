@@ -345,7 +345,7 @@ jQuery.noConflict();
         }
     }
 
-    function addressEntered(message=1) {
+    function addressEntered(message) {
         CN(arguments)
         if (!searchBox || !searchBox.value) {
             return false;
@@ -373,7 +373,7 @@ jQuery.noConflict();
         }
         enteredAddress = searchBox.value;
         icon = baseUri + 'components/com_pvdemos/assets/images/home.png';
-        if (message == '1') {
+        if (message == 1) {
             getHome = getPhilaAddressData(enteredAddress)
         } else {
             getHome = getPhilaAddressData(LastAddressComplete.label + ', ' + LastAddressComplete.zip);
@@ -443,13 +443,14 @@ jQuery.noConflict();
                             $.each(data.features, function(idx, feature) {
                                 if (checkedInputVal == feature.properties.street_address) {
                                     wardDivision = feature.properties.election_precinct || feature.properties.political_division;
+                                    zipCode = feature.properties.zip_code
                                     GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
 
-                                    AddressData.home = makeAddressDataElement(feature, service, checkedInputVal);
-                                    $('#target').val(checkedInputVal);
+                                    AddressData.home = makeAddressDataElement(feature, service, checkedInputVal)
                                     Markers.home = L.marker(AddressData.home.coordinates, {
                                         icon: Icons.home,
                                     });
+                                    writeGeocoding();
                                 }
                             });
                             if (!wardDivision || data.features.length === 0) {
