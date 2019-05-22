@@ -189,11 +189,12 @@ endif;
             <tr>
                 <td width="200" height="30">
                     <label id="address_extramsg" for="address_extra">
-                        <?=JText::_('ADDRESS EXTRAS');?>:
+                        <?=JText::_('ADDRESS EXTRAS / ZIP');?>:
                     </label>
                 </td>
                 <td>
-                    <input type="text" id="address_extra" name="address_extra" size="62" value="<?=$event->address_extra ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS EXTRAS PLACEHOLDER');?>" />
+                    <input type="text" id="address_extra" name="address_extra" size="30" value="<?=$event->address_extra ;?>" class="input_box required" maxlength="60" placeholder="<?=JText::_('ADDRESS EXTRAS PLACEHOLDER');?>" />
+                    Zip:<input type="text" id="zip" name="zip" size="5" value="<?=$event->zip ;?>" class="input_box required" maxlength="5" placeholder="<?=JText::_('ZIP PLACEHOLDER');?>" />
                 </td>
             </tr>
             <tr>
