@@ -31,7 +31,7 @@ class PvdemosControllerEvent extends PvdemosController
     public function edit()
     {
         // if 'raw' isn't explicit, set to 'html'
-        $view = $this->getView('event', 'html');
+        $view = $this->getView('event', 'raw');
 
         JRequest::setVar('view', 'event');
 
