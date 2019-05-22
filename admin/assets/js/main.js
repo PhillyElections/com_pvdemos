@@ -28,46 +28,6 @@ jQuery.noConflict();
         endMarker,
         wardDivision,
         searchBox,
-        divisions,
-        wards,
-        councilDistricts,
-        stateRepDistricts,
-        stateSenateDistricts,
-        usCongressDistricts,
-        officeToId = {
-            'President of the United States': '#potus',
-            'U.S. Senate': '#us-senators',
-            'U.S. Representative': '#us-representative',
-            'Governor': '#governor',
-            'Lieutenant Governor': '#lieutenant-governor',
-            'Attorney General': '#attorney-general',
-            'State Treasurer': '#state-treasurer',
-            'Auditor General': '#auditor-general',
-            'State Senator': '#state-senator',
-            'State Representative': '#state-representative',
-            'Mayor': '#mayor',
-            'District Attorney': '#district-attorney',
-            'City Controller': '#city-controller',
-            'Register of Wills': '#register-of-wills',
-            'Sheriff': '#sheriff',
-            'City Commissioner': '#city-commissioners',
-            'City Council At-Large': '#city-council-at-large',
-            'City Council': '#city-council'
-        },
-        buildingCodes = {
-            'F': 'BUILDING FULLY ACCESSIBLE',
-            'A': 'ALTERNATE ENTRANCE',
-            'B': 'BUILDING SUBSTANTIALLY ACCESSIBLE',
-            'R': 'ACCESSIBLE WITH RAMP',
-            'M': 'BUILDING ACCESSIBLITY MODIFIED',
-            'N': 'BUILDING NOT ACCESSIBLE'
-        },
-        parkingCodes = {
-            'N': 'NO PARKING',
-            'L': 'LOADING ZONE',
-            'H': 'HANDICAP PARKING',
-            'G': 'GENERAL PARKING'
-        },
         Icons = {
             home: L.icon({
                 iconUrl: 'components/com_pvdemos/assets/images/b.png',
@@ -407,7 +367,7 @@ jQuery.noConflict();
                         var temp = feature.properties.election_precinct || feature.properties.political_division;
                         if (temp.split('-').length > 1) temp = temp.split('-')[0]
                         wardDivision = temp;
-                        zipCode = feature.properties.zip_code
+                        //zipCode = feature.properties.zip_code
                         GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
                 console.log(feature)
                         AddressData.home = makeAddressDataElement(feature, service, enteredAddress)
@@ -415,15 +375,14 @@ jQuery.noConflict();
                             icon: Icons.home,
                         });
                         writeGeocoding();
+                        GrouperContext = 'one.up'
+                        setTimeout(function () {grouper("<p style=\"border: 1px black\"><b>" + enteredAddress + "</b><br>Zip: <b>" + feature.properties.zip_code + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
                     }
                 }
                 if (!wardDivision || data.features.length === 0) {
                     invalidAddress();
                 }
             }
-        }).then(function(){
-            GrouperContext = 'one.up'
-            setTimeout(function () {grouper("<p style=\"border: 1px black\"><b>" + enteredAddress + "</b><br>Zip: <b>" + zipCode + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
         }).fail(invalidAddress);
     }
 
@@ -443,7 +402,7 @@ jQuery.noConflict();
                             JQ.each(data.features, function(idx, feature) {
                                 if (checkedInputVal == feature.properties.street_address) {
                                     wardDivision = feature.properties.election_precinct || feature.properties.political_division;
-                                    zipCode = feature.properties.zip_code
+                                    //zipCode = feature.properties.zip_code
                                     GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
 
                                     AddressData.home = makeAddressDataElement(feature, service, checkedInputVal)
@@ -451,6 +410,8 @@ jQuery.noConflict();
                                         icon: Icons.home,
                                     });
                                     writeGeocoding();
+                                    GrouperContext = 'one.up'
+                                    setTimeout(function () {grouper("<p style=\"border: 1px black\"><b>" + enteredAddress + "</b><br>Zip: <b>" + feature.properties.zip_code + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
                                 }
                             });
                             if (!wardDivision || data.features.length === 0) {
