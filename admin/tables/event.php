@@ -32,6 +32,7 @@ class TableEvent extends JTable
     public $precinct;
     public $lat;
     public $lng;
+    public $payload;
     public $published;
     public $created;
     public $updated;
