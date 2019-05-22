@@ -25,6 +25,19 @@ class PvdemosControllerEvent extends PvdemosController
     }
 
     /**
+     * Display the edit form
+     * @return void
+     */
+    public function edit()
+    {
+        // if 'raw' isn't explicit, set to 'html'
+        $view = $this->getView('event', 'html');
+
+        JRequest::setVar('view', 'event');
+
+        parent::display();
+    }
+    /**
      * Save a record (and redirect to main page)
      *
      * @return void
