@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage Components
  * @license    GNU/GPL
  */
-class PvdemosModelPvdemos extends JModel
+class PvdemosModelEvent extends JModel
 {
     /**
      * Constructor retrieves the ID from the request
