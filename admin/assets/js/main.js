@@ -351,7 +351,6 @@ jQuery.noConflict();
             return false;
         }
         var enteredAddress,
-            zipCode,
             getHome,
             icon,
             marker,
@@ -407,9 +406,8 @@ jQuery.noConflict();
                         var temp = feature.properties.election_precinct || feature.properties.political_division;
                         if (temp.split('-').length > 1) temp = temp.split('-')[0]
                         wardDivision = temp;
-                        zipCode = feature.properties.zip_code
                         GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
-                console.log(feature)
+/*                        setIndexes();*/
                         AddressData.home = makeAddressDataElement(feature, service, enteredAddress)
                         Markers.home = L.marker(AddressData.home.coordinates, {
                             icon: Icons.home,
@@ -423,7 +421,7 @@ jQuery.noConflict();
             }
         }).then(function(){
             GrouperContext = 'one.up'
-            setTimeout(function () {grouper("<p style=\"border: 1px black\"><b>" + enteredAddress + "</b><br>Zip: <b>" + zipCode + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
+            setTimeout(function () {grouper("<p><b>Precinct: " + wardDivision + "<br>" + enteredAddress + "</b></p>")}, 500);
         }).fail(invalidAddress);
     }
 
@@ -758,6 +756,11 @@ jQuery.noConflict();
         });
     };
 
+    function getHash() {
+        CN(arguments)
+        return W.location.hash.substring(1);
+    }
+
     function isEqual(value, other) {
         CN(arguments)
 
@@ -842,6 +845,52 @@ jQuery.noConflict();
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
     }
 
+    function s4() {
+        CN(arguments)
+        return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1);
+    }
+
+    function guid() {
+        CN(arguments)
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
+
+    function getQueryParams(qs) {
+        CN(arguments)
+        qs = qs.split('+').join(' ');
+
+        var params = {},
+            tokens,
+            re = /[?&]?([^=]+)=([^&]*)/g;
+
+        while (tokens = re.exec(qs)) {
+            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+        }
+
+        return params;
+    }
+
+    function onhashChange() {
+        CN(arguments)
+        switch (getHash()) {
+            case 'elected-officials':
+                showTabElectedOfficials();
+                break;
+            case 'polling-place':
+                showTabPollingplace();
+                break;
+            case 'my-maps':
+                showTabMyMaps();
+                break;
+            case 'maps':
+                showTabMaps();
+                break;
+            case 'ballots':
+                showTabBallot();
+                break;
+        }
+    }
+
     function CN(args) {
 
         if (0) {
@@ -854,6 +903,12 @@ jQuery.noConflict();
     }
 
     // events
+
+    if (D.addEventListener) {
+        W.addEventListener('hashchange', onhashChange, false);
+    } else if (D.attachEvent) {
+        W.attachEvent('onhashchange', onhashChange);
+    }
 
     // explicit typed search
     $(D).on('keydown', '#target', function(event) {
