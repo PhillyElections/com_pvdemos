@@ -351,6 +351,7 @@ jQuery.noConflict();
             return false;
         }
         var enteredAddress,
+            zipCode,
             getHome,
             icon,
             marker,
@@ -406,8 +407,9 @@ jQuery.noConflict();
                         var temp = feature.properties.election_precinct || feature.properties.political_division;
                         if (temp.split('-').length > 1) temp = temp.split('-')[0]
                         wardDivision = temp;
+                        zipCode = feature.properties.zip_code
                         GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
-/*                        setIndexes();*/
+                console.log(feature)
                         AddressData.home = makeAddressDataElement(feature, service, enteredAddress)
                         Markers.home = L.marker(AddressData.home.coordinates, {
                             icon: Icons.home,
@@ -421,7 +423,7 @@ jQuery.noConflict();
             }
         }).then(function(){
             GrouperContext = 'one.up'
-            setTimeout(function () {grouper("<p><b>Precinct: " + wardDivision + "<br>" + enteredAddress + "</b></p>")}, 500);
+            setTimeout(function () {grouper("<p style=\"border: 1px black\"><b>" + enteredAddress + "</b><br>Zip: <b>" + zipCode + "</b><br>Precinct: <b>" + wardDivision + "</b></p>")}, 500);
         }).fail(invalidAddress);
     }
 
@@ -471,7 +473,6 @@ jQuery.noConflict();
     function writeGeocoding() {
       $('#geocodeme_container').fadeOut(100);
       $('#geocoded_container').fadeIn(250);
-      $("#zip").val(AddressData.home.data.zip_code);
       $("#lat").val(AddressData.home.coordinates[0]);
       $("#lng").val(AddressData.home.coordinates[1]);
       $("#precinct").val(AddressData.home.data.election_precinct);
