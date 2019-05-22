@@ -345,7 +345,7 @@ jQuery.noConflict();
         }
     }
 
-    function addressEntered(message) {
+    function addressEntered(message=1) {
         CN(arguments)
         if (!searchBox || !searchBox.value) {
             return false;
