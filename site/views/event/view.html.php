@@ -3,32 +3,32 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Item View for PvDemos Component
+ * Event View for PvDemos Component
  *
  * @package    Philadelphia.Votes
  * @subpackage Components
  * @license    GNU/GPL
  */
-class PvdemosViewItem extends JView
+class PvdemosViewEvent extends JView
 {
     /**
-     * Item view display method
+     * Event view display method
      * @return void
      **/
     public function display($tpl = null)
     {
 
-        $item = &$this->get('Data');
+/*        $event = &$this->get('Data');
 
-        $isNew = ($item->id < 1);
+        $isNew = ($event->id < 1);
 
 
         if ($isNew) {
             $tpl = 'add';
         }
-        $this->assignRef('item', $item);
+        $this->assignRef('event', $event);
         $this->assignRef('isNew', $isNew);
 
-        parent::display($tpl);
+        parent::display($tpl);*/
     }
 }
