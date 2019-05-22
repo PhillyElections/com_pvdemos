@@ -1,7 +1,7 @@
 jQuery.noConflict();
 (function(scoped) {
     scoped(window.jQuery, window.L, window, document)
-}(function($, L, W, D) {
+}(function(JQ, L, W, D) {
     //'use strict'
 
     var ie = /msie ([0-9]+)\.[0-9]+/.exec(navigator.userAgent.toLowerCase()),
@@ -294,7 +294,7 @@ jQuery.noConflict();
     function addressComplete() {
         CN(arguments)
         if (!searchBox) return false;
-        $(searchBox).autocomplete({
+        JQ(searchBox).autocomplete({
             minLength: 3,
             source: function(request, callback) {
                 var service = Services.address_completer,
@@ -302,9 +302,9 @@ jQuery.noConflict();
                 // let's not run until we've entered a street number
                 // and the first letter of the street
                 if (space > 0 && space < request.term.length - 1) {
-                    $.getJSON(service.url(request.term), service.params, function(response) {
+                    JQ.getJSON(service.url(request.term), service.params, function(response) {
                         if (response.status == "success") {
-                            var addresses = $.map(response.data, function(candidate) {
+                            var addresses = JQ.map(response.data, function(candidate) {
                                 return {
                                     label: candidate.address,
                                     value: candidate.address,
@@ -382,7 +382,7 @@ jQuery.noConflict();
             var i = 0,
                 customAddressTables = '<table width=" 100%" cellspacing="0" cellpadding="3" id="multiple_address_tbl">',
                 customAddressTablesFullMarks = '<table width=" 100%" cellspacing="0" cellpadding="3" id="multiple_address_tbl">';
-            $.each(data.features, function(idx, feature) {
+            JQ.each(data.features, function(idx, feature) {
                 customAddressTables += '<tr><td><input type="radio" name="address_vals" value="' + feature.properties.street_address + '">' + feature.properties.street_address + '</td></tr>';
                 if (feature.match_type = 'exact') {
                     i++;
@@ -429,18 +429,18 @@ jQuery.noConflict();
 
     function popupFunctionAddress(data, service, icon, enteredAddress, content) {
         CN(arguments)
-        $('#multiple_address_tbl').html(content);
-        $('#cstm-score-address-popup').dialog({
+        JQ('#multiple_address_tbl').html(content);
+        JQ('#cstm-score-address-popup').dialog({
             modal: true,
             buttons: {
                 Ok: function() {
-                    if ($('[name="address_vals"]').is(':checked')) {
-                        var checkedInputVal = $('input:radio[name=address_vals]:checked').val();
-                        $('#cstm-score-address-popup').dialog('close');
+                    if (JQ('[name="address_vals"]').is(':checked')) {
+                        var checkedInputVal = JQ('input:radio[name=address_vals]:checked').val();
+                        JQ('#cstm-score-address-popup').dialog('close');
                         if (checkedInputVal == '-1') {
-                            $('#target').val('');
+                            JQ('#target').val('');
                         } else {
-                            $.each(data.features, function(idx, feature) {
+                            JQ.each(data.features, function(idx, feature) {
                                 if (checkedInputVal == feature.properties.street_address) {
                                     wardDivision = feature.properties.election_precinct || feature.properties.political_division;
                                     zipCode = feature.properties.zip_code
@@ -460,7 +460,7 @@ jQuery.noConflict();
                             }
                         }
                     } else {
-                        var tips = $('.validateTips');
+                        var tips = JQ('.validateTips');
                         tips.text('Please select at least one Address').addClass('ui-state-highlight');
                         setTimeout(function() {
                             tips.removeClass('ui-state-highlight', 1000);
@@ -472,22 +472,22 @@ jQuery.noConflict();
     }
 
     function writeGeocoding() {
-      $('#geocodeme_container').fadeOut(100);
-      $('#geocoded_container').fadeIn(250);
-      $("#zip").val(AddressData.home.data.zip_code);
-      $("#lat").val(AddressData.home.coordinates[0]);
-      $("#lng").val(AddressData.home.coordinates[1]);
-      $("#precinct").val(AddressData.home.data.election_precinct);
-      $("#display-building").text(AddressData.home.coordinates[0] + ", " + AddressData.home.coordinates[1])
-      $("#display-precinct").text(AddressData.home.data.election_precinct)
+      JQ('#geocodeme_container').fadeOut(100);
+      JQ('#geocoded_container').fadeIn(250);
+      JQ("#zip").val(AddressData.home.data.zip_code);
+      JQ("#lat").val(AddressData.home.coordinates[0]);
+      JQ("#lng").val(AddressData.home.coordinates[1]);
+      JQ("#precinct").val(AddressData.home.data.election_precinct);
+      JQ("#display-building").text(AddressData.home.coordinates[0] + ", " + AddressData.home.coordinates[1])
+      JQ("#display-precinct").text(AddressData.home.data.election_precinct)
     }
 
     function getPhilaAddressData(input) {
         CN(arguments)
-        var deferred = $.Deferred(),
+        var deferred = JQ.Deferred(),
             service = Services.geocoder,
             addresses = []
-        $.getJSON(service.url(input), service.params).done(function(response) {
+        JQ.getJSON(service.url(input), service.params).done(function(response) {
             deferred.resolve(response)
         }).fail(function(response) {
             deferred.reject(response);
@@ -508,8 +508,8 @@ jQuery.noConflict();
 
     function getShapeFromService(input, service) {
         CN(arguments)
-        var deferred = $.Deferred()
-        $.getJSON(service.url(input), service.params).done(function(response) {
+        var deferred = JQ.Deferred()
+        JQ.getJSON(service.url(input), service.params).done(function(response) {
             var poly, area, centroid;
             if (response.features) {
                 if ("undefined" == typeof response.features[0].centroid || !response.features[0].centroid) {
@@ -552,9 +552,9 @@ jQuery.noConflict();
 
     function getIndexes(input) {
         CN(arguments)
-        var deferred = $.Deferred(),
+        var deferred = JQ.Deferred(),
             service = Services.indexer;
-        $.getJSON(service.url(input), service.params).done(function(data) {
+        JQ.getJSON(service.url(input), service.params).done(function(data) {
             if (data.features) {
                 deferred.resolve(data);
             } else {
@@ -642,7 +642,7 @@ jQuery.noConflict();
 
     function addDistrictToList(element, content, value, set) {
         CN(arguments)
-        element.append($('<option />').text(content).val(value).prop('disabled', !!set));
+        element.append(JQ('<option />').text(content).val(value).prop('disabled', !!set));
     }
 
     function tabFunc() {
@@ -652,7 +652,7 @@ jQuery.noConflict();
 
     function getActive() {
         CN(arguments)
-        return $('#nav').find('li.active').attr('id')
+        return JQ('#nav').find('li.active').attr('id')
     }
 
     // my utils
@@ -735,12 +735,12 @@ jQuery.noConflict();
 
     function clearCustomMap() {
         CN(arguments)
-        $('.custom-map-selector').val([]).change();
+        JQ('.custom-map-selector').val([]).change();
     }
 
     function showBallotDropdown() {
         CN(arguments)
-        var b = $('#ballots_dropdown').val();
+        var b = JQ('#ballots_dropdown').val();
         if (b != '') {
             var a = baseUri + 'ballot_paper/' + b + '.pdf';
             var c = W.open(a, '_blank');
@@ -751,7 +751,7 @@ jQuery.noConflict();
     }
 
     // utils
-    $.support.cors = true;
+    JQ.support.cors = true;
 
     String.prototype.toProperCase = function() {
         return this.replace(/\w\S*/g, function(a) {
@@ -914,7 +914,7 @@ jQuery.noConflict();
     }
 
     // explicit typed search
-    $(D).on('keydown', '#target', function(event) {
+    JQ(D).on('keydown', '#target', function(event) {
         if (event.key === 'Enter' && searchBox.value) {
             LastAddressComplete = [];
             addressEntered(1)
@@ -922,35 +922,35 @@ jQuery.noConflict();
     });
 
     // explicit clicked search
-    $(D).on('click', '#geocodeme', function(event) {
-        searchBox.value = $('#address_street').val();
+    JQ(D).on('click', '#geocodeme', function(event) {
+        searchBox.value = JQ('#address_street').val();
         LastAddressComplete = [];
         addressEntered(1)
     });
 
     // overcome chrome autocomplete
-    $(D).on('mouseup keyup','#target', function () {
-        var val = $('#target').val();
+    JQ(D).on('mouseup keyup','#target', function () {
+        var val = JQ('#target').val();
         val = val.length;
         if (val === 0) {
-            $('#target').attr('autocomplete', 'on');
+            JQ('#target').attr('autocomplete', 'on');
         }
         else {
-            $('#target').attr('autocomplete', 'new-password');
+            JQ('#target').attr('autocomplete', 'new-password');
         }
     }).on('mousedown keydown','#target', function () {
-        var val = $('#target').val();
+        var val = JQ('#target').val();
         var length = val.length;
         if (!length) {
-            $('#target').attr('autocomplete', 'new-password');
+            JQ('#target').attr('autocomplete', 'new-password');
         }
     });
 
     // init
-    $(function() {
+    JQ(function() {
         // ui setup actions
-        $('.office-level-accordion > dd').hide();
-        $('.office-accordion > dd').hide();
+        JQ('.office-level-accordion > dd').hide();
+        JQ('.office-accordion > dd').hide();
 
         // Lmap setup
         D.getElementById('map-canvas').style.zIndex = 1
@@ -967,18 +967,18 @@ jQuery.noConflict();
         L.control.browserPrint().addTo(Lmap)
         searchBox = D.getElementById('target');
 
-        var $gc = $('#geocoded_container');
-        if ($gc.length) {
-          $gc.removeClass('hidden').hide();
+        var JQgc = JQ('#geocoded_container');
+        if (JQgc.length) {
+          JQgc.removeClass('hidden').hide();
         } else {
-          wardDivision = $("#precinct").val();
+          wardDivision = JQ("#precinct").val();
           GrouperContext = ['home', 'pollingplace', wardDivision.toString()]
           var feature = []
           feature.properties = []
           feature.geometry = []
           feature.properties.election_precinct = wardDivision
-          feature.geometry.coordinates = [$('#lng').val(), $('#lat').val()]
-          AddressData.home = makeAddressDataElement(feature, Services.geocoder, $("#address_street").val())
+          feature.geometry.coordinates = [JQ('#lng').val(), JQ('#lat').val()]
+          AddressData.home = makeAddressDataElement(feature, Services.geocoder, JQ("#address_street").val())
           Markers.home = L.marker(AddressData.home.coordinates, {
             icon: Icons.home,
           })
