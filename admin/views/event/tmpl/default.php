@@ -343,7 +343,17 @@ endif;
             </tr>
         </tbody>
     </table>
-    <div id="cstm-score-address-popup" style="display:none;" title="<?php echo JText::_('MODALBOX TEXT'); ?>" class="custom-class">
+  </div>
+  <div id="cstm-score-address-popup" style="display:none;" title="<?php echo JText::_('MODALBOX TEXT'); ?>" class="custom-class">
+      <p class="validateTips"></p>
+      <table width=" 100%" cellspacing="0" cellpadding="3" id="multiple_address_tbl">
+          <tr>
+              <td><input type="radio" name="address_vals" value="male">Male</td>
+          </tr>
+          <tr>
+              <td><input type="radio" name="address_vals" value="female">Female</td>
+          </tr>
+      </table>
   </div>
 </form>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
