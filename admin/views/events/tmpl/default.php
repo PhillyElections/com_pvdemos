@@ -38,6 +38,9 @@ foreach ($workers as $key=>$worker) {
                         <?=JText::_('EVENT NAME');?>
                     </th>
                     <th width="12%">
+                        <?=JText::_('ORGANIZATION NAME');?>
+                    </th>
+                    <th width="12%">
                         <?=JText::_('LOCATION NAME');?>
                     </th>
                     <th width="10%">
@@ -93,10 +96,13 @@ for ($i = 0, $n = count($events); $i < $n; $i++) {
                         <?=$row->end;?>
                     </td>
                     <td>
-                        <a href="<?=$link?>"><?=$row->name;?></a>
+                        <a href="<?=$link?>"><?=$row->event_name;?></a>
                     </td>
                     <td>
-                        <?=$row->location;?>
+                        <a href="<?=$link?>"><?=$row->organization_name;?></a>
+                    </td>
+                    <td>
+                        <a href="<?=$link?>"><?=$row->location_name;?></a>
                     </td>
                     <td>
                         <?=$row->street_address;?>
@@ -127,7 +133,7 @@ $k = 1 - $k;
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="15"><?php echo $pagination->getListFooter(); ?></td>
+                    <td colspan="16"><?php echo $pagination->getListFooter(); ?></td>
                 </tr>
             </tfoot>
         </table>
