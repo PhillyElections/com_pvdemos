@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `jos_pv_demos_events` (
 
 INSERT INTO `jos_pv_demos_events` 
 (`id`, `scheduler_id`, `setup`, `start`, `end`, `event_name`, `organization_name`, `location_name`, `display_title`, `address_street`, `zip`, `contact`, `email`, `phone`, `ada_confirmed`,`in_out`,`power_confirmed`,`event_bound`,`published`,`created`,`lat`,`lng`, `precinct`, `district`)
-VALUES
+VALUES 
 ('',2,'2019-06-07 09:00:00','2019-06-07 09:00:00','2019-06-07 17:00:00',"","City Commissioners","County Election Board - Rm 142","County Board of Elections Rm 142","1400 JFK Blvd","19106","",'','',1,'',0,0,1,@tnow,'39.952498599605','-75.16383689593918','0815','05'),
 ('',2,'2019-06-07 10:30:00','2019-06-07 11:00:00','2019-06-07 13:00:00',"","Reading Terminal Market","Reading Terminal Market (Center Court across from Brass Pig)","Reading Terminal Market (Center Court across from Brass Pig)","51 N 12th St","19107","Lisa Simeo",'','2159222317',1,'in',1,0,1,@tnow,'39.95288837147714','-75.1596549196608','0524','01'),
 ('',2,'2019-06-07 09:00:00','2019-06-07 09:00:00','2019-06-07 17:00:00',"","City Commissioners","Voter Registration Office","Voter Registration Office 5th FL","520 N Columbus Blvd","19123","",'','',1,'',0,0,1,@tnow,'39.95984549753851','-75.13787357647263','0530','01'),
